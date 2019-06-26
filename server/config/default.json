@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://jwki0071:jki00129@cluster0-y5qj4.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "kolingo_JwtSecret"
+}

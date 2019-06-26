@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import MainNavbar from './components/MainNavbar';
+import Users from './components/users'
+import { Provider } from 'react-redux';
+import store from './store/store';
+import {loadUser} from './store/actions/authAction'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-import  Navbar from './components/navbar'
-
-import  User from './components/users'
-// import Routes from 
-
-function App() {
-  return (
-    <div className="App">
-        <Navbar />
-        {/* <Routes /> */}
-        <User />
-    </div>
-  );
+class App extends Component {
+  componentDidMount(){
+    store.dispatch(loadUser())
+  }
+  render() {
+    return (
+      <Provider store={store}> 
+          <div>
+            <MainNavbar />
+            <Users />
+          </div>
+          </Provider>
+    );
+  }
 }
 
 export default App;

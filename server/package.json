@@ -4,23 +4,29 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "server": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.0",
+    "config": "^3.1.0",
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0",
     "express-promise-router": "^3.0.3",
     "express-session": "^1.16.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.0",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {

@@ -1,24 +1,32 @@
 const express = require("express");
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const bodyParser = require("body-parser")
+const path = require('path');
+const config = require('config');
+
+
+const db = config.get("mongoURI")
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/kolingo-app', { useNewUrlParser: true });
+mongoose.connect(db, { 
+    useNewUrlParser: true,
+    useCreateIndex: true
+});
+
 mongoose.connection.once('open', () => {
     console.log('connected to database');
 })
 
 const app = express();
 
-
 //Middlewares
 app.use(logger("dev"));
-app.use(bodyParser.json());
+app.use(express.json());
 
 
 //Routes
 app.use('/users', require('./routes/users'));
+app.use('/register', require('./routes/users'))
 app.use('/lessons', require('./routes/lessons'));
 app.use('/auth', require('./routes/auth'))
 
@@ -45,6 +53,16 @@ app.use((err,req,res,next) => {
     });
     console.err(err);
 })
+
+//serve static assets if in production
+if(process.env.NODE_ENV === 'production'){
+    // Set static folder
+    app.use(express.static('client/build'));
+
+    app.get('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname, 'client', "build", "index.html"))
+    })
+}
 
 
 //start the server

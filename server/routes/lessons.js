@@ -1,16 +1,27 @@
 const express = require("express");
 const router = express.Router();
-// const router = require('express-promise-router');
-
-const LessonsController = require('../controllers/lessons')
+const Lessons = require('../models/lessons');
 
 //get ALL lessons
-router.route('/')
-    .get(LessonsController.index)
+router.get('/', async(req,res,next) => {
+    try{
+    const lessons = await Lessons.find({})
+    res.status(200).json(lessons); 
+    } catch (err) {
+        next(err)
+    }
+})
+
 
 // /lessons/:id
-router.route('/:userId')
-    .get(LessonsController.getLesson)
-
+router.get('/:id', async(req,res,next) => {
+    try{
+    const { lessonsId } = req.params;
+    const lessons = await Lessons.findById(lessonsId);
+    res.status(200).json(lessons);
+    } catch(err){
+        next(err)
+    }
+})
 
 module.exports = router;
