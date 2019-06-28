@@ -2,10 +2,10 @@ const express = require("express");
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
-const config = require('config');
+const dotenv = require('dotenv').config();
 
-
-const db = config.get("mongoURI")
+const db = process.env.MONGO_URI
+console.log(db)
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db, { 
