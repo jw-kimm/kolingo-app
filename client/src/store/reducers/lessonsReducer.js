@@ -12,7 +12,7 @@ const defaultLesson = {
 const lessonsReducer = (state = defaultLesson, action) => {
     switch (action.type) {
       case GET_LESSONS:
-        return {...state, lessons: action.payload, loading:false}
+        return {...state, lesson: action.lesson }
       case RECEIVE_ANSWER:
         return {...state, spec: action.spec};
         case LESSONS_LOADING:

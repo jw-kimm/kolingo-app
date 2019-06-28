@@ -1,15 +1,29 @@
 import axios from 'axios'
 import { GET_LESSONS, RECEIVE_ANSWER, LESSONS_LOADING } from './types';
 
-export const getLessons = () => dispatch => {
-    dispatch(setLessonsLoading());
-    axios.get('/lessons')
-    .then(res => dispatch({
-        type:GET_LESSONS,
-        payload: res.data
+// export const getLessons = () => dispatch => {
+//     dispatch(setLessonsLoading());
+//     axios.get('/lessons')
+//     .then(res => dispatch({
+//         type:GET_LESSONS,
+//         payload: res.data
+//     })
+//     )
+// }
+
+const getLessons = lesson => ({
+    type: GET_LESSONS, lesson
 })
-)
-}
+
+export const gotLessons = () => async dispatch => {
+    try {
+        const { data } = await axios.get('/lessons')
+        console.log('INTHUNK', data)
+      dispatch(getLessons(data));
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   
 export const receiveAnswer = spec => ({

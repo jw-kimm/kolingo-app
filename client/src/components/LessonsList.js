@@ -1,45 +1,49 @@
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem } from 'reactstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+// import { Container, ListGroup, ListGroupItem } from 'reactstrap';
+// import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
-import { getLessons } from '../store/actions/lessonActions';
+import { gotLessons } from '../store/actions/lessonActions';
 import PropTypes from 'prop-types';
 
 class LessonsList extends Component {
 
-    componentDidMount() {
-        this.props.getLessons();
+    async componentDidMount() {
+        const test = await this.props.gotLessons();
+        
       }
     
     render() {
-        const { lesson } = this.props.lesson;
         return (
-            <Container>
-               <ListGroup>
-                    <TransitionGroup className='Lessons-list'>
-                    {lesson.map(({ _id, title }) => (
-                    <CSSTransition key={_id} timeout={500} classNames='fade'>
-                        <ListGroupItem>
-                            {title}
-                        </ListGroupItem>
-                    </CSSTransition>
-            ))}
-                    </TransitionGroup>
-                </ListGroup>   
-            </Container>
+            // <Container>
+            //    <ListGroup>
+            //         <TransitionGroup className='Lessons-list'>
+            //         {lesson.map(({ _id, title }) => (
+            //         <CSSTransition key={_id} timeout={500} classNames='fade'>
+            //             <ListGroupItem>
+            //                 {title}
+            //             </ListGroupItem>
+            //         </CSSTransition>
+            // ))}
+            //         </TransitionGroup>
+            //     </ListGroup>   
+            // </Container>
+            <div className="problem-container">
+            <h2>{this.props.lesson.title}</h2>
+            </div>
         )
     }
 }
 
 LessonsList.propTypes = {
-    getLessons: PropTypes.func.isRequired,
+    gotLessons: PropTypes.func.isRequired,
     lesson: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => ({
-    lesson: state.lesson,
-  });
+const mapStateToProps = state => {
+    debugger 
+    return {lesson: state.lesson,}
+}
   
   export default connect(mapStateToProps,
-    { getLessons }
+    { gotLessons }
   )(LessonsList);

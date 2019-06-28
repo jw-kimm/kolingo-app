@@ -31,7 +31,7 @@ class MainNavbar extends Component {
     }
 
     render() {
-        const { isAuthenticated, user} = this.props.auth;
+        const { isAuthenticated, user } = this.props.auth;
 
         const authLinks = (
             <Fragment>
