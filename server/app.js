@@ -31,7 +31,6 @@ app.use('/lessons', require('./routes/lessons'));
 app.use('/auth', require('./routes/auth'))
 
 
-
 //Catch 404 errors forward them to error handler
 app.use((req,res,next) => {
     const err = new Error('Not Found')

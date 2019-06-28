@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+
+const User = require('../models/users');
 
 //get ALL users /users
 router.get ('/',  async (req,res,next) => {
@@ -11,7 +12,7 @@ router.get ('/',  async (req,res,next) => {
     res.status(200).json(users);
 }),
 
-// router.get('/register', (req,res) => res.send('register'))
+
 //@desc register a user
 //@route POST /register
 //@access Public

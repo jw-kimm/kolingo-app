@@ -36,7 +36,7 @@ class MainNavbar extends Component {
         const authLinks = (
             <Fragment>
                 <NavItem>
-                    <span className="navbar-text mr-3"> <strong> { user? `Welcome ${user.firstName}` : " "}</strong> </span>
+                    <span className="navbar-text mr-3"> <strong> { user? `Welcome ${user.userName}` : " "}</strong> </span>
                 </NavItem>
                 <NavItem>
                     <Logout />

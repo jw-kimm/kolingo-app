@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainNavbar from './components/MainNavbar';
-import Users from './components/users'
+import LessonsList from './components/LessonsList'
 import { Provider } from 'react-redux';
 import store from './store/store';
 import {loadUser} from './store/actions/authAction'
@@ -13,10 +13,8 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}> 
-          <div>
             <MainNavbar />
-            <Users />
-          </div>
+            <LessonsList />
           </Provider>
     );
   }
