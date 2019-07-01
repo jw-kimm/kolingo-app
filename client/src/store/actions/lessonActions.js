@@ -12,10 +12,11 @@ import { GET_LESSONS, RECEIVE_ANSWER, LESSONS_LOADING } from './types';
 // }
 
 const getLessons = lesson => ({
-    type: GET_LESSONS, lesson
+    type: GET_LESSONS, 
+    lesson
 })
 
-export const gotLessons = () => async dispatch => {
+export const fetchLessons = () => async dispatch => {
     try {
         const { data } = await axios.get('/lessons')
         console.log('INTHUNK', data)

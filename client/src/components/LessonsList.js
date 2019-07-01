@@ -2,17 +2,18 @@ import React, { Component } from "react";
 // import { Container, ListGroup, ListGroupItem } from 'reactstrap';
 // import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
-import { gotLessons } from '../store/actions/lessonActions';
+import { fetchLessons } from '../store/actions/lessonActions';
 import PropTypes from 'prop-types';
 
 class LessonsList extends Component {
 
-    async componentDidMount() {
-        const test = await this.props.gotLessons();
+componentDidMount() {
+  this.props.fetchLessons();
         
       }
     
     render() {
+        debugger
         return (
             // <Container>
             //    <ListGroup>
@@ -28,22 +29,27 @@ class LessonsList extends Component {
             //     </ListGroup>   
             // </Container>
             <div className="problem-container">
-            <h2>{this.props.lesson.title}</h2>
+            <p>{this.props.lessons.title}</p>
             </div>
         )
     }
 }
 
 LessonsList.propTypes = {
-    gotLessons: PropTypes.func.isRequired,
+  fetchLessons: PropTypes.func.isRequired,
     lesson: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => {
-    debugger 
-    return {lesson: state.lesson,}
+const mapStateToProps = state => { 
+    return {
+        lessons: state.lesson
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+      fetchLessons: () => dispatch(fetchLessons())
+    }
 }
   
-  export default connect(mapStateToProps,
-    { gotLessons }
-  )(LessonsList);
+  export default connect(mapStateToProps,mapDispatchToProps)(LessonsList);

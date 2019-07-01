@@ -17,6 +17,7 @@ mongoose.connection.once('open', () => {
     console.log('connected to database');
 })
 
+
 const app = express();
 
 //Middlewares

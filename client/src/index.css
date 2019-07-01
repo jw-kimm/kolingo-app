@@ -11,3 +11,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+.bg-img {
+  /* The image used */
+  /* background-image: url("login-background.jpg"); */
+
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  
+  /* Needed to position the navbar */
+}
+
+
+.bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mb-5{
+  background-color: #0e366b;
+  display: flex;
+  position: fixed;
+  top: 0;   
+  width: 100%;
+  overflow: hidden;
+}

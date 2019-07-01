@@ -4,7 +4,7 @@ import { returnErrors } from './errorAction';
 
 
 export const getUser = () => dispatch => {
-    dispatch(loadingUser());
+    // dispatch(loadingUser());
     axios.get('/users')
     .then(res => dispatch({
         type: GET_USER,
