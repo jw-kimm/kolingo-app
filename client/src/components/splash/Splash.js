@@ -5,19 +5,17 @@ import MainNavbar from '../MainNavbar';
 class Splash extends React.Component {
 
   componentDidMount(){
-    this.props.fetchLessons()
-  }
+
+  } 
 
   render(){
     return(
-      <div>
-        {/* <img src="lingobg.jpg" className="bg"/> */}
+      <div className = "mainContainer">
+        <img src="lingobg.jpg" id="bg"/>
+            <h1>LET'S LEARN KOREAN! </h1>
+            <Link to="/lessons" className="start-btn">GET STARTED</Link>
             <div className= "nav-item">
-            <ul>    
-            <Link to="/lessons">Get Started</Link>
-            {/* <MainNavbar /> */}
-            <li>{this.props.lessons[0].title}</li>
-            </ul>
+            <MainNavbar />
             </div>
       </div>
     )

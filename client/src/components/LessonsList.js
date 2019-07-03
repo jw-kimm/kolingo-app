@@ -4,32 +4,22 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { fetchLessons } from '../store/actions/lessonActions';
 import PropTypes from 'prop-types';
+import Navbar from '../components/Navbar'
+import Alphabet1 from '../components/Alphabet1';
+
 
 class LessonsList extends Component {
 
 componentDidMount() {
   this.props.fetchLessons();
-        
-      }
-    
+  
+  }
+
     render() {
-        debugger
         return (
-            // <Container>
-            //    <ListGroup>
-            //         <TransitionGroup className='Lessons-list'>
-            //         {lesson.map(({ _id, title }) => (
-            //         <CSSTransition key={_id} timeout={500} classNames='fade'>
-            //             <ListGroupItem>
-            //                 {title}
-            //             </ListGroupItem>
-            //         </CSSTransition>
-            // ))}
-            //         </TransitionGroup>
-            //     </ListGroup>   
-            // </Container>
-            <div className="problem-container">
-            <p>{this.props.lessons.title}</p>
+            <div className="lessons-container">
+            <Navbar />
+
             </div>
         )
     }
@@ -39,17 +29,17 @@ LessonsList.propTypes = {
   fetchLessons: PropTypes.func.isRequired,
     lesson: PropTypes.object.isRequired
 }
-
-const mapStateToProps = state => { 
-    return {
-        lessons: state.lesson
-    }
-}
+const mapStateToProps = ({ lesson }) => {
+  return {
+    lessons: lesson,
+  };
+};
 
 const mapDispatchToProps = dispatch => {
-    return {
-      fetchLessons: () => dispatch(fetchLessons())
-    }
-}
-  
-  export default connect(mapStateToProps,mapDispatchToProps)(LessonsList);
+  return {
+    fetchLessons: () => dispatch(fetchLessons()),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LessonsList)
