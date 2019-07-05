@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import MainNavbar from '../MainNavbar';
+import MainNavbar from './MainNavbar';
 
 class Splash extends React.Component {
 

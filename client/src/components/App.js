@@ -4,8 +4,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css'
 
 import Splash from './splash/Splash'
-import LessonsList from './LessonsList'
-import Alphabet1 from './Alphabet1';
+import LessonsList from './lessons/LessonsList'
+import Alphabet1 from '../components/lessons/Alphabet1';
 
 
 const App = () => (

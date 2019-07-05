@@ -1,15 +1,6 @@
 import { GET_LESSONS, RECEIVE_ANSWER, LESSONS_LOADING } from '../actions/types';
 
-/**
- * INITIAL STATE
- */
-const defaultLesson = {
-    lessons: [],
-    // loading: false
-}
-  
-
-const lessonsReducer = (state = defaultLesson, action) => {
+const lessonsReducer = (state = [], action) => {
     Object.freeze(state)
     switch (action.type) {
       case GET_LESSONS:

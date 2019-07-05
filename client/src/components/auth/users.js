@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUser } from '../store/actions/userAction';
+import { getUser } from '../../store/actions/userAction';
 import PropTypes from 'prop-types';
 
 class Users extends Component{

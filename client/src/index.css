@@ -92,6 +92,7 @@ span, article, footer, time, small {
   cursor: pointer;
   border-radius: 5px;
   font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
 }
 .mainContainer h1 {
   z-index: 2;
@@ -128,6 +129,10 @@ span, article, footer, time, small {
   font-family: 'Varela Round', sans-serif;
   position: fixed;
   width: 100%;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-decoration: none
 }
 
 .header li {
@@ -140,7 +145,8 @@ span, article, footer, time, small {
 }
 
 .header li a:hover {
-  background-color: lightblue;
+  color: lightblue;
+  text-decoration: none
 }
 
 .progress-bar {
@@ -156,4 +162,96 @@ span, article, footer, time, small {
   height:100%;
   border-radius: inherit;
   transition: width .2s ease-in;
+}
+
+.buttonalpha1 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #78c800;
+  color: white;
+  font-size: 30px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.buttonalpha2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #78c800;
+  color: white;
+  font-size: 30px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.buttonalpha3 {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #78c800;
+  color: white;
+  font-size: 30px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+
+.buttonalpha1 a:hover {
+  color: lightblue;
+  text-decoration: none;
+}
+
+.buttonalpha2 a:hover {
+  color: lightblue;
+  text-decoration: none;
+}
+
+.buttonalpha3 a:hover {
+  color: lightblue;
+  text-decoration: none;
+}
+
+.problem-container h2 {
+  z-index: 2;
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 22%;
+  font-size: 40px;
+  width: 100%;
+  /* height: 26px; */
+  padding: 0;
+  margin: 0;
+  margin-top: -13px; /* 1/2 height */
+  text-align: center;
+  color: white;
+  font-weight: 800;
+  font-family: 'Varela Round', sans-serif;
+  color: grey;
+}
+
+.progress-bar{
+  position: relative;
+  height: 20px;
+  width: 350px;
+  border-radius: 50px;
+  border: 1px solid #333;
+  margin-left: 35%;
 }

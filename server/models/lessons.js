@@ -16,14 +16,9 @@ const LessonsSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  points: {
-    type: Number,
-    min: 0,
-    max: 100,
-    default: 0
-  },
 });
 
 var Lessons = mongoose.model('Lessons', LessonsSchema);
+
 
 module.exports = Lessons;

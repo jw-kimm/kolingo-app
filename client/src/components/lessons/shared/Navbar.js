@@ -8,9 +8,9 @@ render() {
   return (
     <div className="header">
         <ul>
-          <li><Link to="/lessons">Learn</Link></li>
-          <li> <Link to="/dictionary">Dictionary</Link></li>
-          <li><Link to="/discuss">Discuss</Link></li>
+          <li><Link to="/lessons">LEARN</Link></li>
+          <li> <Link to="/dictionary">DICTIONARY</Link></li>
+          <li><Link to="/discuss">DISCUSS</Link></li>
         </ul>
       </div>
     )
