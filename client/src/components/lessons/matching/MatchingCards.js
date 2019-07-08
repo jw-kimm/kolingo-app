@@ -1,14 +1,20 @@
 //container iterating thru
-import React, { Component } from "react";
-import Crad from '../Card'
+import React from "react";
+import Card from './Card'
 
-const MatchingCards = choices => {
-
+const MatchingCards = ({ choices, onClick }) => {
   return(
-    <div>
-      {choices.map(choice => {
-        // <Card content={choice}/>
-      })}
+    <div className = "card-container">
+      { choices.map(choice => 
+        <Card
+        key={choice.id}
+        choice={choice}
+        onClick={onClick}
+        />
+      )}
     </div>
   ) 
 }
+
+export default MatchingCards
+
