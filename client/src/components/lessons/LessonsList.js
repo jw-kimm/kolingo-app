@@ -11,7 +11,7 @@ class LessonsList extends Component {
       <div className="lessons-container">
         <Navbar />
         <Link
-            to="/alphabet1"
+            to="/alphabet"
             className="buttonalpha1"
           >
             Alphabet1

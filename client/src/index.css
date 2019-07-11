@@ -156,6 +156,7 @@ span, article, footer, time, small {
   width: 350px;
   border-radius: 50px;
   border: 1px solid #333;
+  background-color: white
 }
 
 .filler{
@@ -257,6 +258,21 @@ span, article, footer, time, small {
   color: grey;
 }
 
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-top: 2px solid #e5e5e5;
+    max-height: 140px;
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    bottom: 60px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
 .progress-bar{
   position: relative;
   height: 20px;
@@ -275,10 +291,13 @@ span, article, footer, time, small {
   /* width: 250px; */
   /* text-align: center; */
   display: inline-flex;
-  left: 20%;
+  /* left: 20%; */
   /* align-items: center;
   justify-content: center; */
-  padding: 121px 84px;
+  padding: 31px 90px;
+  margin: 122px 141px 0 122px;
+  max-height: 310px;
+  height: 100%;
 }
 
 .card {
@@ -291,26 +310,52 @@ span, article, footer, time, small {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  margin-top: 16px;
+  margin: 16px 16px 16px 16px;
   padding: 121px 84px;
   font-size: 30px;
 }
 
-#next-btn{
-  position: absolute;
+.card:hover {
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
+
+.activeCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin: 16px 16px 16px 16px;
+  padding: 121px 84px;
+  font-size: 30px;
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
+
+
+
+/* .card + .card {
+  margin: 0 0 0 8px;
+ } */
+
+#cont-btn{
+  position: fixed;
   right: 7%;
   bottom: 0;
-  justify-content: flex-end;
-  display: flex;
   padding: 16px;
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
-  width: 3vw;
-  color: white;
-  background-color: rgb(223, 222, 222);
+  width: 105px;
+  color: #afafaf;
+  background-color: rgb(241, 241, 241);
   border-radius: 15px;
   text-align: center;
+  border-width: 2px 2px 4px;
   /* min-width: 150px;
   width: 100%;
   border-color: transparent;
@@ -318,24 +363,33 @@ span, article, footer, time, small {
 }
 
 #skip-btn{
-  position: absolute;
-  left: 17%;
+  position: fixed;
+  left: 10%;
   bottom: 0;
-  justify-content: flex-end;
-  display: flex;
   padding: 16px;
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
-  width: 3vw;
-  color: white;
-  background-color: rgb(223, 222, 222);
+  width: 105px;
+  color: #afafaf;
+  background-color: rgb(241, 241, 241);
   border-radius: 15px;
   text-align: center;
+  border-width: 2px 2px 4px;
+  border-color: #afafaf
+  /* margin-bottom: 10px;
+  min-width: 150px;
+  width: 100%; */
   /* min-width: 150px;
   width: 100%; */
+}
+
+#skip-btn:hover {
+  background-color: rgb(236, 204, 210);
+  border-color: #e5e5e5;
 }
 
 /* .problem-container button{
   border-radius: 0 8px 8px 0;
 } */
+

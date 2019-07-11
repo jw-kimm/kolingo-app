@@ -5,7 +5,7 @@ import '../index.css'
 
 import Splash from './splash/Splash'
 import LessonsList from './lessons/LessonsList'
-import Alphabet1 from '../components/lessons/Alphabet1';
+import Alphabet from './lessons/Alphabet';
 
 
 const App = () => (
@@ -13,7 +13,7 @@ const App = () => (
   <Switch>
      <Route exact path="/" component={Splash} />
      <Route exact path="/lessons" component={LessonsList} />
-     <Route exact path="/alphabet1" component={Alphabet1} />
+     <Route exact path="/alphabet" component={Alphabet} />
   </Switch>
   </div>
 );
