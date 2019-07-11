@@ -150,14 +150,20 @@ span, article, footer, time, small {
   text-decoration: none
 }
 
-.progress-bar {
+
+.progress-bar{
   position: relative;
-  height: 20px; 
-  width: 350px;
+  height: 20px;
+  width: 500px;
   border-radius: 50px;
   border: 1px solid #333;
+  /* margin-left: 8%; */
+  bottom: 89%;
+  left: 30%;
   background-color: white
 }
+
+
 
 .filler{
   background :#1DA598;
@@ -273,18 +279,6 @@ span, article, footer, time, small {
     text-align: center;
 }
 
-.progress-bar{
-  position: relative;
-  height: 20px;
-  width: 500px;
-  border-radius: 50px;
-  border: 1px solid #333;
-  /* margin-left: 8%; */
-  top: 10%;
-  left: 30%;
-
-}
-
 .card-container {
   position: fixed;
   /* margin-top: 40%; */
@@ -341,6 +335,21 @@ span, article, footer, time, small {
 /* .card + .card {
   margin: 0 0 0 8px;
  } */
+
+#closebtn {
+    background-color: transparent;
+    text-decoration: none;
+    display: block;
+    width: 12px;
+    height: 7px;
+    font-weight: bold;
+    outline: inherit;
+    border-style: none;
+    float: left;
+    left: 50%;
+    color: grey;
+}
+
 
 #cont-btn{
   position: fixed;
