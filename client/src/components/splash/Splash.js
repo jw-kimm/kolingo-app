@@ -4,18 +4,56 @@ import MainNavbar from './MainNavbar';
 
 class Splash extends React.Component {
 
-  componentDidMount(){
-
-  } 
-
   render(){
     return(
       <div className = "mainContainer">
-        <img src="lingobg.jpg" id="bg"/>
+      <div className= "nav-item">
+        <MainNavbar />
+        <div className="bg"  alt="logo"/>
             <h1>LET'S LEARN KOREAN! </h1>
+            <img src= "koreanFlag.png" id="flag"/>
             <Link to="/lessons" className="start-btn">GET STARTED</Link>
-            <div className= "nav-item">
-            <MainNavbar />
+          
+
+          <section id="intro">
+          <img src= "muzi.png" id="section-pic"/>
+          <div id ="subtext">
+          <h3>The best new way to learn a language.</h3>
+          <p> Learing with Kolingo is fun and addictive. Earn points for correct answers, race against the clock, and level up. Our bite-sized lessons are effective, and we have proof that is works!</p>
+          </div>
+          </section>
+          
+          <section id="app"> 
+          <img src= "ryanmuzi.png" id="section-pics"/>
+          <div id="subtext">
+            <h3> Learn anytime, anywhere</h3>
+            <p> Make your breaks and commutes more productive with our apps.
+            </p>
+            </div>
+          </section>
+
+          <footer className= "footer">
+          <div id= "endHeader">
+            <h2>Learn Korean with Kolingo </h2>
+            <button> Get Started</button>
+          </div>  
+          <div id="endInfo">
+          <div id = "bottomEnd">
+            <h4> About </h4>
+            <li> <a href="/About">  About </a></li>
+          </div>
+          <div id = "bottomEnd">
+            <h4> Product</h4>
+            <li> <a href="/lessons"> Kolingo </a> </li>
+            <li> <a href="/Dictionary"> Dictionary </a> </li>
+          </div>
+          <div id = "bottomEnd">
+            <h4>Help &amp; Support</h4>
+            <li><a href="/About"> Kolingo FAQs </a></li>
+          </div>
+          </div>
+          </footer>
+
             </div>
       </div>
     )

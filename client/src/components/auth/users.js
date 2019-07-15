@@ -15,12 +15,14 @@ class Users extends Component{
         <h1> Hello </h1>
         {/* <li>{this.props.user.firstName}</li> */}
       </div>
-
   );
 }
 }
 
-
+Users.propTypes = {
+  getUser: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -29,13 +31,4 @@ const mapStateToProps = (state) => {
 }
 
 // export default Users
-
 export default connect(mapStateToProps, { getUser })(Users);
-
-/**
- * PROP TYPES
- */
-Users.propTypes = {
-  getUser: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
-}

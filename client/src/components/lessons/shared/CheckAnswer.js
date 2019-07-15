@@ -1,40 +1,48 @@
-// import React, { Component } from "react";
+import React, { Component } from "react";
+import GoalPage from './GoalPage'
 
-// class CheckAnswer extends Component {
-//     state = {  
-//         disabled: true,
-//         isAnswered: false,
-//     };
+class CheckAnswer extends Component {
+  state = {  
+    check: "check",
+    disableCheck: true,
+    displayAnswer: "",
+  };
 
-//     isDisabled = () => {
+  checkAnswer = () => {
+    const answer = this.props.lessons[this.state.currentQuestion].answer
+    if(answer === this.state.currentAnswer) {
+      this.setState({
+        check: "Continue",
+        displayAnswer: "Correct",
+        showButton: false
+      })
+      this.increaseProgress()
+    } else {
+      this.setState({
+        check: "Continue",
+        displayAnswer: 'Wrong',
+        showButton: false
+      })
+    }
+  }
 
-//     }
-    
-//     render() {
-//         return (
-//             <div>
-                
-//             </div>
-//         );
-//     }
-// }
+  render() {
+    return (
+      <div>
+      <button id="skip-btn" type="button" 
+        onClick = {this.skipQuestion}
+        style = { this.state.showButton ? { display: "block"} : {display: 'none'} }> Skip </button>
+            
+      <h2 style = {this.state.displayAnswer === "Correct" ? {backgroundColor: 'green'}: {backgroundColor: 'red'}}>{ this.state.displayAnswer } </h2>
 
-// export default Answer;
+      <button id="cont-btn" type="button" onClick ={this.handleOnClick} disabled = {!this.state.currentAnswer}
+        style={this.state.disableCheck ? null : {backgroundColor: 'green'}}> {this.state.check} 
+      </button>
 
-// //  checkAnswer = choice => {
-//     //if the card picked is the answer
-//     // const { choice } = this.props
-//     // const answer = this.props.lessons[this.state.currentQuestion].answer
-//     // if (answer === choice){
-//     //   this.setState({check: 'continue'})
-//     //   onClick('Correct')
-//     // } else {
-//     //   this.setState({check: "continue"})
-//     //   onClick('Wrong')
-//     // }
-//     //then enable the check button
-//     //check the answer
-//     //and turn to continue
-//     console.log(this.state.choice, 'choice')
+      <GoalPage/>
+      </div>
+      );
+  }
+}
 
-//   }
+export default CheckAnswer;

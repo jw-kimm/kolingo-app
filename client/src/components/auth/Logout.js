@@ -4,10 +4,7 @@ import { logout } from '../../store/actions/authAction';
 import { NavLink} from 'reactstrap';
 import PropTypes from 'prop-types';
 
-export class Logout extends Component{
-    static propTypes = {
-        logout: PropTypes.func.isRequired
-    }
+class Logout extends Component{
 
     render(){
         return (
@@ -19,5 +16,10 @@ export class Logout extends Component{
         )
     }
 }
+
+Logout.propTypes = {
+    logout: PropTypes.func.isRequired
+}
+
 
 export default connect ( null, { logout })(Logout);

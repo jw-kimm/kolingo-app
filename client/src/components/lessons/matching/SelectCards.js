@@ -19,7 +19,3 @@ const SelectCards = ({ choices, onClick, answer, selectedCard }) => {
 }
 
 export default SelectCards
-
-//style={this.state.isAnswer ? {backgroundColor: 'red'} : {backgroundColor: 'green'}}
-
-//// disabled = {this.state.disableCheck}
