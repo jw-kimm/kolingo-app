@@ -6,29 +6,33 @@ import { Link } from 'react-router-dom'
 class LessonsList extends Component {
 
   render() {
-
     return (
-      <div className="lessons-container">
+      <div>
         <Navbar />
-        <Link
+      <div className="lessons-list">
+        <li>
+          <Link
             to="/alphabet"
-            className="buttonalpha1"
-          >
+            className="buttonLink">
             Alphabet1
           </Link>
+        </li>
+        <li>
           <Link
-            to="/alphabet1"
-            className="buttonalpha2"
-          >
-            Alphabet2
+          to="/alphabet1"
+          className="buttonLink">
+          Alphabet2
           </Link>
+        </li>
+        <li>
           <Link
-            to="/alphabet1"
-            className="buttonalpha3"
-          >
-            Alphabet3
+          to="/alphabet1"
+          className="buttonLink">
+          Alphabet3
           </Link>
+          </li>
       </div>
+    </div>
     )
   }
 }

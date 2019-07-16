@@ -104,21 +104,6 @@ class Alphabet extends Component {
   shuffleQuestion = () => {
     if(!this.state.solved) {
     const totalQuestions = this.props.lessons.length -1
-    // var currentIndex = totalQuestions.length, temporaryValue, randomIndex;
-
-    // while (0 !== currentIndex) {
-    //   randomIndex = Math.floor(Math.random() * currentIndex);
-    //   currentIndex -= 1;
-    //   temporaryValue = totalQuestions[currentIndex];
-    //   totalQuestions[currentIndex] = totalQuestions[randomIndex];
-    //   totalQuestions[randomIndex] = temporaryValue;
-    // }
-    // return totalQuestions;
-
-    var shuffle = [].concat(totalQuestions);
-    shuffle.sort(() => {
-    return 0.5 - Math.random();
-});
     }
   }
 
@@ -133,10 +118,19 @@ class Alphabet extends Component {
 
     if(isLessons) {
       const question = lessons[this.state.currentQuestion]
-      const { choices, prompt} = question
+      const { choices,prompt } = question
       
       answer = lessons[this.state.currentQuestion].answer
-      questionPrompt = <Question prompt={prompt}/>
+
+    //   if(this.props.lessons.length > 0) {
+    //   //   // questionPrompt = this.props.lessons.map((lesson,i) => {
+    //   //     return  (
+    //   //     <Question key={i} lesson={lesson}/>
+    //   //     )
+    //   //   }
+    // }
+      questionPrompt = <Question prompt ={prompt}/>
+
       answerChoices = 
         <SelectCards 
           choices={choices} 
@@ -147,46 +141,37 @@ class Alphabet extends Component {
         />
     }
 
+    if(this.state.progress === 100) {
+      return <GoalPage  />
+    }
 
     return (
       <div>
-
       <div className="problem-container">
         <a href="/lessons" id ="closebtn"> X </a>
         <ProgressBar progress={this.state.progress} />
         { questionPrompt }
+        {/* <Question question={questionPrompt} /> */}
         { answerChoices }
       </div>
 
       <div className = "bottom-container">
-      {/* <CheckAnswer increaseProgress = {this.increaseProgress}/> */}
-       <button id="skip-btn" type="button" 
+        <button id="skip-btn" type="button" 
         onClick = {this.skipQuestion}
         style = { this.state.showButton ? { display: "block"} : {display: 'none'} }> Skip </button>
         
         <h2 style = {this.state.displayAnswer === "Correct" ? {backgroundColor: '#78c800'}: {backgroundColor: '#ea2b2b'}}>{ this.state.displayAnswer } </h2>
 
-      { this.state.progress === 100 ?        
-         <GoalPage  /> :          
-         <button 
-         id="cont-btn" 
-         type="button"
-         onClick ={this.handleOnClick}
-         disabled = {!this.state.currentAnswer}
-         style={this.state.disableCheck ? {backgroundColor: '#e5e5e5'} : 
-           {backgroundColor: '#78c800', color: "white"}}
-         > {this.state.check} 
-        </button> 
-      }
-        {/* <button 
+            
+        <button 
           id="cont-btn" 
           type="button"
           onClick ={this.handleOnClick}
           disabled = {!this.state.currentAnswer}
-          style={this.state.disableCheck ? null : 
-            {backgroundColor: 'green'}}
+          style={this.state.disableCheck ? {backgroundColor: '#e5e5e5'} : 
+            {backgroundColor: '#78c800', color: "white"}}
           > {this.state.check} 
-        </button>  */}
+        </button> 
 
       </div>
       </div>

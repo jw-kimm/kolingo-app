@@ -1,25 +1,24 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../store/actions/authAction';
-import { NavLink} from 'reactstrap';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 class Logout extends Component{
 
-    render(){
-        return (
-            <Fragment>
-                <NavLink onClick={this.props.logout} href="#">
-                Logout
-                </NavLink>
-            </Fragment>
-        )
-    }
+  render(){
+    return (
+    // <Fragment>
+      <Link onClick={this.props.logout} href="#">
+      Logout
+      </Link>
+    // </Fragment>
+    )
+  }
 }
 
 Logout.propTypes = {
     logout: PropTypes.func.isRequired
 }
-
 
 export default connect ( null, { logout })(Logout);

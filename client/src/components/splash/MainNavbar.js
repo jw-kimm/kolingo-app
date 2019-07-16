@@ -48,9 +48,9 @@ class MainNavbar extends Component {
                 <NavItem>
                     <RegisterModal />
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                     <LoginModal />
-                </NavItem>
+                </NavItem> */}
             </Fragment>
         )
 
