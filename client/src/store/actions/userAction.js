@@ -4,14 +4,14 @@ import { returnErrors } from './errorAction';
 
 
 export const getUser = () => dispatch => {
-    // dispatch(loadingUser());
-    axios.get('/users')
-    .then(res => dispatch({
-        type: GET_USER,
-        payload: res.data
-    }))
-    .catch(err => 
-        dispatch(returnErrors(err.response.data, err.response.status)))
+  // dispatch(loadingUser());
+  axios.get('/users')
+  .then(res => dispatch({
+    type: GET_USER,
+    payload: res.data
+  }))
+  .catch(err => 
+    dispatch(returnErrors(err.response.data, err.response.status)))
 }
 
 // export const addUser = user => dispatch => {
@@ -30,9 +30,9 @@ export const getUser = () => dispatch => {
 // }
 
 export const loadingUser = () => {
-    return {
-        type: USER_LOADING
-    }
+  return {
+    type: USER_LOADING
+  }
 }
 
 

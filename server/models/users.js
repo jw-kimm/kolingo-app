@@ -17,7 +17,8 @@ const UserSchema = new mongoose.Schema({
     trim: true,
     unique: true,
     index:true, 
-    sparse:true
+    sparse:true,
+    
   },
   userName: {
     type: String,

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavLink, Alert } from 'reactstrap';
+// import { button, Modal, ModalHeader, ModalBody, Form label, input, NavLink, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { register } from '../../store/actions/authAction';
 import { clearErrors } from '../../store/actions/errorAction';
@@ -70,76 +71,128 @@ class RegisterModal extends Component {
   render() {
   return (
     <div>
-      <NavLink onClick={this.toggle} href='#'>
+      <div className="bg-modal" onClick={this.toggle} href='#'>
         Register
-      </NavLink>
+      </div>
 
-      <Modal isOpen={this.state.modal} toggle={this.toggle}>
-        <ModalHeader toggle={this.toggle}>Register</ModalHeader>
-        <ModalBody>
-          {this.state.msg ? (
+        {/* <ModalHeader toggle={this.toggle}>Register</ModalHeader> */}
+
+          {/* {this.state.msg ? (
             <Alert color='danger'>{this.state.msg}</Alert>
-          ) : null}
-          <Form onSubmit={this.onSubmit}>
-            <FormGroup>
-            <Label for='firstName'>First Name</Label>
-              <Input
+          ) : null} */}
+          <form onSubmit={this.onSubmit} className="modal-content">
+          
+            <label for='firstName'>First Name</label>
+              <input
                 type='text'
                 name='firstName'
                 id='firstName'
                 placeholder='First Name'
-                className='mb-3'
+                className='login-input'
                 onChange={this.onChange}
               />
-              <Label for='lastName'>Last Name</Label>
-              <Input
+              <label for='lastName'>Last Name</label>
+              <input
                 type='text'
                 name='lastName'
                 id='lastName'
                 placeholder='Last Name'
-                className='mb-3'
+                className='login-input'
                 onChange={this.onChange}
               />
-              <Label for='userName'>Username</Label>
-              <Input
+              <label for='userName'>Username</label>
+              <input
                 type='text'
                 name='userName'
                 id='userName'
                 placeholder='Username'
-                className='mb-3'
+                className='login-input'
                 onChange={this.onChange}
               />
 
-              <Label for='email'>Email</Label>
-              <Input
+              <label for='email'>Email</label>
+              <input
                 type='email'
                 name='email'
                 id='email'
                 placeholder='Email'
-                className='mb-3'
+                className='login-input'
                 onChange={this.onChange}
               />
 
-              <Label for='password'>Password</Label>
-              <Input
+              <label for='password'>Password</label>
+              <input
                 type='password'
                 name='password'
                 id='password'
                 placeholder='Password'
-                className='mb-3'
+                className='login-input'
                 onChange={this.onChange}
               />
-              <Button color='dark' style={{ marginTop: '2rem' }} block>
+              <button color='dark' style={{ marginTop: '2rem' }} block >
                 Register
-              </Button>
-            </FormGroup>
-          </Form>
-        </ModalBody>
-      </Modal>
+              </button>
+            
+          </form>
     </div>
   );
   }
 }
+
+//   render() {
+//     return (
+//       <div className="inner-container">
+//         <div className="header">
+//           Register
+//         </div>
+//         <div className="box">
+//         <div className="input-group">
+//             <label htmlFor="username">First Name</label>
+//             <input
+//               type="text"
+//               name="firstname"
+//               className="login-input"
+//               placeholder="First Name"/>
+//           </div>
+//           <div className="input-group">
+//             <label htmlFor="username">Last Name</label>
+//             <input
+//               type="text"
+//               name="lastName"
+//               className="login-input"
+//               placeholder="Last Name"/>
+//           </div>
+//           <div className="input-group">
+//             <label htmlFor="username">Username</label>
+//             <input
+//               type="text"
+//               name="username"
+//               className="login-input"
+//               placeholder="Username"/>
+//           </div>
+
+//           <div className="input-group">
+//             <label htmlFor="email">Email</label>
+//             <input type="text" name="email" className="login-input" placeholder="Email"/>
+//           </div>
+
+//           <div className="input-group">
+//             <label htmlFor="password">Password</label>
+//             <input
+//               type="password"
+//               name="password"
+//               className="login-input"
+//               placeholder="Password"/>
+//           </div>
+//           <button
+//             type="button"
+//             className="login-btn"
+//             onClick={this.onSubmit }>Register</button>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
 RegisterModal.propTypes = {
   isAuthenticated: PropTypes.bool,
@@ -153,5 +206,4 @@ const mapStateToProps = state => ({
   error: state.error
 });
 
-export default connect( mapStateToProps, 
-    { register, clearErrors })(RegisterModal);
+export default connect( mapStateToProps,{ register, clearErrors })(RegisterModal);

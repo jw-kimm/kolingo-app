@@ -13,7 +13,7 @@ class Users extends Component{
     return (
       <div>
         <h1> Hello </h1>
-        {/* <li>{this.props.user.firstName}</li> */}
+        <li>{this.props.user.firstName}</li>
       </div>
   );
 }

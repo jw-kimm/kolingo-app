@@ -17,20 +17,17 @@ mongoose.connection.once('open', () => {
     console.log('connected to database');
 })
 
-
 const app = express();
 
 //Middlewares
 app.use(logger("dev"));
 app.use(express.json());
 
-
 //Routes
 app.use('/users', require('./routes/users'));
 app.use('/register', require('./routes/users'))
 app.use('/lessons', require('./routes/lessons'));
-app.use('/auth', require('./routes/auth'))
-
+app.use('/login', require('./routes/auth'))
 
 //Catch 404 errors forward them to error handler
 app.use((req,res,next) => {
@@ -54,7 +51,7 @@ app.use((err,req,res,next) => {
     console.err(err);
 })
 
-//serve static assets if in production
+// //serve static assets if in production
 if(process.env.NODE_ENV === 'production'){
     // Set static folder
     app.use(express.static('client/build'));

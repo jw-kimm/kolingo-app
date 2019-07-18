@@ -669,3 +669,19 @@ h4{
   margin: 16px 0;
   text-align: center;
 }
+
+.bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  position: absolute;
+  top: 0
+}
+
+.modal-content {
+  width: 500px;
+  height: 300p;
+  background-color: white;
+  /* opacity: ; */
+
+}
