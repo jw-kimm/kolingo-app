@@ -9,30 +9,30 @@ class LessonsList extends Component {
     return (
       <div>
         <Navbar />
-      <div className="lessons-list">
-        <li>
-          <Link
-            to="/alphabet"
-            className="buttonLink">
-            Alphabet1
-          </Link>
-        </li>
-        <li>
-          <Link
-          to="/alphabet1"
-          className="buttonLink">
-          Alphabet2
-          </Link>
-        </li>
-        <li>
-          <Link
-          to="/alphabet1"
-          className="buttonLink">
-          Alphabet3
+        <div className="lessons-list">
+          <li>
+            <Link
+              to="/alphabet"
+              className="buttonLink">
+              Basic
           </Link>
           </li>
+          <li>
+            <Link
+              to="/matching"
+              className="buttonLink">
+              Intermediate
+          </Link>
+          </li>
+          <li>
+            <Link
+              to="/alphabet1"
+              className="buttonLink">
+              Advanced
+          </Link>
+          </li>
+        </div>
       </div>
-    </div>
     )
   }
 }

@@ -15,5 +15,5 @@ export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const GET_LESSONS = 'GET_LESSONS'
-export const RECEIVE_ANSWER = 'RECEIVE_ANSWER'
+export const GET_MATCHING = 'GET_MATCHING'
 export const LESSONS_LOADING = 'LESSONS_LOADING'

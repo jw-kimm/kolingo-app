@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const LessonsSchema = new mongoose.Schema({
+const MatchingSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -12,13 +12,19 @@ const LessonsSchema = new mongoose.Schema({
     trim: true,
   },
   problem: {
-    type: Array,
+    type: String,
     required: true,
     trim: true,
   },
+  matched: {
+    type: Boolean,
+  },
+  flipped: {
+    type: Boolean
+  }
 });
 
-const Lessons = mongoose.model('Lessons', LessonsSchema);
+const Matching = mongoose.model('Matching', MatchingSchema, "matching");
 
 
-module.exports = Lessons;
+module.exports = Matching;

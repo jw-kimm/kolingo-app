@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { getUser } from '../../store/actions/userAction';
 import PropTypes from 'prop-types';
 
-class Users extends Component{
+class Users extends Component {
 
-  async componentDidMount(){
+  async componentDidMount() {
     await this.props.getUser();
   }
 
@@ -13,10 +13,9 @@ class Users extends Component{
     return (
       <div>
         <h1> Hello </h1>
-        <li>{this.props.user.firstName}</li>
       </div>
-  );
-}
+    );
+  }
 }
 
 Users.propTypes = {
