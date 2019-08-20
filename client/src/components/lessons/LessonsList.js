@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 
 class LessonsList extends Component {
 
+  //when user earns certain ex, unlock the next level
+  //enabling the next lesson
+
   render() {
     return (
       <div>

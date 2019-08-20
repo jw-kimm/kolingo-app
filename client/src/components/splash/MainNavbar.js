@@ -1,148 +1,133 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
 // import { Link } from 'react-router-dom';
 import RegisterModal from '../auth/RegisterModal'
 // import Logout from '../auth/Logout'
 import LoginModal from '../auth/LoginModal'
-
 import { loadUser } from "../../store/actions/authAction";
+
+const NavBar = styled.div`
+  background-color: #235390;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  font-family: Varela Round;
+  color: white;
+  `
+
+const Button = styled.div`
+  background-color: white;
+  color: #235390;
+  font-size: 15px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: 'Varela Round', sans-serif;
+  border-width: 0 0 4px;
+  margin-right: 22px;
+`
+
+// :hover {
+//   color: yellow;
+// }
 
 
 class MainNavbar extends Component {
   state = {
-    isOpen: false,
+    showLoginModal: false,
+    showReigsterModal: false,
   }
 
   componentDidMout() {
     this.props.loadUser();
   }
 
-  handleClick = (e) => {
+  showLoginModal = (e) => {
     e.preventDefault();
-    this.setState(prevState => {
-      return {
-        isOpen: !prevState.isOpen
-      }
+    this.setState({
+      showLoginModal: true,
+      showReigsterModal: false,
     })
   }
 
-  closePopup = () => {
+  showReigsterModal = (e) => {
+    e.preventDefault();
     this.setState({
-      isOpen: false
+      showLoginModal: false,
+      showReigsterModal: true,
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      showLoginModal: false,
+      showReigsterModal: false,
     });
   }
 
-
   render() {
-    // const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth;
 
-    // const guestLink = (
-    //   <ul className="navbar-nav">
-    //     <li className="nav-item">
-    //       <a href="/" className="controller" onClick={this.handleClick}>
-    //         Login
-    //   </a>
-    //     </li>
-    //     <li className="nav-item">
-    //       <a href="/" className="controller" value="Register" onClick={this.toggle} >
-    //         Register
-    //   </a>
-    //     </li>
-    //   </ul>
-    // )
-    // const authLink = (
-    //   <ul className="navbar-nav">
-    //     <li className="nav-item">
-    //       <a href="/profile" className="nav-link">
-    //         <strong> {user ? `Welcome ${user.userName}` : " "}</strong>
-    //       </a>
-    //     </li>
-    //     <li className="nav-item">
-    //       <a href="/" className="nav-link">
-    //         Logout
-    //     </a>
-    //     </li>
-    //   </ul>
-    // )
-
-    // if(this.state.showLoginModal) {
-    //   return <LoginModal />
-    // } else if(this.state.showRegisterModal) {
-    //   return <RegisterModal />
-    // } 
-    return (
-      <div>
-        <div className="navbar" expand="sm">
-          <h1 style={{ left: "39px", margin: "0", width: "400px" }}> Kolingo </h1>
-          <li className="nav-item">
-            <a href="/" className="controller" onClick={this.handleClick}>
-              Login
+    const guestLink = (
+      <>
+        <Button>
+          <a href="/" onClick={this.showLoginModal} style={{ fontSize: 15 }}>
+            Login
+            </a>
+        </Button>
+        <Button >
+          <a href="/" onClick={this.showReigsterModal} style={{ fontSize: 15 }}>
+            Register
+            </a>
+        </Button>
+      </>
+    )
+    const authLink = (
+      //avatar to contain this info 
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <a href="/lessons" className="nav-link">
+            <strong> {user ? `Welcome ${user.username}` : " "}</strong>
           </a>
-          </li>
-        </div>
+        </li>
+        <li className="nav-item">
+          <a href="/" className="nav-link">
+            Logout
+        </a>
+        </li>
+      </ul>
+    )
+
+    let login
+    if (this.state.showLoginModal) {
+      login = <LoginModal onClose={this.closeModal} />
+    }
+
+    let signup
+    if (this.state.showReigsterModal) {
+      signup = <RegisterModal onClose={this.closeModal} />
+    }
+
+    return (
+      <>
+        <NavBar >
+          <h1 style={{ fontSize: 35, marginLeft: 20, flexGrow: 1 }}> kolingo </h1>
+          {isAuthenticated ? authLink : guestLink}
+        </NavBar>
 
         <div>
-          {this.state.isOpen ?
-            <LoginModal
-              onClose={this.closePopup}
-            /> : null}
+          {login}
+          {signup}
         </div>
-      </div>
+      </>
     )
   }
-
-  //   render() {
-  //     const { isAuthenticated, user } = this.props.auth;
-  //     const loginRegLink = (
-  //       <ul className="navbar-nav">
-  //         <li className="nav-item">
-  //           <Link to="/login" className="nav-link">
-  //             Login
-  //           </Link>
-  //         </li>
-  //         <li className="nav-item">
-  //           <Link to="/register" className="nav-link">
-  //             Register
-  //           </Link>
-  //         </li>
-  //       </ul>
-  //     )
-
-  //     const userLink = (
-  //       <ul className="navbar-nav">
-  //         <li className="nav-item">
-  //           <Link to="/profile" className="nav-link">
-  //             User
-  //           </Link>
-  //         </li>
-  //         {/* <li className="nav-item">
-  //           <a href="" onClick={this.logOut} className="nav-link">
-  //             Logout
-  //           </a>
-  //         </li> */}
-  //       </ul>
-  //     )
-
-  //     return (
-  //       <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-
-  //         <div
-  //           className="collapse navbar-collapse justify-content-md-center"
-  //           id="navbarsExample10"
-  //         >
-  //           <ul className="navbar-nav">
-  //             <li className="nav-item">
-  //               <Link to="/" className="nav-link">
-  //                 Home
-  //               </Link>
-  //             </li>
-  //           </ul>
-  //           {isAuthenticated ? userLink : loginRegLink}
-  //         </div>
-  //       </nav>
-  //     )
-  //   }
 }
 
 

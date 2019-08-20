@@ -4,7 +4,7 @@ const matchingReducer = (state = [], action) => {
     Object.freeze(state)
     switch (action.type) {
         case GET_MATCHING:
-            return action.matching
+            return [...state, action.matching]
         default:
             return state
     }

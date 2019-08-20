@@ -3,22 +3,23 @@ import { connect } from 'react-redux';
 import { getUser } from '../../store/actions/userAction';
 import PropTypes from 'prop-types';
 
-class Users extends Component {
+class UserPage extends Component {
 
   async componentDidMount() {
     await this.props.getUser();
   }
 
   render() {
+    const { user } = this.props
     return (
       <div>
-        <h1> Hello </h1>
+        <h1> Hello {user.email}</h1>
       </div>
     );
   }
 }
 
-Users.propTypes = {
+UserPage.propTypes = {
   getUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired
 }
@@ -30,4 +31,4 @@ const mapStateToProps = (state) => {
 }
 
 // export default Users
-export default connect(mapStateToProps, { getUser })(Users);
+export default connect(mapStateToProps, { getUser })(UserPage);

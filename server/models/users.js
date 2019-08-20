@@ -9,9 +9,10 @@ const UserSchema = new mongoose.Schema({
     index: true,
     sparse: true,
   },
-  userName: {
+  username: {
     type: String,
     unique: true,
+    sparse: true,
     trim: true
   },
   password: {
@@ -29,7 +30,7 @@ const UserSchema = new mongoose.Schema({
   userExp: {
     type: Number,
     min: 0,
-    max: 100,
+    max: 1000,
     default: 0
   }
 });

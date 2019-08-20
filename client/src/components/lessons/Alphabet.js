@@ -11,6 +11,67 @@ import Question from './shared/Question'
 import SelectCards from './alphabet/SelectCards'
 // import CheckAnswer from './shared/CheckAnswer'
 import GoalPage from './shared/GoalPage'
+// import Result from './shared/Result'
+
+import styled from 'styled-components'
+
+
+const ProblemSection = styled.div`
+  display: flex;
+  height: 560px;
+  font-size: 40px;
+  flex-direction: column;
+  align-items: center;
+`
+const SubHeader = styled.div`
+  display: flex;
+  padding: 13px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`
+
+const BottomSection = styled.div`
+  display: flex;
+  background: #fff;
+  border-top: 2px solid #e5e5e5;
+  height: 174px;  
+  color: white;
+  text-align: center;
+  flex-direction: column;
+`
+
+const Button = styled.button`
+  font-weight: bold;
+  width: 130px;
+  color: white;
+  background-color: rgb(241, 241, 241);
+  border-radius: 15px;
+  text-align: center;
+  border-width: 2px 2px 4px;
+  text-transform: uppercase;
+  padding: 16px;
+  font-size: 20px;
+    :hover{
+    background-color: #afafaf;
+    color: white;
+    border-color: #e5e5e5;
+    }
+`
+const BottomWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  flex-flow: row;
+  flex-wrap: wrap;
+  height: 170px;
+`
+const MessageHeader = styled.h2`
+  text-align: center;
+  font-size: 25px;
+  width: 100%;
+`
 
 class Alphabet extends Component {
   state = {
@@ -101,14 +162,9 @@ class Alphabet extends Component {
     })
   }
 
-  shuffleQuestion = () => {
-    if (!this.state.solved) {
-      const totalQuestions = this.props.lessons.length - 1
-    }
-  }
-
   render() {
-
+    debugger
+    // const { displayAnswer } = this.state
     const { lessons } = this.props
     const isLessons = !_.isEmpty(lessons)
 
@@ -122,13 +178,6 @@ class Alphabet extends Component {
 
       answer = lessons[this.state.currentQuestion].answer
 
-      //   if(this.props.lessons.length > 0) {
-      //   //   // questionPrompt = this.props.lessons.map((lesson,i) => {
-      //   //     return  (
-      //   //     <Question key={i} lesson={lesson}/>
-      //   //     )
-      //   //   }
-      // }
       questionPrompt = <Question prompt={prompt} />
 
       answerChoices =
@@ -146,35 +195,43 @@ class Alphabet extends Component {
     }
 
     return (
-      <div>
-        <div className="problem-container">
-          <a href="/lessons" id="closebtn">+</a>
-          <ProgressBar progress={this.state.progress} />
+      <>
+        <ProblemSection>
+          <SubHeader>
+            <ProgressBar progress={this.state.progress} />
+            <a href="/lessons" id="closebtn">+</a>
+          </SubHeader>
           {questionPrompt}
-          {/* <Question question={questionPrompt} /> */}
           {answerChoices}
-        </div>
-
-        <div className="bottom-container">
-          <button id="skip-btn" type="button"
-            onClick={this.skipQuestion}
-            style={this.state.showButton ? { display: "block" } : { display: 'none' }}> Skip </button>
-
-          <h2 style={this.state.displayAnswer === "Correct" ? { backgroundColor: '#78c800' } : { backgroundColor: '#ea2b2b' }}>{this.state.displayAnswer} </h2>
+        </ProblemSection>
 
 
-          <button
-            id="cont-btn"
-            type="button"
-            onClick={this.handleOnClick}
-            disabled={!this.state.currentAnswer}
-            style={this.state.disableCheck ? { backgroundColor: '#e5e5e5' } :
-              { backgroundColor: '#78c800', color: "white" }}
-          > {this.state.check}
-          </button>
+        {/* <Result 
+        displayAnswer={displayAnswer} 
+        skipQuestion={this.skipQuestion} 
+        /> */}
+        <BottomSection style={this.state.displayAnswer === "Correct" ?
+          { backgroundColor: '#b8f28b', color: "#58a700" } : this.state.displayAnswer === "Wrong" ? { backgroundColor: '#ffc1c1', color: "#ea2b2b" } : { backgroundColor: '#ffff' }}>
 
-        </div>
-      </div>
+          <BottomWrapper>
+            <Button type="button"
+              onClick={this.skipQuestion}
+              style={this.state.showButton ? { display: "block" } : { display: 'none' }}> Skip </Button>
+
+            <MessageHeader style={{ marginTop: 10 }}> <img alt="" style={{ maxHeight: 80 }}
+              src={this.state.displayAnswer === "Correct" ? "/check.png" : this.state.displayAnswer === "Wrong" ? "/wrong.png" : "display: none"} /> {this.state.displayAnswer} </MessageHeader>
+
+            <Button
+              type="button"
+              onClick={this.handleOnClick}
+              disabled={!this.state.currentAnswer}
+              style={this.state.disableCheck ? { backgroundColor: '#e5e5e5' } :
+                { backgroundColor: '#78c800', color: "white" }}
+            > {this.state.check}
+            </Button>
+          </BottomWrapper>
+        </BottomSection>
+      </>
     );
   }
 }

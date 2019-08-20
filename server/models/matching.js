@@ -12,7 +12,7 @@ const MatchingSchema = new mongoose.Schema({
     trim: true,
   },
   problem: {
-    type: String,
+    type: Array,
     required: true,
     trim: true,
   },

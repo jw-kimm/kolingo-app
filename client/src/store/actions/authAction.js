@@ -13,6 +13,7 @@ import {
 } from './types';
 
 
+
 // Check token & load user
 export const loadUser = () => (dispatch, getState) => {
   // User loading
@@ -34,16 +35,14 @@ export const loadUser = () => (dispatch, getState) => {
 };
 
 //Register User
-export const register = ({ email, userName, password }) => dispatch => {
+export const register = ({ username, email, password }) => dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   }
-
-
   //Request Body
-  const body = JSON.stringify({ email, userName, password });
+  const body = JSON.stringify({ email, username, password });
 
   axios.post('/register', body, config)
     .then(res => dispatch({
@@ -63,21 +62,21 @@ export const register = ({ email, userName, password }) => dispatch => {
 
 
 //Login User
-export const login = ({ userName, password }) => dispatch => {
+export const login = ({ email, password }) => dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   }
-
   //Request Body
-  const body = JSON.stringify({ userName, password });
+  const body = JSON.stringify({ email, password });
+  console.log(body, "body")
   axios
     .post('/login', body, config)
     .then(res =>
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data
+        payload: res.data,
       })
     )
     .catch(err => {

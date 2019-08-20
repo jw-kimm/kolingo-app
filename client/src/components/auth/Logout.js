@@ -4,21 +4,19 @@ import { logout } from '../../store/actions/authAction';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
-class Logout extends Component{
+class Logout extends Component {
 
-  render(){
+  render() {
     return (
-    // <Fragment>
       <Link onClick={this.props.logout} href="#">
-      Logout
+        Logout
       </Link>
-    // </Fragment>
     )
   }
 }
 
 Logout.propTypes = {
-    logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired
 }
 
-export default connect ( null, { logout })(Logout);
+export default connect(null, { logout })(Logout);
