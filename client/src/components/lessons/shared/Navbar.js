@@ -22,88 +22,29 @@ const Button = styled.button`
 `
 const Options = styled.li`
   border-bottom: 1px solid #e5e5e5;
-  // display: block;
-  // padding: 8px 25px;
-  // color: #333;
-  // text-decoration: none;
-  //   :hover{
-  //     color: #fff;
-  //     background: #939393;
-  //   }
+  padding: 15px 10px 10 0;
+  margin-top: 10px;
+  font-size: 18px;
+  color: grey;
 `
 
 const DropDown = styled.div`
-  width: 200px;
+  width: 300px;
   float: right;
-  // min-width: 100%; /* Set width of the dropdown */
-  // background: #f2f2f2;
-  // display: none;
-  // position: absolute;
-  // z-index: 999;
-  // left: 0;
+  border: 2px solid #e0d8d887;
+  padding: 10px;
+
 `
 const Menu = styled.div`
-
+  display: block;
 `
 
 // const timeoutLength = 300;
 
 class Navbar extends Component {
   state = {
-    // isClicked: false,
-    // anchorEl: null,
-    mouseOverButton: false,
-    mouseOverMenu: false,
     showMenu: false,
   }
-
-  // toggleIcon = () => {
-  //   this.setState({
-  //     isClicked: !this.state.isClicked
-  //   })
-  // }
-
-  // handleClick = event => {
-  //   this.setState({
-  //     open: true,
-  //     anchorEl: event.currentTarget
-  //   });
-  // };
-
-  // handleClose = () => {
-  //   this.setState({
-  //     mouseOverButton: false,
-  //     mouseOverMenu: false
-  //   });
-  // };
-
-  // enterButton = () => {
-  //   this.setState({
-  //     mouseOverButton: true
-  //   });
-  // }
-
-  // leaveButton = () => {
-  //   setTimeout(() => {
-  //     this.setState({
-  //       mouseOverButton: false
-  //     });
-  //   }, timeoutLength);
-  // }
-
-  // enterMenu = () => {
-  //   this.setState({
-  //     mouseOverMenu: true
-  //   });
-  // }
-
-  // leaveMenu = () => {
-  //   setTimeout(() => {
-  //     this.setState({
-  //       mouseOverMenu: false
-  //     });
-  //   }, timeoutLength);
-  // }
 
   showMenu = (event) => {
     event.preventDefault();
@@ -118,51 +59,13 @@ class Navbar extends Component {
     });
   }
 
-  // getLearn = () => this.state.isClicked ? '/learncolor.png' : '/learnblack.png'
-
-  // learn: '/learnblack.png',
-  // dictionary: '/dictionaryblack.png',
-  // discuss: '/discussblack.png'
-  // handleClick = (e) => {
-
-  // if (this.state.learn === '/learnblack.png')
-  //   this.setState({ learn: '/learncolor.png' })
-  // else
-  //   this.setState({ learn: '/learnblack.png' })
-
-  // if (this.state.dictionary === '/dictionaryblack.png')
-  //   this.setState({ dictionary: '/dictionarycolor.png' })
-  // else
-  //   this.setState({ dictionary: '/dictionaryblack.png' })
-
-
-  // if (this.state.discuss === '/discussblack.png')
-  //   this.setState({ discuss: '/discusscolor.png' })
-  // else
-  //   this.setState({ discuss: '/discussblack.png' })
-  // }
-
-  // handleChange = (e) => {
-  //   if (this.state.clicked && e.target.value === "learn") {
-  //     this.setState({
-  //       learn: '/learncolor.png',
-  //       dictionary: '/dictionarycolor.png',
-  //       discuss: '/discusscolor.png'
-  //     })
-  //   }
-  // }
-
   render() {
-    // let learn = this.state.isClicked ? '/learncolor.png' : '/learnblack.png'
-    // let dictionary = this.state.isClicked ? '/dictionarycolor.png' : '/dictionaryblack.png'
-    // let discuss = this.state.isClicked ? '/discusscolor.png' : '/discussblack.png'
-    // const open = this.state.mouseOverButton || this.state.mouseOverMenu;
     // const { user } = this.props.auth;
     return (
       <>
         <NavBar>
           <li onClick={this.toggleIcon} value="learn" >
-            <a href="/lessons"  >
+            <a href="/lessons" activeClassName="active">
               <img style={{ maxHeight: 32 }}
                 alt=""
                 src={this.state.isClicked ? '/learncolor.png' : '/learnblack.png'} />
@@ -170,14 +73,14 @@ class Navbar extends Component {
           </li>
 
           <li onClick={this.toggleIcon} value="dictionary">
-            <a href="/dictionary">
+            <a href="/dictionary" activeClassName="active">
               <img
                 style={{ maxHeight: 32 }}
                 alt=""
                 src={this.state.isClicked ? '/dictionarycolor.png' : '/dictionaryblack.png'} /> DICTIONARY</a></li>
 
           <li onClick={this.toggleIcon} value="discuss" >
-            <a href="/lessons">
+            <a href="/discuss" activeClassName="active">
               <img
                 alt=""
                 style={{ maxHeight: 32 }}
@@ -186,31 +89,16 @@ class Navbar extends Component {
           {/* <li>  <strong> {user ? `Welcome ${user.username}` : " "}</strong> </li> */}
           <li>
             <Button
-              // onClick={this.handleClick}
-              // onMouseEnter={this.enterButton}
-              // onMouseLeave={this.leaveButton}
-              onClick={this.showMenu}>
+              onClick={this.showMenu} style={{ outline: "none" }}>
               <img style={{ maxHeight: 32 }} src="/avatar.png" alt="" />
             </Button>
           </li>
         </NavBar>
         <Menu>
           {
-            // this.state.open ? (
             this.state.showMenu ? (
-              <DropDown
-                // anchorEl={this.state.anchorEl}
-                // open={open}
-                // onClose={this.handleClose}
-                MenuListProps={{
-                  onMouseEnter: this.enterMenu,
-                  onMouseLeave: this.leaveMenu,
-                }}
-                ref={(element) => {
-                  this.dropdownMenu = element;
-                }}
-              >
-                <ul style={{ fontSize: 19 }}>Account</ul>
+              <DropDown>
+                <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
                 <Options onClick={this.handleClose}><a href="/profile">Your Profile </a></Options>
                 <Options onClick={this.handleClose}><a href="/setting"> Settings </a></Options>
                 <Options onClick={this.handleClose}><a href="/"> Logout </a></Options>

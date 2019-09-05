@@ -11,6 +11,7 @@ import Register from './auth/Register';
 import UserPage from './auth/UserPage';
 import Discuss from './discuss/Discuss'
 import SingleDiscuss from './discuss/SingleDiscuss';
+import Advanced from './lessons/Advanced';
 
 
 const App = () => (
@@ -19,9 +20,12 @@ const App = () => (
       <Route exact path="/" component={Splash} />
       <Route exact path="/lessons" component={LessonsList} />
       <Route exact path="/alphabet" component={Alphabet} />
-      <Route exact path="/register" component={Register} />
       <Route exact path="/matching" component={Matching} />
+      <Route exact path="/advanced" component={Advanced} />
+
+      <Route exact path="/register" component={Register} />
       <Route exact path="/profile" component={UserPage} />
+
       <Route exact path="/discuss" component={Discuss} />
       <Route exact path="/discuss/:id" component={SingleDiscuss} />
     </Switch>

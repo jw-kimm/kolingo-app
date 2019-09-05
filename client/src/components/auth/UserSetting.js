@@ -10,9 +10,9 @@ class UserSetting extends Component {
 
   render() {
     return (
-      <div>
+      <>
 
-      </div>
+      </>
     );
   }
 }

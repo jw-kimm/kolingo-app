@@ -66,8 +66,9 @@ input:-webkit-autofill:active  {
 }
 
 ::placeholder{
-  color: #e5e5e5;
+  color: #beb8b8;
 }
+
 
 .navbar-nav .nav-link {
   /* color: black;
@@ -179,15 +180,15 @@ input:-webkit-autofill:active  {
 } */
 
 .lessons-list {
-  display: block;
+  padding-top: 75px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   border: 0!important;
   text-align: center;
   width: 30%;
   height: 300px;
   margin: auto;
-  position: absolute;
-  left: 35%;
-  top: 30%;
 }
 
 .lessons-list li{
@@ -200,9 +201,6 @@ input:-webkit-autofill:active  {
   border-radius: 5px;
   font-family: 'Varela Round', sans-serif;
   margin-bottom: 40px;
-  display: inline-table;
-  position: relative;
-  float: center;
   text-align: center;
   width: 70%;
 }
@@ -425,6 +423,19 @@ input:-webkit-autofill:active  {
   border-color: #1cb0f6;
 }
 
+.card:focus {
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
+.card:active {
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
+.card.active {
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
+
 .activeCard {
   position: relative;
   display: flex;
@@ -460,6 +471,10 @@ input:-webkit-autofill:active  {
   border-color: #1cb0f6;
 }
 
+.choice::after {
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
 
 .activeChoice {
   position: relative;
@@ -476,6 +491,48 @@ input:-webkit-autofill:active  {
   background-color: #ddf4ff;
   border-color: #1cb0f6;
 }
+
+.option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 1.25rem;
+  margin: 16px;
+  padding: 10px 30px;
+  font-size: 20px;
+}
+
+.option:hover{
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
+
+.option:focus{
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
+
+.activeOption {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 16px;
+  margin: 16px;
+  padding: 10px 30px;
+  font-size: 20px;
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}
+
 
 /* .footer {
  background-color: #235390;
@@ -736,18 +793,18 @@ h4{
 }
 
 
-.modal {
+/* }.modal {
   position: absolute;
   top: 0;
-  /* left: 0; */
   z-index: 1005;
-  /* display: none; */
   width: 100%;
   height: 100%;
+  background: rgb(252, 215, 215); */
+  /* left: 0; */
+  /* display: none; */
   /* overflow: hidden; */
   /* outline: 0; */
-  background: rgb(252, 215, 215);
-}
+
 /* 
 .modal-container {
   width: 100%;
@@ -849,7 +906,7 @@ h4{
   border-top: 2px solid #e5e5e5;
 }
 
-.auth-btn{
+/* .auth-btn{
   border-color: transparent;
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
@@ -866,9 +923,9 @@ h4{
   cursor: pointer;
   border-radius: 16px;
   margin-top: 30px;
-}
+} */
 
-.modal-input {
+/* .modal-input {
   background: #f0f0f0;
   border: 2px solid #e5e5e5;
   border-radius: 10px;
@@ -881,7 +938,7 @@ h4{
 
 .modal-input label{
   display: table-row;
-}
+} */
 
 .inner-container{
   max-width: 500px;

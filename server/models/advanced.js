@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MatchingSchema = new mongoose.Schema({
+const AdvancedSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -11,19 +11,19 @@ const MatchingSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  problem: {
+  choices: {
     type: Array,
     required: true,
     trim: true,
   },
-  // matched: {
-  //   type: Boolean,
-  // },
+  answer: {
+    type: String,
+    required: true,
+    trim: true,
+  }
 });
 
-const Matching = mongoose.model('Matching', MatchingSchema, "matching");
+const Advanced = mongoose.model('Advanced', AdvancedSchema, "advanced");
 
 
-module.exports = Matching;
-
-
+module.exports = Advanced;

@@ -125,6 +125,7 @@ class MainNavbar extends Component {
           {login}
           {signup}
         </div>
+
       </>
     )
   }

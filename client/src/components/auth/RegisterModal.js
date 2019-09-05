@@ -8,11 +8,20 @@ import { clearErrors } from '../../store/actions/errorAction';
 import styled from 'styled-components'
 
 const ModalContainer = styled.div`
-  display: flex;
-  align-items: center;
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center; 
 `
 const ModalContent = styled.div`
-  z-index: 1040;
   top: 50%;
   width: 500px; 
   height: 300px;
@@ -22,29 +31,34 @@ const ModalContent = styled.div`
   position: fixed;
   transform: translate(-50%,-50%);
   left: 50%;
-`
-
-const Input = styled.input`
-  // width: 90%;
-  line-height: 24px;
-  // text-align: left;
-  // display: table-cell;
-  // padding: 8px 0 8px 20px;
-  // background: transparent!important;
-  // border: 0!important;
-  // border-top: 2px solid #e5e5e5;
-`
-
-const Form = styled.form`
-  display: table-cell;
-  width: 450px;
+  text-align: center
 `
 
 const ModalInput = styled.div`
   background: #f0f0f0;
   border: 2px solid #e5e5e5;
   border-radius: 10px;
-  height: 24px;
+  line-height: 24px;
+  padding: 10px;
+`
+
+const Button = styled.button`
+  border-color: transparent;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-width: 0 0 4px;
+  padding: 13px 16px;
+  background-color: #1899d6;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-top: 20px;
+`
+
+const Label = styled.label`
+  width: 100%;
+  text-align: left;
+  margin-left: 10px
 `
 
 class RegisterModal extends Component {
@@ -92,60 +106,55 @@ class RegisterModal extends Component {
       return <Redirect to="/lessons" />
 
     return (
-      <>
-        <ModalContainer>
-          <ModalContent>
-            <button className="popup-close" onClick={this.props.onClose}>✖</button>
-            <Form onSubmit={this.handleSubmit}>
-              <h3 className="modal-header">Register</h3>
+      <ModalContainer style={{ display: "block" }}>
+        <ModalContent>
+          <button className="popup-close" onClick={this.props.onClose}>✖</button>
+          <h3 style={{ padding: 10, borderBottom: "1px solid #dee2e6", textAlign: "left" }}>Register</h3>
+          <form onSubmit={this.handleSubmit}>
+            <ModalInput>
+              <Label htmlFor="username" >
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={this.state.username}
+                  onChange={this.handleInputChange}
+                  style={{ width: "100%" }}
+                />
+              </Label>
+            </ModalInput>
+            <ModalInput>
+              <Label htmlFor="email">
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                />
+              </Label>
+            </ModalInput>
 
-              <ModalInput>
-                <label htmlFor="username">
-                  <Input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    onfocus="if(this.value==this.defaultValue)this.value='' "
-                    onblur="if(this.value=='')this.value=this.defaultValue;"
-                    value={this.state.username}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </ModalInput>
-              <ModalInput>
-                <label htmlFor="email">
-                  <Input
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                    value={this.state.email}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </ModalInput>
+            <ModalInput>
+              <Label htmlFor="password">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                />
+              </Label>
+            </ModalInput>
 
-              <ModalInput>
-                <label htmlFor="password">
-                  <Input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </ModalInput>
+            <Button type="submit">
+              Register
+          </Button>
+          </form>
 
-              <button
-                type="submit"
-                className="auth-btn"
-              >
-                Register
-              </button>
-            </Form>
-          </ModalContent>
-        </ModalContainer>
-      </>
+
+        </ModalContent>
+      </ModalContainer >
     )
   }
 }

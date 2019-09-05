@@ -16,6 +16,7 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const GET_LESSONS = 'GET_LESSONS'
 export const GET_MATCHING = 'GET_MATCHING'
+export const GET_ADVANCED = 'GET_ADVANCED'
 export const LESSONS_LOADING = 'LESSONS_LOADING'
 
 export const GET_DISCUSSION = 'GET_DISCUSSION'

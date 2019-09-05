@@ -30,6 +30,7 @@ app.use('/lessons', require('./routes/lessons'))
 app.use('/matching', require('./routes/matching'))
 app.use('/login', require('./routes/auth'))
 app.use('/discuss', require('./routes/discuss'))
+app.use('/advanced', require('./routes/advanced'))
 
 //Catch 404 errors forward them to error handler
 app.use((req, res, next) => {

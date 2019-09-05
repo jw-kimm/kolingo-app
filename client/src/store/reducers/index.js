@@ -5,6 +5,7 @@ import authReducer from './authReducer';
 import lessonsReducer from './lessonsReducer';
 import matchingReducer from './matchingReducer';
 import discussReducer from './discussReducer'
+import advancedReducer from './advancedReducer'
 
 export default combineReducers({
   user: userReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   lesson: lessonsReducer,
   matching: matchingReducer,
   discuss: discussReducer,
+  advanced: advancedReducer,
 });

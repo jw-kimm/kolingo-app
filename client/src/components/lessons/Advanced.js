@@ -1,20 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom'
-import _ from 'lodash'
-
-import { fetchLessons } from '../../store/actions/lessonActions';
+import _ from 'lodash';
 
 import ProgressBar from './shared/ProgressBar';
-import Question from './shared/Question'
-import SelectCards from './alphabet/SelectCards'
-// import CheckAnswer from './shared/CheckAnswer'
-import GoalPage from './shared/GoalPage'
-// import Result from './shared/Result'
+import Question from './shared/Question';
+import SelectOptions from './advanced/SelectOptions';
+import GoalPage from './shared/GoalPage';
 
-import styled from 'styled-components'
+import { fetchAdvanced } from '../../store/actions/advancedAction';
 
+import styled from 'styled-components';
 
 const ProblemSection = styled.div`
   display: flex;
@@ -30,6 +26,11 @@ const SubHeader = styled.div`
   align-items: center;
   justify-content: center;
 `
+
+const PromptBlock = styled.div`
+  margin-top: 10px
+`
+
 
 const BottomSection = styled.div`
   display: flex;
@@ -75,22 +76,22 @@ const MessageHeader = styled.p`
   margin: 10px;
 `
 
-class Alphabet extends Component {
+class Advanced extends Component {
   state = {
     progress: 0,
-    currentAnswer: null,
     currentQuestion: 0,
+    currentAnswer: 0,
     check: "check",
     disableCheck: true,
     displayAnswer: "",
     showButton: true,
     solved: false,
-  }
+  };
+
 
   componentDidMount() {
-    this.props.fetchLessons();
+    this.props.fetchAdvanced();
   }
-
   selectedChoice = choice => {
     this.setState({
       currentAnswer: choice,
@@ -99,7 +100,7 @@ class Alphabet extends Component {
   }
 
   checkAnswer = () => {
-    const answer = this.props.lessons[this.state.currentQuestion].answer
+    const answer = this.props.advanced[this.state.currentQuestion].answer
     if (answer === this.state.currentAnswer) {
       this.setState({
         check: "Continue",
@@ -164,31 +165,33 @@ class Alphabet extends Component {
     })
   }
 
+
+
   render() {
-    debugger
-    // const { displayAnswer } = this.state
-    const { lessons } = this.props
-    const isLessons = !_.isEmpty(lessons)
+    const { advanced } = this.props
+    const isAdvanced = !_.isEmpty(advanced)
 
     let answerChoices
     let questionPrompt
     let answer
+    let header
 
-    if (isLessons) {
-      const question = lessons[this.state.currentQuestion]
+    if (isAdvanced) {
+      const question = advanced[this.state.currentQuestion]
       const { choices, prompt } = question
 
-      answer = lessons[this.state.currentQuestion].answer
+      answer = advanced[this.state.currentQuestion].answer
+
+      header = advanced[this.state.currentQuestion].title
 
       questionPrompt = <Question prompt={prompt} />
-
       answerChoices =
-        <SelectCards
+        <SelectOptions
           choices={choices}
           onClick={this.selectedChoice}
           key={choices.id}
           answer={answer}
-          selectedCard={this.state.currentAnswer}
+          selectedOptions={this.state.currentAnswer}
         />
     }
 
@@ -203,15 +206,14 @@ class Alphabet extends Component {
             <ProgressBar progress={this.state.progress} />
             <a href="/lessons" id="closebtn">+</a>
           </SubHeader>
-          {questionPrompt}
-          {answerChoices}
+
+          {header}
+          <PromptBlock>
+            {questionPrompt}
+            {answerChoices}
+          </PromptBlock>
         </ProblemSection>
 
-
-        {/* <Result 
-        displayAnswer={displayAnswer} 
-        skipQuestion={this.skipQuestion} 
-        /> */}
         <BottomSection style={this.state.displayAnswer === "Correct" ?
           { backgroundColor: '#b8f28b', color: "#58a700" } : this.state.displayAnswer === "Wrong" ? { backgroundColor: '#ffc1c1', color: "#ea2b2b" } : { backgroundColor: '#ffff' }}>
 
@@ -238,21 +240,70 @@ class Alphabet extends Component {
   }
 }
 
-Alphabet.propTypes = {
-  fetchLessons: PropTypes.func.isRequired,
-  lessons: PropTypes.array.isRequired
+
+Advanced.propTypes = {
+  fetchAdvanced: PropTypes.func.isRequired,
+  advanced: PropTypes.array.isRequired
 }
 
-const mapStateToProps = ({ lesson }) => {
+const mapStateToProps = ({ advanced }) => {
   return {
-    lessons: lesson,
+    advanced: advanced,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchLessons: () => dispatch(fetchLessons()),
+    fetchAdvanced: () => dispatch(fetchAdvanced()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Alphabet);
+export default connect(mapStateToProps, mapDispatchToProps)(Advanced);
+
+
+
+// class Advanced extends Component {
+//   state = {
+//     
+//     currentQuestion: 0
+//   };
+
+//   render() {
+//     debugger
+
+//       
+//     return (
+//       <>
+//         <ProblemSection>
+//           <SubHeader>
+//             <ProgressBar progress={this.state.progress} />
+//             <a href="/lessons" id="closebtn">+</a>
+//           </SubHeader>
+//           
+//           {answerChoices}
+//         </ProblemSection>
+//       </>
+//     );
+//   }
+// }
+
+// Advanced.propTypes = {
+//   fetchAdvanced: PropTypes.func.isRequired,
+//   advanced: PropTypes.array.isRequired
+// }
+
+// const mapStateToProps = ({ advanced }) => {
+//   return {
+//     advanced: advanced,
+//   };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     fetchAdvanced: () => dispatch(fetchAdvanced()),
+//   };
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Advanced);
+
+

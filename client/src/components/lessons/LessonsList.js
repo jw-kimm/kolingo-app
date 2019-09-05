@@ -15,22 +15,19 @@ class LessonsList extends Component {
         <div className="lessons-list">
           <li>
             <Link
-              to="/alphabet"
-              className="buttonLink">
+              to="/alphabet">
               Basic
           </Link>
           </li>
           <li>
             <Link
-              to="/matching"
-              className="buttonLink">
+              to="/matching">
               Intermediate
           </Link>
           </li>
           <li>
             <Link
-              to="/alphabet1"
-              className="buttonLink">
+              to="/advanced">
               Advanced
           </Link>
           </li>

@@ -54,9 +54,6 @@ const SectionTwoBottom = styled.section`
   flex-wrap: wrap;
   justify-content: space-between;
   margin: auto;
-  min-width: 1000px;
-  padding: 24px 40px;
-  padding: 0 24px 48px 0;
   color: #fff;
   font-size: 13px;
   text-align: left;
@@ -125,8 +122,8 @@ const Splash = () => {
           <p style={{ color: "#777", textAlign: "left", lineHeight: "1.5rem" }}> Make your breaks and commutes more productive with our apps.
             </p>
         </SectionOneLeft>
-        <SectionOneRight style={{ width: '50%', alignItems: "center" }}>
-          <img src="ryanmuzi.png" alt="" style={{ height: 300 }} />
+        <SectionOneRight style={{ alignItems: "center" }}>
+          <img src="ryanmuzi.png" alt="" style={{ height: 300, width: "100%" }} />
         </SectionOneRight>
       </ContentSection>
 

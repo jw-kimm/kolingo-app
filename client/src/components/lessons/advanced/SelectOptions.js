@@ -1,5 +1,5 @@
 import React from "react";
-import Card from './Card'
+import Options from './Options'
 
 import styled from 'styled-components'
 
@@ -11,22 +11,22 @@ const Wrapper = styled.div`
   text-align
 `
 
-const SelectCards = ({ choices, onClick, answer, selectedCard }) => {
+const SelectOptions = ({ choices, onClick, answer, selectedOptions }) => {
   debugger
   return (
     <Wrapper>
       {choices
         .map(choice =>
-          <Card
+          <Options
             key={choice.value}
             choice={choice}
             onClick={onClick}
             answer={answer}
-            className={selectedCard === choice ? 'activeCard' : "card"}
+            className={selectedOptions === choice ? 'activeOption' : "option"}
           />
         )}
     </Wrapper>
   )
 }
 
-export default SelectCards
+export default SelectOptions

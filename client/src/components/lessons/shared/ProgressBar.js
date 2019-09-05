@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Progressbar = styled.div`
   background-color: #e5e5e5;
   height: 16px;
-      width: 70%;
+  width: 70%;
   border-radius: 98px;
   margin: 10px;  
 `

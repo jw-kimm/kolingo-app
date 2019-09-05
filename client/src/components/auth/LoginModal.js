@@ -8,33 +8,56 @@ import { clearErrors } from '../../store/actions/errorAction';
 import styled from 'styled-components'
 
 const ModalContainer = styled.div`
-  display: flex;
-  align-items: center;
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
 `
 const ModalContent = styled.div`
-  z-index: 1040;
   top: 50%;
   width: 500px; 
   height: 300px;
   background-color: white;
   border-radius: 4px;
-  text-align: center;
   padding: 20px;
   position: fixed;
   transform: translate(-50%,-50%);
   left: 50%;
+  text-align: center
 `
 
-const Input = styled.input`
-  width: 90%;
+const ModalInput = styled.div`
+  background: #f0f0f0;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
   line-height: 24px;
-  text-align: left;
-  display: table-cell;
-  padding: 8px 0 8px 20px;
-  background: transparent!important;
-  border: 0!important;
-  border-top: 2px solid #e5e5e5;
+  padding: 10px;
 `
+const Button = styled.button`
+  border-color: transparent;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-width: 0 0 4px;
+  padding: 13px 16px;
+  background-color: #1899d6;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-top: 20px;
+`
+
+const Label = styled.label`
+  width: 100%;
+  text-align: left;
+  margin-left: 10px
+`
+
 
 
 class LoginModal extends Component {
@@ -77,41 +100,40 @@ class LoginModal extends Component {
       return <Redirect to="/lessons" />
 
     return (
-      <ModalContainer>
+      <ModalContainer style={{ display: "block" }}>
         <ModalContent>
           <button className="popup-close" onClick={this.props.onClose}>✖</button>
+          <h3 style={{ padding: 10, borderBottom: "1px solid #dee2e6", textAlign: "left" }}>Login</h3>
           <form onSubmit={this.handleSubmit}>
-            <h3 className="modal-header">Login</h3>
 
-            <div className="modal-input">
-              <label htmlFor="email">
-                <Input
+            <ModalInput>
+              <Label htmlFor="email">
+                <input
                   type="text"
                   name="email"
                   placeholder="Enter email"
                   value={this.state.email}
                   onChange={this.handleInputChange}
                 />
-              </label>
-            </div>
-            <div className="modal-input">
-              <label htmlFor="password">
-                <Input
+              </Label>
+            </ModalInput>
+            <ModalInput>
+              <Label htmlFor="password">
+                <input
                   type="password"
                   name="password"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this.handleInputChange}
                 />
-              </label>
-            </div>
-            <button
-              type="submit"
-              className="auth-btn"
-            >
+              </Label>
+            </ModalInput>
+
+            <Button type="submit">
               Log in
-              </button>
+          </Button>
           </form>
+
         </ModalContent>
       </ModalContainer>
     )

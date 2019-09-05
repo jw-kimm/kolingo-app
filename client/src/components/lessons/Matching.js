@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash'
-
-import { fetchMatching } from '../../store/actions/matchingActions';
-
 import Question from './shared/Question'
 import ProgressBar from './shared/ProgressBar';
 import GoalPage from './shared/GoalPage'
 import SelectedChoices from './matching/SelectedChoices'
+
+import { fetchMatching } from '../../store/actions/matchingActions';
 
 import styled from 'styled-components'
 
@@ -59,13 +58,15 @@ const BottomWrapper = styled.div`
   width: 100%;
   align-items: center;
   flex-flow: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   height: 170px;
 `
-const MessageHeader = styled.h2`
+const MessageHeader = styled.p`
   text-align: center;
   font-size: 25px;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 10px;
 `
 
 class Matching extends Component {
@@ -80,9 +81,10 @@ class Matching extends Component {
     showButton: true,
     solved: false,
     selected: [],
-    correct: []
+    correct: [],
+    className: "choice",
   };
-
+  // background-color: #fff;
   componentDidMount() {
     this.props.fetchMatching();
   }
@@ -97,7 +99,8 @@ class Matching extends Component {
     if (selected.length === 0) { // selecting a first card
       this.setState({
         selected: [choice],
-        currentAnswer: choice
+        currentAnswer: choice,
+        className: "activeChoice"
       })
 
     } else if (selected.length === 1) { //selecting a second card
@@ -119,6 +122,8 @@ class Matching extends Component {
           correct: correct.concat([selected[0], choice]),
           selected: [],
           disableButton: true,
+          currentAnswer: choice,
+          className: "activeChoice",
         });
         this.increaseProgress()
       } else {
@@ -139,8 +144,6 @@ class Matching extends Component {
 
   handleOnClick = () => {
     if (this.state.check === "check") {
-      this.checkAnswer()
-    } else {
       this.nextQuestion()
     }
   }
@@ -178,8 +181,9 @@ class Matching extends Component {
   }
 
 
+
+
   render() {
-    debugger
     const { matching } = this.props
     const isMatching = !_.isEmpty(matching)
 
@@ -196,10 +200,11 @@ class Matching extends Component {
         <SelectedChoices
           problem={problem}
           onClick={this.onCardClick}
-          isSelected={this.selected}
-          isCorrect={this.correct}
+          isSelected={this.state.selected}
+          isCorrect={this.state.correct}
           selectedChoice={this.state.currentAnswer}
-          disableButton={this.disableButton}
+          disableButton={this.state.disableButton}
+          className={this.state.className}
         />
     }
 

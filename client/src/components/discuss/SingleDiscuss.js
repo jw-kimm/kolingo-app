@@ -7,9 +7,11 @@ import { fetchSingleDiscuss } from '../../store/actions/discussAction'
 const Content = styled.div`
   display: flex;
   width: 700px;
+  height: 700px;
   flex-direction: column;
   margin-bottom: 10px;
   margin-left: 20px;
+
 `
 
 class SingleDiscuss extends Component {

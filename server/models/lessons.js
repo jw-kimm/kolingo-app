@@ -11,11 +11,16 @@ const LessonsSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  problem: {
+  choices: {
     type: Array,
     required: true,
     trim: true,
   },
+  answer: {
+    type: String,
+    required: true,
+    trim: true,
+  }
 });
 
 const Lessons = mongoose.model('Lessons', LessonsSchema);
