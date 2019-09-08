@@ -39,6 +39,14 @@ const Menu = styled.div`
   display: block;
 `
 
+const Img = styled.img`
+  filter: opacity(30%) grayscale(1);
+  :hover {
+    -webkit-filter: grayscale(0);
+    filter: none;
+  }
+`
+
 // const timeoutLength = 300;
 
 class Navbar extends Component {
@@ -64,27 +72,27 @@ class Navbar extends Component {
     return (
       <>
         <NavBar>
-          <li onClick={this.toggleIcon} value="learn" >
-            <a href="/lessons" activeClassName="active">
-              <img style={{ maxHeight: 32 }}
-                alt=""
-                src={this.state.isClicked ? '/learncolor.png' : '/learnblack.png'} />
+          <li>
+            <Img style={{ maxHeight: 32 }}
+              alt=""
+              src='/learncolor.png' />
+            <a href="/lessons">
               LEARN</a>
           </li>
 
-          <li onClick={this.toggleIcon} value="dictionary">
-            <a href="/dictionary" activeClassName="active">
-              <img
+          <li>
+            <a href="/dictionary" >
+              <Img
                 style={{ maxHeight: 32 }}
                 alt=""
-                src={this.state.isClicked ? '/dictionarycolor.png' : '/dictionaryblack.png'} /> DICTIONARY</a></li>
+                src='/dictionarycolor.png' /> DICTIONARY</a></li>
 
-          <li onClick={this.toggleIcon} value="discuss" >
-            <a href="/discuss" activeClassName="active">
-              <img
+          <li >
+            <a href="/discuss">
+              <Img
                 alt=""
                 style={{ maxHeight: 32 }}
-                src={this.state.isClicked ? '/discusscolor.png' : '/discussblack.png'} />
+                src='/discusscolor.png' />
               DISCUSS</a></li>
           {/* <li>  <strong> {user ? `Welcome ${user.username}` : " "}</strong> </li> */}
           <li>

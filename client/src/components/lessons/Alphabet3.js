@@ -11,14 +11,14 @@ import Question from './shared/Question'
 import SelectCards from './alphabet/SelectCards'
 // import CheckAnswer from './shared/CheckAnswer'
 import GoalPage from './shared/GoalPage'
-// import Result from './shared/Result'
+import Result from './shared/Result'
 
 import styled from 'styled-components'
 
 
 const ProblemSection = styled.div`
   display: flex;
-  height: 560px;
+  height: 530px;
   font-size: 40px;
   flex-direction: column;
   align-items: center;
@@ -82,7 +82,7 @@ class Alphabet extends Component {
     currentQuestion: 0,
     check: "check",
     disableCheck: true,
-    displayAnswer: "",
+    displayAnswer: 'Not Solved',
     showButton: true,
     solved: false,
   }
@@ -114,7 +114,6 @@ class Alphabet extends Component {
         displayAnswer: 'Wrong',
         showButton: false,
         solved: false
-
       })
     }
   }
@@ -206,14 +205,15 @@ class Alphabet extends Component {
           {questionPrompt}
           {answerChoices}
         </ProblemSection>
-
-
-        {/* <Result 
-        displayAnswer={displayAnswer} 
-        skipQuestion={this.skipQuestion} 
-        /> */}
-        <BottomSection style={this.state.displayAnswer === "Correct" ?
-          { backgroundColor: '#b8f28b', color: "#58a700" } : this.state.displayAnswer === "Wrong" ? { backgroundColor: '#ffc1c1', color: "#ea2b2b" } : { backgroundColor: '#ffff' }}>
+        <Result
+          handleOnClick={this.handleOnClick}
+          isCorrect={this.state.solved}
+          skipQuestion={this.skipQuestion}
+        />
+        {/* <BottomSection style={this.state.displayAnswer === "Correct" ?
+          { backgroundColor: '#b8f28b', color: "#58a700" } :
+          this.state.displayAnswer === "Wrong" ? { backgroundColor: '#ffc1c1', color: "#ea2b2b" } :
+            { backgroundColor: '#ffff' }}>
 
           <BottomWrapper>
             <Button type="button"
@@ -232,7 +232,7 @@ class Alphabet extends Component {
             > {this.state.check}
             </Button>
           </BottomWrapper>
-        </BottomSection>
+        </BottomSection> */}
       </>
     );
   }

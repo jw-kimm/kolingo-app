@@ -78,11 +78,6 @@ const Button = styled.div`
   padding: 12px 24px
 `
 
-//   :hover {
-//     color: yellow;
-// }
-
-
 const Splash = () => {
   return (
     <>

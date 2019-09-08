@@ -14,7 +14,7 @@ import styled from 'styled-components';
 
 const ProblemSection = styled.div`
   display: flex;
-  height: 560px;
+  height: 530px;
   font-size: 40px;
   flex-direction: column;
   align-items: center;
@@ -28,9 +28,11 @@ const SubHeader = styled.div`
 `
 
 const PromptBlock = styled.div`
-  margin-top: 10px
+  margin-top: 60px;
+  display: inline-block;
+  align-items: center;
+  height: 300px;
 `
-
 
 const BottomSection = styled.div`
   display: flex;

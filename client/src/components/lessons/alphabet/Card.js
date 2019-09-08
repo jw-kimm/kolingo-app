@@ -1,10 +1,13 @@
 import React from 'react'
 
-const Card = (props) => {
-
+const Card = ({ value, choice, className, onClick, style }) => {
   return (
-    <div className={props.className} onClick={() => props.onClick(props.choice)}>
-      {props.choice}
+    <div
+      className={className}
+      onClick={() => onClick(value)}
+      style={style}
+    >
+      {choice}
     </div>
   )
 }

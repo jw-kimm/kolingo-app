@@ -6,10 +6,15 @@ const GoalPage = (props) => {
     //daily stroke
 
     <div className="result">
-      <h2> Lesson Complete! 10XP 🎉</h2>
+      <img src="star.png" alt="" style={{
+        width: 150,
+        margin: "76px 0 30px 0"
+      }}
+      />
+      <h2> Lesson Completed! 10XP 🎉</h2>
       <p> You met your daily goal!! </p>
       <Link to="/matching" id="nextLesson" className="pull-right"
-        style={{ backgroundColor: '#78c800', color: "white", textDecorationLine: 'none' }}>
+        style={{ backgroundColor: '#78c800', color: "white", textDecorationLine: 'none', borderRadius: "1.25rem" }}>
         Continue </Link>
     </div>
   )

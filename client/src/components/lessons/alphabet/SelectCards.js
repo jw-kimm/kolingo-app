@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 `
 
 const SelectCards = ({ choices, onClick, answer, selectedCard }) => {
-  debugger
   return (
     <Wrapper>
       {choices
@@ -21,7 +20,7 @@ const SelectCards = ({ choices, onClick, answer, selectedCard }) => {
             key={choice.value}
             choice={choice}
             onClick={onClick}
-            answer={answer}
+            value={{ choice, answer }}
             className={selectedCard === choice ? 'activeCard' : "card"}
           />
         )}

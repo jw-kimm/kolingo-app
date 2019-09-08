@@ -5,7 +5,7 @@ import _ from 'lodash'
 import Question from './shared/Question'
 import ProgressBar from './shared/ProgressBar';
 import GoalPage from './shared/GoalPage'
-import SelectedChoices from './matching/SelectedChoices'
+import SelectedChoices from './Matching/SelectCards'
 
 import { fetchMatching } from '../../store/actions/matchingActions';
 
@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 const ProblemSection = styled.div`
   display: flex;
-  height: 560px;
+  height: 530px;
   font-size: 40px;
   flex-direction: column;
   align-items: center;
@@ -82,7 +82,6 @@ class Matching extends Component {
     solved: false,
     selected: [],
     correct: [],
-    className: "choice",
   };
   // background-color: #fff;
   componentDidMount() {
@@ -100,7 +99,6 @@ class Matching extends Component {
       this.setState({
         selected: [choice],
         currentAnswer: choice,
-        className: "activeChoice"
       })
 
     } else if (selected.length === 1) { //selecting a second card
@@ -123,7 +121,6 @@ class Matching extends Component {
           selected: [],
           disableButton: true,
           currentAnswer: choice,
-          className: "activeChoice",
         });
         this.increaseProgress()
       } else {
@@ -136,7 +133,7 @@ class Matching extends Component {
           this.setState({
             selected: []
           })
-        }, 1500);
+        }, 750);
       }
     }
   }
@@ -180,9 +177,6 @@ class Matching extends Component {
     })
   }
 
-
-
-
   render() {
     const { matching } = this.props
     const isMatching = !_.isEmpty(matching)
@@ -204,7 +198,6 @@ class Matching extends Component {
           isCorrect={this.state.correct}
           selectedChoice={this.state.currentAnswer}
           disableButton={this.state.disableButton}
-          className={this.state.className}
         />
     }
 

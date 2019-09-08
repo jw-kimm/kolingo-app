@@ -16,20 +16,22 @@ class LessonsList extends Component {
           <li>
             <Link
               to="/alphabet">
-              Basic
-          </Link>
+              <img src="sunshower.png" alt="" style={{ width: 100, }} />
+            </Link>
           </li>
+
           <li>
             <Link
               to="/matching">
-              Intermediate
-          </Link>
+              <img src="cactus.png" alt="" style={{ width: 100, WebkitFilter: "opacity(40%) grayscale(1)" }} />
+            </Link>
           </li>
+
           <li>
             <Link
               to="/advanced">
-              Advanced
-          </Link>
+              <img src="llama.png" alt="" style={{ width: 100, WebkitFilter: "opacity(40%) grayscale(1)" }} />
+            </Link>
           </li>
         </div>
       </div>

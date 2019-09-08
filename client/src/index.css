@@ -43,7 +43,9 @@ li {
 a { 
   text-decoration: none;
   list-style-type: none;
+  color: inherit; 
 }
+
 
 h3{
   font-size: 30px;
@@ -191,18 +193,10 @@ input:-webkit-autofill:active  {
   margin: auto;
 }
 
-.lessons-list li{
-  background-color: #78c800;
-  color: white;
-  font-size: 30px;
+.lessons-list li{ 
   padding: 12px 24px;
-  border: none;
   cursor: pointer;
-  border-radius: 5px;
-  font-family: 'Varela Round', sans-serif;
   margin-bottom: 40px;
-  text-align: center;
-  width: 70%;
 }
 
 
@@ -423,19 +417,6 @@ input:-webkit-autofill:active  {
   border-color: #1cb0f6;
 }
 
-.card:focus {
-  background-color: #ddf4ff;
-  border-color: #1cb0f6;
-}
-.card:active {
-  background-color: #ddf4ff;
-  border-color: #1cb0f6;
-}
-.card.active {
-  background-color: #ddf4ff;
-  border-color: #1cb0f6;
-}
-
 .activeCard {
   position: relative;
   display: flex;
@@ -471,10 +452,6 @@ input:-webkit-autofill:active  {
   border-color: #1cb0f6;
 }
 
-.choice::after {
-  background-color: #ddf4ff;
-  border-color: #1cb0f6;
-}
 
 .activeChoice {
   position: relative;
@@ -493,17 +470,14 @@ input:-webkit-autofill:active  {
 }
 
 .option {
-  position: relative;
   display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
+  width: 80px;
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 1.25rem;
   margin: 16px;
-  padding: 10px 30px;
+  padding: 10px 50px;
   font-size: 20px;
 }
 
@@ -512,22 +486,15 @@ input:-webkit-autofill:active  {
   border-color: #1cb0f6;
 }
 
-.option:focus{
-  background-color: #ddf4ff;
-  border-color: #1cb0f6;
-}
 
 .activeOption {
-  position: relative;
   display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
+  width: 80px;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 16px;
+  border-radius: 1.25rem;
   margin: 16px;
-  padding: 10px 30px;
+  padding: 10px 50px;
   font-size: 20px;
   background-color: #ddf4ff;
   border-color: #1cb0f6;

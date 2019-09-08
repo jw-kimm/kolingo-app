@@ -33,11 +33,6 @@ const Button = styled.div`
   margin-right: 22px;
 `
 
-// :hover {
-//   color: yellow;
-// }
-
-
 class MainNavbar extends Component {
   state = {
     showLoginModal: false,

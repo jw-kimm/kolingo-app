@@ -5,8 +5,9 @@ import '../index.css'
 
 import Splash from './splash/Splash'
 import LessonsList from './lessons/LessonsList'
-import Alphabet from './lessons/Alphabet';
-import Matching from './lessons/Matching';
+import Alphabet from './lessons/Alphabet/Alphabet';
+import Matching from './lessons/Matching/Matching';
+// import Matching from './lessons/Matching2';
 import Register from './auth/Register';
 import UserPage from './auth/UserPage';
 import Discuss from './discuss/Discuss'
