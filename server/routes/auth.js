@@ -15,7 +15,6 @@ router.post("/", (req, res, next) => {
   User.find({ email })
     .exec()
     .then(user => {
-      debugger
       if (user.length < 1) {
         return res.status(401).json({
           message: "Auth failed"

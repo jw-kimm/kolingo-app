@@ -8,6 +8,7 @@ import SelectCards from './SelectCards'
 import Question from '../shared/Question'
 import GoalPage from '../shared/GoalPage'
 import ProgressBar from '../shared/ProgressBar';
+import Result from '../shared/Result'
 
 
 import styled from 'styled-components'
@@ -30,18 +31,24 @@ const SubHeader = styled.div`
 class Matching extends Component {
   state = {
     cardClicked: false,
+    pageState: 'Progress',
+    currentQuestionIdx: 0,
   };
 
   selected = []
+  correct = []
+  progress = 0
 
   componentDidMount() {
     this.props.fetchMatching();
   }
 
   onCardClick = ({ korean, english, clicked }) => {
+    debugger
     this.selected.push(clicked)
     if (!_.isEmpty(this.selected)) {
       const isKorean = korean === clicked
+
       let isCorrect
       if (isKorean) {
         isCorrect = this.selected[0] === english
@@ -51,7 +58,12 @@ class Matching extends Component {
 
       // if (isCorrect) {
       //   // blah blah blah 
+      //   this.correct = this.correct.push(this.selected)
       //   this.selected = []
+      //   this.setState({
+      //     pageState: 'Check',
+      //     cardClicked: false,
+      //   })
       // }
     }
 
@@ -59,25 +71,51 @@ class Matching extends Component {
   }
 
   render() {
+    debugger
     if (_.isEmpty(this.props.matching)) return null
 
-    const { problem } = this.props.matching[0][0]
+    const { matching } = this.props
+    const inProgress = this.state.currentQuestionIdx !== matching.length
 
-    if (this.progress === 100) {
-      return <GoalPage />
-    }
-    return (
-      <ProblemSection>
-        <SubHeader>
-          <ProgressBar progress={this.progress} />
-          <a href="/lessons" id="closebtn">+</a>
-        </SubHeader>
+    let answerChoices
+    let questionPrompt
+
+    if (inProgress) {
+      const { prompt, problem } = this.props.matching[0][0]
+
+      questionPrompt = <Question prompt={prompt} />
+
+      answerChoices =
         <SelectCards
           choices={problem}
           onCardClick={this.onCardClick}
           selected={this.selected}
         />
-      </ProblemSection>
+    }
+
+    return (
+      <div>
+        {inProgress ?
+          <>
+            <ProblemSection>
+              <SubHeader>
+                <ProgressBar progress={this.progress} />
+                <a href="/lessons" id="closebtn">+</a>
+              </SubHeader>
+              {questionPrompt}
+              {answerChoices}
+            </ProblemSection>
+            <Result
+              pageState={this.state.pageState}
+              handleOnClick={this.handleOnClick}
+              currentAnswer={this.state.currentAnswer}
+              skipQuestion={this.skipQuestion}
+            />
+          </>
+          :
+          <div> <GoalPage /></div>
+        }
+      </div>
     );
   }
 }

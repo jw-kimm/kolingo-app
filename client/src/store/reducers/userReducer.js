@@ -17,11 +17,12 @@ const defaultUser = {
 export default function (state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return {
-        ...state,
-        users: action.payload,
-        loading: false
-      }
+      return action.user
+    // {
+    //   ...state,
+    //   users: action.payload,
+    //   loading: false
+    // }
     case USER_LOADING:
       return { ...state, loading: true }
     default:

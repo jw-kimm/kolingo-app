@@ -44,9 +44,19 @@ router.post("/", (req, res, next) => {
               .save()
               .then(result => {
                 console.log(result);
+                const token = jwt.sign(
+                  {
+                    email: email,
+                  },
+                  process.env.JWT_SECRET,
+                  {
+                    expiresIn: "1h"
+                  }
+                );
                 res.status(201).json({
-                  message: "User created"
-                });
+                  message: "User created",
+                  token: token
+                })
               })
               .catch(err => {
                 console.log(err);

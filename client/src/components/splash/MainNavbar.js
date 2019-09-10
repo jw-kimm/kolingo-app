@@ -36,10 +36,11 @@ const Button = styled.div`
 class MainNavbar extends Component {
   state = {
     showLoginModal: false,
-    showReigsterModal: false,
+    showRegisterModal: false,
   }
 
   componentDidMout() {
+    debugger
     this.props.loadUser();
   }
 
@@ -47,26 +48,27 @@ class MainNavbar extends Component {
     e.preventDefault();
     this.setState({
       showLoginModal: true,
-      showReigsterModal: false,
+      showRegisterModal: false,
     })
   }
 
-  showReigsterModal = (e) => {
+  showRegisterModal = (e) => {
     e.preventDefault();
     this.setState({
       showLoginModal: false,
-      showReigsterModal: true,
+      showRegisterModal: true,
     })
   }
 
   closeModal = () => {
     this.setState({
       showLoginModal: false,
-      showReigsterModal: false,
+      showRegisterModal: false,
     });
   }
 
   render() {
+    debugger
     const { isAuthenticated, user } = this.props.auth;
 
     const guestLink = (
@@ -77,13 +79,14 @@ class MainNavbar extends Component {
             </a>
         </Button>
         <Button >
-          <a href="/" onClick={this.showReigsterModal} style={{ fontSize: 15 }}>
+          <a href="/" onClick={this.showRegisterModal} style={{ fontSize: 15 }}>
             Register
             </a>
         </Button>
       </>
     )
     const authLink = (
+
       //avatar to contain this info 
       <ul className="navbar-nav">
         <li className="nav-item">
@@ -105,7 +108,7 @@ class MainNavbar extends Component {
     }
 
     let signup
-    if (this.state.showReigsterModal) {
+    if (this.state.showRegisterModal) {
       signup = <RegisterModal onClose={this.closeModal} />
     }
 

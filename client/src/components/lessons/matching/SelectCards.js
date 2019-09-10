@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components'
 
-import Card from '../Alphabet/Card'
+import Card from './Card'
 
 const Wrapper = styled.div`
   display: inline-flex;

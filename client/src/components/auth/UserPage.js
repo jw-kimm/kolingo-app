@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUser } from '../../store/actions/userAction';
+import { loadUser } from '../../store/actions/authAction';
 import PropTypes from 'prop-types';
+import { me } from '../../store/actions/userAction'
 
 class UserPage extends Component {
 
   async componentDidMount() {
-    await this.props.getUser();
+    debugger
+    await this.props.me();
   }
 
   render() {
+    debugger
     const { user } = this.props
     return (
       <div>
@@ -30,5 +33,12 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    me: () => dispatch(me())
+  }
+}
+
+
 // export default Users
-export default connect(mapStateToProps, { getUser })(UserPage);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

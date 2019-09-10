@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import {connect} from 'react-redux'
 import styled from 'styled-components'
+import Logout from '../../auth/Logout'
 
 
 const NavBar = styled.div`
@@ -109,7 +110,7 @@ class Navbar extends Component {
                 <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
                 <Options onClick={this.handleClose}><a href="/profile">Your Profile </a></Options>
                 <Options onClick={this.handleClose}><a href="/setting"> Settings </a></Options>
-                <Options onClick={this.handleClose}><a href="/"> Logout </a></Options>
+                <Options onClick={this.handleClose}> <Logout /></Options>
               </DropDown>
             ) :
               (

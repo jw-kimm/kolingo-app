@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../store/actions/authAction';
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 class Logout extends Component {
 
   render() {
     return (
-      <Link onClick={this.props.logout} href="#">
+      <a href="/" onClick={this.props.logout}>
         Logout
-      </Link>
+      </a>
     )
   }
 }
