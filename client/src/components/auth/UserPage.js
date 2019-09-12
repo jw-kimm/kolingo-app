@@ -6,11 +6,11 @@ class UserPage extends Component {
 
   render() {
     debugger
-    const { auth } = this.props
+    const { user } = this.props.auth
     return (
       <div>
         {
-          this.props.isAuthenticated ? `Welcome ${auth.user.username}` :
+          this.props.isAuthenticated ? `Welcome ${user.username}` :
             <h4> Please log in </h4>
         }
       </div>

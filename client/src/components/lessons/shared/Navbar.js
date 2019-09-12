@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-// import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import Logout from '../../auth/Logout'
+import LoginModal from '../../auth/LoginModal'
+import RegisterModal from '../../auth/RegisterModal'
 
 
 const NavBar = styled.div`
@@ -53,6 +55,7 @@ const Img = styled.img`
 class Navbar extends Component {
   state = {
     showMenu: false,
+    showModal: false,
   }
 
   showMenu = (event) => {
@@ -68,8 +71,56 @@ class Navbar extends Component {
     });
   }
 
+
+  handleClick = (e) => {
+    e.preventDefault();
+    this.setState(prevState => {
+      return {
+        showModal: !prevState.showModal
+      }
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      showModal: false
+    });
+  }
+
+
   render() {
-    // const { user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
+
+    let authUser
+    let guestUser
+
+    if (isAuthenticated) {
+      authUser =
+        <DropDown>
+          <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
+          <Options><a href="/profile">Your Profile </a></Options>
+          <Options><a href="/setting"> Settings </a></Options>
+          <Options> <Logout /></Options>
+        </DropDown>
+    } else {
+      guestUser =
+        <DropDown>
+          <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
+          <Options><a href="/" onClick={this.handleClick}>Create A Profile</a></Options>
+          <Options> <a href="/" onClick={this.handleClick}>Sign In</a></Options>
+        </DropDown>
+    }
+
+    let login
+    if (this.state.showModal) {
+      login = <LoginModal onClose={this.closeModal} />
+    }
+
+    let signup
+    if (this.state.showModal) {
+      signup = <RegisterModal onClose={this.closeModal} />
+    }
+
     return (
       <>
         <NavBar>
@@ -80,14 +131,12 @@ class Navbar extends Component {
             <a href="/lessons">
               LEARN</a>
           </li>
-
           <li>
             <a href="/dictionary" >
               <Img
                 style={{ maxHeight: 32 }}
                 alt=""
                 src='/dictionarycolor.png' /> DICTIONARY</a></li>
-
           <li >
             <a href="/discuss">
               <Img
@@ -95,7 +144,6 @@ class Navbar extends Component {
                 style={{ maxHeight: 32 }}
                 src='/discusscolor.png' />
               DISCUSS</a></li>
-          {/* <li>  <strong> {user ? `Welcome ${user.username}` : " "}</strong> </li> */}
           <li>
             <Button
               onClick={this.showMenu} style={{ outline: "none" }}>
@@ -105,38 +153,45 @@ class Navbar extends Component {
         </NavBar>
         <Menu>
           {
-            this.state.showMenu ? (
-              <DropDown>
-                <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
-                <Options onClick={this.handleClose}><a href="/profile">Your Profile </a></Options>
-                <Options onClick={this.handleClose}><a href="/setting"> Settings </a></Options>
-                <Options onClick={this.handleClose}> <Logout /></Options>
-              </DropDown>
+            this.state.showMenu && isAuthenticated ? (
+              authUser
             ) :
               (
-                null
+                guestUser
               )}
         </Menu>
+
+        <div>
+          {signup}
+          {login}
+        </div>
+
       </>
     )
   }
 }
 
-/**
- * CONTAINER
- */
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+    isAuthenticated: state.auth.isAuthenticated,
+  }
+}
+
+export default connect(mapStateToProps, null)(Navbar);
+
 // const mapState = state => {
 //   return {
-//     isLoggedIn: !!state.user.user.id
+//     isAuthenticated: state.auth.isAuthenticated,
 //   }
 // }
 
-// const mapDispatch = dispatch => {
-//   return {
-//     handleClick() {
-//       dispatch(logout())
-//     }
-//   }
-// }
+// // const mapDispatch = dispatch => {
+// //   return {
+// //     handleClick() {
+// //       dispatch(logout())
+// //     }
+// //   }
+// // }
 
-export default Navbar
+// export default Navbar

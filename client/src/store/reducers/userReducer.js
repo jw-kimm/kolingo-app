@@ -1,4 +1,8 @@
-// // import axios from 'axios'
+// import axios from 'axios'
+
+// import {UPDATE_USERNAME, UPDATE_EMAIL}
+
+
 // import { GET_USER, USER_LOADING } from '../actions/types'
 
 // /**
