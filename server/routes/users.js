@@ -14,61 +14,119 @@ router.get('/', async (req, res, next) => {
 // @route POST /register
 // @access Public
 
+
 router.post("/", (req, res, next) => {
 
   const { username, email, password } = req.body
   console.log(req.body)
+  // Simple validation
   if (!username || !email || !password) {
-    return res.status(404).json({ msg: 'Please enter all fields' })
+    return res.status(400).json({ msg: 'Please enter all fields' });
   }
-  User.find({ email })
-    .exec()
+
+  // Check for existing user
+  User.findOne({ email })
     .then(user => {
-      if (user.length >= 1) {
-        return res.status(409).json({
-          message: "User exists"
-        });
-      } else {
-        bcrypt.hash(req.body.password, 10, (err, hash) => {
-          if (err) {
-            return res.status(500).json({
-              error: err
+      if (user) return res.status(400).json({ msg: 'User already exists' });
+
+      const newUser = new User({
+        username,
+        email,
+        password
+      });
+
+      // Create salt & hash
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser.save()
+            .then(user => {
+              jwt.sign(
+                { id: user._id },
+                process.env.JWT_SECRET,
+                { expiresIn: '1h' },
+                (err, token) => {
+                  if (err) throw err;
+                  res.json({
+                    token,
+                    user: {
+                      id: user._id,
+                      username: user.username,
+                      email: user.email
+                    }
+                  });
+                }
+              )
             });
-          } else {
-            const user = new User({
-              username,
-              email,
-              password: hash
-            });
-            user
-              .save()
-              .then(result => {
-                console.log(result);
-                const token = jwt.sign(
-                  {
-                    email: email,
-                  },
-                  process.env.JWT_SECRET,
-                  {
-                    expiresIn: "1h"
-                  }
-                );
-                res.status(201).json({
-                  message: "User created",
-                  token: token
-                })
-              })
-              .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                  error: err
-                });
-              });
-          }
-        });
-      }
-    });
+        })
+      })
+    })
 });
+
+
+// router.post("/", (req, res, next) => {
+
+//   const { username, email, password } = req.body
+//   console.log(req.body)
+
+//   if (!username || !email || !password) {
+//     return res.status(404).json({ msg: 'Please enter all fields' })
+//   }
+
+//   User.find({ email })
+//     .exec()
+//     .then(user => {
+//       if (user.length >= 1) {
+//         return res.status(409).json({
+//           msg: "User exists"
+//         });
+//       } else {
+//         bcrypt.hash(req.body.password, 10, (err, hash) => {
+//           if (err) {
+//             return res.status(500).json({
+//               error: err
+//             });
+//           } else {
+//             const user = new User({
+//               username,
+//               email,
+//               password: hash
+//             });
+//             user
+//               .save()
+//               .then(result => {
+//                 console.log(result);
+//                 const token = jwt.sign(
+//                   {
+//                     email: email,
+//                   },
+//                   process.env.JWT_SECRET,
+//                   {
+//                     expiresIn: "1h"
+//                   }
+//                 );
+//                 res.status(201).json({
+//                   msg: "User created",
+//                   token: token,
+//                   user: {
+//                     id: user.id,
+//                     username: user.username,
+//                     email: user.email
+//                   }
+//                 })
+//               })
+//               .catch(err => {
+//                 console.log(err);
+//                 res.status(500).json({
+//                   error: err
+//                 });
+//               });
+//           }
+//         });
+//       }
+//     });
+// });
 
 
 // /users/:id
@@ -111,7 +169,7 @@ router.delete('/:userId', (req, res, next) => {
   User.remove({ _id: req.params.userId })
     .then(result => {
       res.status(200).json({
-        message: "User deleted"
+        msg: "User deleted"
       })
     })
     .catch(err => {
@@ -124,10 +182,10 @@ router.delete('/:userId', (req, res, next) => {
 
 //logout
 
-router.delete('/logout', (req, res, next) => {
-  req.session.destroy()
-  res.status(204).end()
-})
+// router.delete('/logout', (req, res, next) => {
+//   req.session.destroy()
+//   res.status(204).end()
+// })
 
 
 module.exports = router;

@@ -1,44 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadUser } from '../../store/actions/authAction';
 import PropTypes from 'prop-types';
-import { me } from '../../store/actions/userAction'
 
 class UserPage extends Component {
 
-  async componentDidMount() {
-    debugger
-    await this.props.me();
-  }
-
   render() {
     debugger
-    const { user } = this.props
+    const { auth } = this.props
     return (
       <div>
-        <h1> Hello {user.email}</h1>
+        {
+          this.props.isAuthenticated ? `Welcome ${auth.user.username}` :
+            <h4> Please log in </h4>
+        }
       </div>
     );
   }
 }
 
 UserPage.propTypes = {
-  getUser: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    user: state.user
+    auth: state.auth,
+    isAuthenticated: state.auth.isAuthenticated,
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    me: () => dispatch(me())
-  }
-}
-
-
-// export default Users
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default connect(mapStateToProps, null)(UserPage);

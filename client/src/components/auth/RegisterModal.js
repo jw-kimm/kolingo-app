@@ -102,7 +102,12 @@ class RegisterModal extends Component {
   };
 
   render() {
-    if (this.props.isAuthenticated)
+    const { isAuthenticated } = this.props;
+
+    if (isAuthenticated) {
+      this.props.onClose()
+    }
+    if (isAuthenticated)
       return <Redirect to="/lessons" />
 
     return (

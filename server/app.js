@@ -26,9 +26,9 @@ app.use(express.json());
 //Routes
 app.use('/users', require('./routes/users'));
 app.use('/register', require('./routes/users'))
+app.use('/auth', require('./routes/auth'))
 app.use('/lessons', require('./routes/lessons'))
 app.use('/matching', require('./routes/matching'))
-app.use('/login', require('./routes/auth'))
 app.use('/discuss', require('./routes/discuss'))
 app.use('/advanced', require('./routes/advanced'))
 

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-// import { Link } from 'react-router-dom';
-import RegisterModal from '../auth/RegisterModal'
-// import Logout from '../auth/Logout'
 import LoginModal from '../auth/LoginModal'
-import { loadUser } from "../../store/actions/authAction";
+import RegisterModal from '../auth/RegisterModal'
+import { Redirect } from 'react-router-dom'
+
+// import { Redirect } from 'react-router-dom'
+// import { Link } from 'react-router-dom';
+// import Logout from '../auth/Logout'
+// import { loadUser } from "../../store/actions/authAction";
 
 const NavBar = styled.div`
   background-color: #235390;
@@ -39,10 +41,10 @@ class MainNavbar extends Component {
     showRegisterModal: false,
   }
 
-  componentDidMout() {
-    debugger
-    this.props.loadUser();
-  }
+  // componentDidMout() {
+  //   debugger
+  //   this.props.loadUser();
+  // }
 
   showLoginModal = (e) => {
     e.preventDefault();
@@ -86,11 +88,10 @@ class MainNavbar extends Component {
       </>
     )
     const authLink = (
-
       //avatar to contain this info 
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a href="/lessons" className="nav-link">
+          <a href="/" className="nav-link">
             <strong> {user ? `Welcome ${user.username}` : " "}</strong>
           </a>
         </li>
@@ -112,6 +113,10 @@ class MainNavbar extends Component {
       signup = <RegisterModal onClose={this.closeModal} />
     }
 
+    if (this.props.isAuthenticated)
+      return <Redirect to="/lessons" />
+
+
     return (
       <>
         <NavBar >
@@ -132,7 +137,7 @@ class MainNavbar extends Component {
 
 MainNavbar.propTypes = {
   auth: PropTypes.object.isRequired,
-  loadUser: PropTypes.func.isRequired,
+  // loadUser: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = ({ auth }) => {
@@ -141,11 +146,11 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadUser: () => dispatch(loadUser()),
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     loadUser: () => dispatch(loadUser()),
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainNavbar);
+export default connect(mapStateToProps, null)(MainNavbar);
 

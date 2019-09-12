@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom'
 import { login } from '../../store/actions/authAction';
 import { clearErrors } from '../../store/actions/errorAction';
 
@@ -58,26 +57,39 @@ const Label = styled.label`
   margin-left: 10px
 `
 
-
-
 class LoginModal extends Component {
   state = {
+    modal: false,
     email: '',
     password: '',
-    errors: {}
+    errors: {},
+    msg: null
   }
 
   componentDidUpdate(prevProps) {
-    const { error } = this.props;
+    const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
-      // Check for register error
+      // Check for login error
       if (error.id === 'LOGIN_FAIL') {
         this.setState({ msg: error.msg.msg });
       } else {
         this.setState({ msg: null });
       }
     }
+    if (this.state.modal) {
+      if (isAuthenticated) {
+        this.toggle();
+      }
+    }
   }
+
+  toggle = () => {
+    // Clear errors
+    this.props.clearErrors();
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
 
   handleInputChange = (e) => {
     this.setState({
@@ -94,18 +106,24 @@ class LoginModal extends Component {
     this.props.login(user);
   }
 
-
   render() {
-    if (this.props.isAuthenticated)
-      return <Redirect to="/lessons" />
+    debugger
+    const { isAuthenticated } = this.props;
+
+    if (isAuthenticated) {
+      this.props.onClose()
+    }
 
     return (
-      <ModalContainer style={{ display: "block" }}>
+
+      <ModalContainer style={{ display: "block" }} toggle={this.toggle}>
         <ModalContent>
           <button className="popup-close" onClick={this.props.onClose}>✖</button>
           <h3 style={{ padding: 10, borderBottom: "1px solid #dee2e6", textAlign: "left" }}>Login</h3>
+          {this.state.msg ? (
+            <alert color='danger'>{this.state.msg}</alert>
+          ) : null}
           <form onSubmit={this.handleSubmit}>
-
             <ModalInput>
               <Label htmlFor="email">
                 <input

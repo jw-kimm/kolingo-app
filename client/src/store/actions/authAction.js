@@ -12,12 +12,13 @@ import {
   REGISTER_FAIL,
 } from './types';
 
+
 // Check token & load user
 export const loadUser = () => (dispatch, getState) => {
   // User loading
   dispatch({ type: USER_LOADING });
 
-  axios.get('/users', tokenConfig(getState))
+  axios.get('/auth/user', tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -43,7 +44,7 @@ export const login = ({ email, password }) => dispatch => {
   const body = JSON.stringify({ email, password });
   console.log(body, "body")
   axios
-    .post('/login', body, config)
+    .post('/auth', body, config)
     .then(res =>
       dispatch({
         type: LOGIN_SUCCESS,
@@ -93,7 +94,6 @@ export const register = ({ username, email, password }) => dispatch => {
 //Logout user
 export const logout = () => {
   return dispatch => {
-    localStorage.clear();
     dispatch({
       type: LOGOUT_SUCCESS
     });
