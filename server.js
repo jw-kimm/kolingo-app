@@ -5,7 +5,6 @@ const path = require('path');
 const dotenv = require('dotenv').config();
 
 const db = process.env.MONGO_URI
-console.log(db)
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db, {
@@ -32,12 +31,12 @@ app.use('/matching', require('./server/routes/matching'))
 app.use('/discuss', require('./server/routes/discuss'))
 app.use('/advanced', require('./server/routes/advanced'))
 
-//Catch 404 errors forward them to error handler
-app.use((req, res, next) => {
-  const err = new Error('Not Found')
-  err.status = 404;
-  next(err)
-})
+// //Catch 404 errors forward them to error handler
+// app.use((req, res, next) => {
+//   const err = new Error('Not Found')
+//   err.status = 404;
+//   next(err)
+// })
 
 //error handler function
 app.use((err, req, res, next) => {
