@@ -1,11 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css'
 
 import Splash from './splash/Splash'
 import LessonsList from './lessons/LessonsList'
-import Alphabet from './lessons/Alphabet/Alphabet';
+// import Alphabet from './lessons/Alphabet/Alphabet';
 import Matching from './lessons/Matching/Matching';
 import Advanced from './lessons/Advanced/Advanced';
 
