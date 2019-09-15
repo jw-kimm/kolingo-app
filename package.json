@@ -1,6 +1,9 @@
 {
   "name": "kolingo-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.10.0"
+  },
   "description": "",
   "main": "app.js",
   "scripts": {
