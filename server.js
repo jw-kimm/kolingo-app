@@ -23,13 +23,13 @@ app.use(logger("dev"));
 app.use(express.json());
 
 //Routes
-app.use('/users', require('./server/routes/users'));
-app.use('/register', require('./server/routes/users'))
-app.use('/auth', require('./server/routes/auth'))
-app.use('/lessons', require('./server/routes/lessons'))
-app.use('/matching', require('./server/routes/matching'))
-app.use('/discuss', require('./server/routes/discuss'))
-app.use('/advanced', require('./server/routes/advanced'))
+app.use('/api/users', require('./server/routes/users'));
+app.use('/api/register', require('./server/routes/users'))
+app.use('/api/auth', require('./server/routes/auth'))
+app.use('/api/lessons', require('./server/routes/lessons'))
+app.use('/api/matching', require('./server/routes/matching'))
+app.use('/api/discuss', require('./server/routes/discuss'))
+app.use('/api/advanced', require('./server/routes/advanced'))
 
 // //Catch 404 errors forward them to error handler
 // app.use((req, res, next) => {

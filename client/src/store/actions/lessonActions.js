@@ -9,7 +9,7 @@ const getLessons = lesson => ({
 
 export const fetchLessons = () => async dispatch => {
   try {
-    const { data } = await axios.get('/lessons')
+    const { data } = await axios.get('/api/lessons')
     console.log('INTHUNK', data)
     dispatch(getLessons(data));
   } catch (err) {

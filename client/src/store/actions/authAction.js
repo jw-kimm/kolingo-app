@@ -18,7 +18,7 @@ export const loadUser = () => (dispatch, getState) => {
   // User loading
   dispatch({ type: USER_LOADING });
 
-  axios.get('/auth/user', tokenConfig(getState))
+  axios.get('/api/auth/user', tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -72,7 +72,7 @@ export const register = ({ username, email, password }) => dispatch => {
   //Request Body
   const body = JSON.stringify({ email, username, password });
 
-  axios.post('/register', body, config)
+  axios.post('/api/register', body, config)
     .then(res => {
       dispatch({
         type: REGISTER_SUCCESS,

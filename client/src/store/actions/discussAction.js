@@ -26,7 +26,7 @@ const postDiscussion = discuss => ({
  */
 export const fetchDiscussion = () => async dispatch => {
   try {
-    const { data } = await axios.get(`/discuss`)
+    const { data } = await axios.get(`/api/discuss`)
     console.log('INTHUNK', data)
     dispatch(getDiscussion(data));
   } catch (err) {
@@ -36,7 +36,7 @@ export const fetchDiscussion = () => async dispatch => {
 
 export const fetchSingleDiscuss = _id => async dispatch => {
   try {
-    const { data } = await axios.get(`/discuss/${_id}`)
+    const { data } = await axios.get(`/api/discuss/${_id}`)
     console.log('DIScuss', data)
     dispatch(singleDiscuss(data));
   } catch (err) {
@@ -47,7 +47,7 @@ export const fetchSingleDiscuss = _id => async dispatch => {
 
 export const addDiscussion = (discuss) => async dispatch => {
   try {
-    const { data } = await axios.post(`/discuss`, discuss)
+    const { data } = await axios.post(`/api/discuss`, discuss)
     dispatch(postDiscussion(data));
   } catch (err) {
     console.log(err)
