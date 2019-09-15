@@ -23,7 +23,7 @@ const App = () => (
       <Route exact path="/register" component={Register} />
 
 
-      <Route exact path="/alphabet" component={Alphabet} />
+      {/* <Route exact path="/alphabet" component={Alphabet} /> */}
       <Route exact path="/matching" component={Matching} />
       <Route exact path="/advanced" component={Advanced} />
       <Route exact path="/profile" component={UserPage} />
