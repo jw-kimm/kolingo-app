@@ -24,13 +24,13 @@ app.use(logger("dev"));
 app.use(express.json());
 
 //Routes
-app.use('/users', require('./routes/users'));
-app.use('/register', require('./routes/users'))
-app.use('/auth', require('./routes/auth'))
-app.use('/lessons', require('./routes/lessons'))
-app.use('/matching', require('./routes/matching'))
-app.use('/discuss', require('./routes/discuss'))
-app.use('/advanced', require('./routes/advanced'))
+app.use('/users', require('./server/routes/users'));
+app.use('/register', require('./server/routes/users'))
+app.use('/auth', require('./server/routes/auth'))
+app.use('/lessons', require('./server/routes/lessons'))
+app.use('/matching', require('./server/routes/matching'))
+app.use('/discuss', require('./server/routes/discuss'))
+app.use('/advanced', require('./server/routes/advanced'))
 
 //Catch 404 errors forward them to error handler
 app.use((req, res, next) => {
@@ -61,6 +61,10 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', "build", "index.html"))
   })
+  // app.use('*', (req, res) => {
+  //   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  // })
+
 }
 
 //start the server
