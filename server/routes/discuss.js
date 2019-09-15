@@ -28,7 +28,7 @@ router.post('/', async (req, res, next) => {
     res.json(newDisucss)
   }
   catch (err) {
-    console.error(err)
+    console.log(err)
     next(err)
   }
 })

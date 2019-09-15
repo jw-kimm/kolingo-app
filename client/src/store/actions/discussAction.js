@@ -30,7 +30,7 @@ export const fetchDiscussion = () => async dispatch => {
     console.log('INTHUNK', data)
     dispatch(getDiscussion(data));
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 }
 
@@ -40,7 +40,7 @@ export const fetchSingleDiscuss = _id => async dispatch => {
     console.log('DIScuss', data)
     dispatch(singleDiscuss(data));
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 }
 
@@ -50,6 +50,6 @@ export const addDiscussion = (discuss) => async dispatch => {
     const { data } = await axios.post(`/discuss`, discuss)
     dispatch(postDiscussion(data));
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 }

@@ -13,7 +13,7 @@ export const fetchMatching = () => async dispatch => {
     console.log('INTHUNK', data)
     dispatch(getMaching(data));
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 }
 

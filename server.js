@@ -50,7 +50,7 @@ app.use((err, req, res, next) => {
       message: error.message
     }
   });
-  console.err(err);
+  console.log(err)
 })
 
 // //serve static assets if in production

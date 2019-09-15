@@ -13,7 +13,7 @@ export const fetchLessons = () => async dispatch => {
     console.log('INTHUNK', data)
     dispatch(getLessons(data));
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 }
 

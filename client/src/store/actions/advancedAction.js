@@ -13,7 +13,7 @@ export const fetchAdvanced = () => async dispatch => {
     console.log('INTHUNK', data)
     dispatch(getAdvanced(data));
   } catch (err) {
-    console.error(err)
+    console.log(err)
   }
 };
 
