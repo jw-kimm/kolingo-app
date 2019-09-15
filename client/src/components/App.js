@@ -4,7 +4,7 @@ import '../index.css'
 
 import Splash from './splash/Splash'
 import LessonsList from './lessons/LessonsList'
-import Alphabet from './lessons/Alphabet';
+// import Alphabet from './lessons/Alphabet';
 // import Matching from './lessons/Matching/Matching';
 // import Advanced from './lessons/Advanced/Advanced';
 
@@ -21,7 +21,7 @@ const App = () => (
       <Route exact path="/" component={Splash} />
       <Route exact path="/lessons" component={LessonsList} />
       <Route exact path="/register" component={Register} />
-      <Route exact path="/alphabet" component={Alphabet} />
+      {/* <Route exact path="/alphabet" component={Alphabet} /> */}
       {/* <Route exact path="/matching" component={Matching} />
       <Route exact path="/advanced" component={Advanced} /> */}
       <Route exact path="/profile" component={UserPage} />
