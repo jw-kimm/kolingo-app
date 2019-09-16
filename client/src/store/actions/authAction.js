@@ -37,6 +37,7 @@ export const loadUser = () => (dispatch, getState) => {
 export const login = ({ email, password }) => dispatch => {
   const config = {
     headers: {
+      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     }
   }
