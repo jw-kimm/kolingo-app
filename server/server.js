@@ -39,32 +39,32 @@ app.use('/api/advanced', require('./server/routes/advanced'))
 // })
 
 //error handler function
-app.use((err, req, res, next) => {
-  const error = app.get("env") === "development" ? err : {};
-  const status = err.status || 500;
+// app.use((err, req, res, next) => {
+//   const error = app.get("env") === "development" ? err : {};
+//   const status = err.status || 500;
 
-  //Respond to client
-  res.status(status).json({
-    error: {
-      message: error.message
-    }
-  });
-  console.log(err)
-})
+//   //Respond to client
+//   res.status(status).json({
+//     error: {
+//       message: error.message
+//     }
+//   });
+//   console.log(err)
+// })
 
-// // //serve static assets if in production
-// if (process.env.NODE_ENV === 'production') {
-//   // Set static folder
-//   app.use(express.static('client/build'));
+// //serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
 
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', "build", "index.html"))
-//   })
-//   // app.use('*', (req, res) => {
-//   //   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-//   // })
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', "build", "index.html"))
+  })
+  // app.use('*', (req, res) => {
+  //   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  // })
 
-// }
+}
 
 //start the server
 const port = process.env.PORT || 8080;

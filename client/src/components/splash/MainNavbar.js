@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import LoginModal from '../auth/LoginModal'
 import RegisterModal from '../auth/RegisterModal'
-import { Redirect } from 'react-router-dom'
+
 
 // import { Redirect } from 'react-router-dom'
 // import { Link } from 'react-router-dom';
@@ -40,11 +40,6 @@ class MainNavbar extends Component {
     showLoginModal: false,
     showRegisterModal: false,
   }
-
-  // componentDidMout() {
-  //   debugger
-  //   this.props.loadUser();
-  // }
 
   showLoginModal = (e) => {
     e.preventDefault();
@@ -89,18 +84,16 @@ class MainNavbar extends Component {
     )
     const authLink = (
       //avatar to contain this info 
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <a href="/" className="nav-link">
-            <strong> {user ? `Welcome ${user.username}` : " "}</strong>
-          </a>
-        </li>
-        <li className="nav-item">
-          <a href="/" className="nav-link">
+      <>
+        <Button>
+          <strong> {user ? `Welcome ${user.username}` : " "}</strong>
+        </Button>
+        <Button>
+          <a href="/" >
             Logout
         </a>
-        </li>
-      </ul>
+        </Button>
+      </>
     )
 
     let login
@@ -112,10 +105,6 @@ class MainNavbar extends Component {
     if (this.state.showRegisterModal) {
       signup = <RegisterModal onClose={this.closeModal} />
     }
-
-    if (this.props.isAuthenticated)
-      return <Redirect to="/lessons" />
-
 
     return (
       <>
