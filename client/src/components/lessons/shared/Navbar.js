@@ -55,7 +55,8 @@ const Img = styled.img`
 class Navbar extends Component {
   state = {
     showMenu: false,
-    showModal: false,
+    showLoginModal: false,
+    showRegisterModal: false,
   }
 
   showMenu = (event) => {
@@ -71,19 +72,26 @@ class Navbar extends Component {
     });
   }
 
-
-  handleClick = (e) => {
+  showLoginModal = (e) => {
     e.preventDefault();
-    this.setState(prevState => {
-      return {
-        showModal: !prevState.showModal
-      }
+    this.setState({
+      showLoginModal: true,
+      showRegisterModal: false,
+    })
+  }
+
+  showRegisterModal = (e) => {
+    e.preventDefault();
+    this.setState({
+      showLoginModal: false,
+      showRegisterModal: true,
     })
   }
 
   closeModal = () => {
     this.setState({
-      showModal: false
+      showLoginModal: false,
+      showRegisterModal: false
     });
   }
 
@@ -91,33 +99,13 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
 
-    let authUser
-    let guestUser
-
-    if (isAuthenticated) {
-      authUser =
-        <DropDown>
-          <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
-          <Options><a href="/profile">Your Profile </a></Options>
-          <Options><a href="/setting"> Settings </a></Options>
-          <Options> <Logout /></Options>
-        </DropDown>
-    } else {
-      guestUser =
-        <DropDown>
-          <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
-          <Options><a href="/" onClick={this.handleClick}>Create A Profile</a></Options>
-          <Options> <a href="/" onClick={this.handleClick}>Sign In</a></Options>
-        </DropDown>
-    }
-
     let login
-    if (this.state.showModal) {
+    if (this.state.showLoginModal) {
       login = <LoginModal onClose={this.closeModal} />
     }
 
     let signup
-    if (this.state.showModal) {
+    if (this.state.showRegisterModal) {
       signup = <RegisterModal onClose={this.closeModal} />
     }
 
@@ -131,12 +119,12 @@ class Navbar extends Component {
             <a href="/lessons">
               LEARN</a>
           </li>
-          <li>
+          {/* <li>
             <a href="/dictionary" >
               <Img
                 style={{ maxHeight: 32 }}
                 alt=""
-                src='/dictionarycolor.png' /> DICTIONARY</a></li>
+                src='/dictionarycolor.png' /> DICTIONARY</a></li> */}
           <li >
             <a href="/discuss">
               <Img
@@ -153,12 +141,21 @@ class Navbar extends Component {
         </NavBar>
         <Menu>
           {
-            this.state.showMenu && isAuthenticated ? (
-              authUser
-            ) :
+            isAuthenticated ?
               (
-                guestUser
-              )}
+                <DropDown style={this.state.showMenu ? { display: "block" } : { display: "none" }}>
+                  <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
+                  <Options><a href="/profile">Your Profile </a></Options>
+                  <Options> <Logout /></Options>
+                </DropDown>
+              ) : (
+                <DropDown style={this.state.showMenu ? { display: "block" } : { display: "none" }}>
+                  <ul style={{ fontSize: 30, color: "#b1acac69" }}>Account</ul>
+                  <Options><a href="/" onClick={this.showRegisterModal}>Create A Profile</a></Options>
+                  <Options> <a href="/" onClick={this.showLoginModal}>Sign In</a></Options>
+                </DropDown>
+              )
+          }
         </Menu>
 
         <div>
@@ -179,19 +176,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(Navbar);
-
-// const mapState = state => {
-//   return {
-//     isAuthenticated: state.auth.isAuthenticated,
-//   }
-// }
-
-// // const mapDispatch = dispatch => {
-// //   return {
-// //     handleClick() {
-// //       dispatch(logout())
-// //     }
-// //   }
-// // }
-
-// export default Navbar
