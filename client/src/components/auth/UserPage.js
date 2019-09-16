@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 class UserPage extends Component {
 
   render() {
-    debugger
+
     const { user } = this.props.auth
     return (
       <div>
         {
-          this.props.isAuthenticated ? `Welcome ${user.username}` :
+          this.props.isAuthenticated ?
+            `Welcome ${user.username} ${user.userExp}`
+            :
             <h4> Please log in </h4>
         }
       </div>
@@ -20,12 +22,14 @@ class UserPage extends Component {
 
 UserPage.propTypes = {
   auth: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => {
   return {
     auth: state.auth,
     isAuthenticated: state.auth.isAuthenticated,
+    user: state.user
   }
 }
 

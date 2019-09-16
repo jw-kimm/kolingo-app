@@ -46,49 +46,6 @@ router.post("/", (req, res, next) => {
 });
 
 
-//   User.find({ email })
-//     .then(user => {
-//       if (!user) return res.status(400).json({ msg: 'User Does not exist' });
-
-//       bcrypt.compare(password, user[0].password, (err, result) => {
-//         if (err) {
-//           return res.status(401).json({
-//             msg: "Auth failed"
-//           });
-//         }
-//         if (result) {
-//           const token = jwt.sign(
-//             {
-//               email: user[0].email,
-//               userId: user[0]._id
-//             },
-//             process.env.JWT_SECRET,
-//             {
-//               expiresIn: "1h"
-//             }
-//           );
-//           return res.status(200).json({
-//             msg: "Auth successful",
-//             token: token,
-//             user: {
-//               id: user.id,
-//               username: user.username,
-//               email: user.email
-//             }
-//           });
-//         }
-//         res.status(401).json({
-//           msg: "Auth failed"
-//         });
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json({
-//         error: err
-//       });
-//     });
-// });
 
 //@desc get user data
 //@route GET /auth/user

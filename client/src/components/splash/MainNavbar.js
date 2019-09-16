@@ -65,7 +65,6 @@ class MainNavbar extends Component {
   }
 
   render() {
-    debugger
     const { isAuthenticated, user } = this.props.auth;
 
     const guestLink = (
@@ -126,7 +125,6 @@ class MainNavbar extends Component {
 
 MainNavbar.propTypes = {
   auth: PropTypes.object.isRequired,
-  // loadUser: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = ({ auth }) => {
@@ -135,11 +133,6 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     loadUser: () => dispatch(loadUser()),
-//   };
-// };
 
 export default connect(mapStateToProps, null)(MainNavbar);
 

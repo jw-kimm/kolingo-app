@@ -65,70 +65,6 @@ router.post("/", (req, res, next) => {
 });
 
 
-// router.post("/", (req, res, next) => {
-
-//   const { username, email, password } = req.body
-//   console.log(req.body)
-
-//   if (!username || !email || !password) {
-//     return res.status(404).json({ msg: 'Please enter all fields' })
-//   }
-
-//   User.find({ email })
-//     .exec()
-//     .then(user => {
-//       if (user.length >= 1) {
-//         return res.status(409).json({
-//           msg: "User exists"
-//         });
-//       } else {
-//         bcrypt.hash(req.body.password, 10, (err, hash) => {
-//           if (err) {
-//             return res.status(500).json({
-//               error: err
-//             });
-//           } else {
-//             const user = new User({
-//               username,
-//               email,
-//               password: hash
-//             });
-//             user
-//               .save()
-//               .then(result => {
-//                 console.log(result);
-//                 const token = jwt.sign(
-//                   {
-//                     email: email,
-//                   },
-//                   process.env.JWT_SECRET,
-//                   {
-//                     expiresIn: "1h"
-//                   }
-//                 );
-//                 res.status(201).json({
-//                   msg: "User created",
-//                   token: token,
-//                   user: {
-//                     id: user.id,
-//                     username: user.username,
-//                     email: user.email
-//                   }
-//                 })
-//               })
-//               .catch(err => {
-//                 console.log(err);
-//                 res.status(500).json({
-//                   error: err
-//                 });
-//               });
-//           }
-//         });
-//       }
-//     });
-// });
-
-
 // /users/:id
 router.get('/:userId', async (req, res, next) => {
   try {
@@ -179,13 +115,6 @@ router.delete('/:userId', (req, res, next) => {
       })
     })
 })
-
-//logout
-
-// router.delete('/logout', (req, res, next) => {
-//   req.session.destroy()
-//   res.status(204).end()
-// })
 
 
 module.exports = router;

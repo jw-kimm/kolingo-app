@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../store/actions/authAction';
 import { clearErrors } from '../../store/actions/errorAction';
+import { Redirect } from 'react-router-dom'
 
 import styled from 'styled-components'
 
@@ -57,6 +58,14 @@ const Label = styled.label`
   margin-left: 10px
 `
 
+const Alert = styled.p`
+  background-color: #f30404a8;
+  color: white;
+  font-size: 20px;
+  padding: 6px 131px;
+`
+
+
 class LoginModal extends Component {
   state = {
     modal: false,
@@ -107,11 +116,11 @@ class LoginModal extends Component {
   }
 
   render() {
-    debugger
     const { isAuthenticated } = this.props;
 
     if (isAuthenticated) {
       this.props.onClose()
+      return < Redirect to="/lessons" />
     }
 
     return (
@@ -121,7 +130,7 @@ class LoginModal extends Component {
           <button className="popup-close" onClick={this.props.onClose}>✖</button>
           <h3 style={{ padding: 10, borderBottom: "1px solid #dee2e6", textAlign: "left" }}>Login</h3>
           {this.state.msg ? (
-            <alert color='danger'>{this.state.msg}</alert>
+            <Alert >{this.state.msg}</Alert>
           ) : null}
           <form onSubmit={this.handleSubmit}>
             <ModalInput>
@@ -147,7 +156,7 @@ class LoginModal extends Component {
               </Label>
             </ModalInput>
 
-            <Button type="submit">
+            <Button type="submit" style={{ outline: "none" }}>
               Log in
           </Button>
           </form>

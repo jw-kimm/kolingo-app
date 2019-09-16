@@ -31,12 +31,6 @@ app.use('/api/matching', require('./server/routes/matching'))
 app.use('/api/discuss', require('./server/routes/discuss'))
 app.use('/api/advanced', require('./server/routes/advanced'))
 
-// //Catch 404 errors forward them to error handler
-// app.use((req, res, next) => {
-//   const err = new Error('Not Found')
-//   err.status = 404;
-//   next(err)
-// })
 
 //error handler function
 app.use((err, req, res, next) => {
@@ -60,10 +54,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', "build", "index.html"))
   })
-  // app.use('*', (req, res) => {
-  //   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  // })
-
 }
 
 //start the server

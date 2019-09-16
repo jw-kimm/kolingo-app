@@ -44,9 +44,10 @@ class Matching extends Component {
   }
 
   onCardClick = ({ korean, english, clicked }) => {
-    debugger
-    this.selected.push(clicked)
-    if (!_.isEmpty(this.selected)) {
+    if (this.selected.length === 0) {
+      this.selected.push(clicked) //pushing the clicked into the selected
+      this.setState({ cardClicked: true })
+    } else if (!_.isEmpty(this.selected)) { //if the selected is not empty
       const isKorean = korean === clicked
 
       let isCorrect
@@ -55,43 +56,33 @@ class Matching extends Component {
       } else {
         isCorrect = this.selected[0] === korean
       }
-
-      // if (isCorrect) {
-      //   // blah blah blah 
-      //   this.correct = this.correct.push(this.selected)
-      //   this.selected = []
-      //   this.setState({
-      //     pageState: 'Check',
-      //     cardClicked: false,
-      //   })
-      // }
+      if (isCorrect) {
+        // blah blah blah 
+        this.correct.push(this.selected)
+        this.selected = []
+        this.setState({
+          pageState: 'Check',
+          cardClicked: true,
+        })
+      } else {
+        this.selected = []
+        setTimeout(() => {
+          this.setState({
+            pageState: 'Check',
+            cardClicked: false,
+          })
+        }, 500);
+      }
     }
-
-    this.setState({ cardClicked: true })
   }
 
   render() {
-    debugger
+    // debugger
     if (_.isEmpty(this.props.matching)) return null
 
     const { matching } = this.props
     const inProgress = this.state.currentQuestionIdx !== matching.length
-
-    let answerChoices
-    let questionPrompt
-
-    if (inProgress) {
-      const { prompt, problem } = this.props.matching[0][0]
-
-      questionPrompt = <Question prompt={prompt} />
-
-      answerChoices =
-        <SelectCards
-          choices={problem}
-          onCardClick={this.onCardClick}
-          selected={this.selected}
-        />
-    }
+    const { problem, prompt } = this.props.matching[0][0]
 
     return (
       <div>
@@ -102,8 +93,14 @@ class Matching extends Component {
                 <ProgressBar progress={this.progress} />
                 <a href="/lessons" id="closebtn">+</a>
               </SubHeader>
-              {questionPrompt}
-              {answerChoices}
+              <Question prompt={prompt} />
+              <SelectCards
+                choices={problem}
+                onCardClick={this.onCardClick}
+                selected={this.selected}
+              // inactiveCards={[]}
+              // style={{this.state.cardClicked}}
+              />
             </ProblemSection>
             <Result
               pageState={this.state.pageState}

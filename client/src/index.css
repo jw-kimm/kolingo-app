@@ -26,9 +26,6 @@ label {
   cursor: pointer;
 }
 
-a:hover {
-  text-decoration: none;
-}
 
 input {
   display: block;
@@ -44,8 +41,12 @@ a {
   text-decoration: none;
   list-style-type: none;
   color: inherit; 
+  outline: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
 
 h3{
   font-size: 30px;

@@ -16,9 +16,6 @@ const MatchingSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  // matched: {
-  //   type: Boolean,
-  // },
 });
 
 const Matching = mongoose.model('Matching', MatchingSchema, "matching");
