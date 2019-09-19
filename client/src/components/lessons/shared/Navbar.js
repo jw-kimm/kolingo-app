@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Logout from '../../auth/Logout'
 import LoginModal from '../../auth/LoginModal'
@@ -18,6 +19,10 @@ const NavBar = styled.div`
   font-weight: 700
   border-bottom: 3px solid #e5e5e5;
   cursor: pointer
+`
+
+const NavLinks = styled.li`
+  color: #234d90b5;
 `
 
 const Button = styled.button`
@@ -45,13 +50,6 @@ const Menu = styled.div`
   cursor: pointer
 `
 
-const Img = styled.img`
-  filter: opacity(30%) grayscale(1);
-  :hover {
-    -webkit-filter: grayscale(0);
-    filter: none;
-  }
-`
 
 // const timeoutLength = 300;
 
@@ -115,30 +113,36 @@ class Navbar extends Component {
     return (
       <>
         <NavBar>
-          <li className="navLinks">
-            <img style={{ maxHeight: 32 }}
+          <Link to="/">
+            <h1 style={{ fontSize: 35 }}>
+              kolingo
+            </h1>
+          </Link>
+          <NavLinks>
+            <img style={{ height: 35 }}
               alt=""
               src='/learncolor.png' />
             <a href="/lessons">
               LEARN</a>
-          </li>
+          </NavLinks>
           {/* <li>
             <a href="/dictionary" >
               <Img
                 style={{ maxHeight: 32 }}
                 alt=""
                 src='/dictionarycolor.png' /> DICTIONARY</a></li> */}
-          <li className="navLinks" >
+          <NavLinks>
             <a href="/discuss">
               <img
                 alt=""
-                style={{ maxHeight: 32 }}
+                style={{ height: 35 }}
                 src='/discusscolor.png' />
-              DISCUSS</a></li>
+              DISCUSS</a>
+          </NavLinks>
           <li>
             <Button
               onClick={this.showMenu} style={{ outline: "none" }}>
-              <img style={{ maxHeight: 32 }} src="/avatar.png" alt="" />
+              <img style={{ height: 35 }} src="/avatar.png" alt="" />
             </Button>
           </li>
         </NavBar>

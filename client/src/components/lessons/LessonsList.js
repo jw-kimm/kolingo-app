@@ -10,6 +10,31 @@ const Img = styled.img`
   width: 100px;
   filter: grayscale(1) opacity(40%);
   cursor: pointer;
+  width: 140px;
+  padding: 75px;
+`
+
+const ListContainer = styled.div`
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: 0!important;
+  text-align: center;
+  width: 100%;
+  height: 500px;
+  margin: auto;
+  z-index: -2;
+  position: absolute;
+  justify-content: space-evenly;
+`
+
+const SubList = styled.li`
+  cursor: pointer;
+  margin-bottom: 40px;
+  border: 2px solid rgb(229, 229, 229);
+  border-radius: 20px;
+  padding: 10px;
 `
 
 class LessonsList extends Component {
@@ -36,30 +61,30 @@ class LessonsList extends Component {
     }
 
     return (
-      <div>
+      <>
         <Navbar />
-        <div className="lessons-list">
-          <li >
+        <ListContainer>
+          <SubList >
             <Link
               to="/alphabet" className={this.firstUnlock ? "activeLessonsLink" : "lessonsLink"} >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
             </Link>
-          </li>
+          </SubList>
 
-          <li >
+          <SubList >
             <Link
               to="/matching" className={this.firstUnlock && this.secondUnlock ? "activeLessonsLink" : "lessonsLink"} >
               <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
             </Link>
-          </li>
-          <li>
+          </SubList>
+          <SubList>
             <Link
               to="/advanced" className={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? "activeLessonsLink" : "lessonsLink"} >
               <Img src="llama.png" alt="" style={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? { filter: "none" } : null} />
             </Link>
-          </li>
-        </div>
-      </div>
+          </SubList>
+        </ListContainer>
+      </>
     )
   }
 }

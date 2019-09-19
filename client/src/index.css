@@ -183,25 +183,15 @@ input:-webkit-autofill:active  {
   justify-content: center;
 } */
 
-.lessons-list {
-  padding-top: 75px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  border: 0!important;
-  text-align: center;
-  width: 100%;
-  height: 300px;
-  margin: auto;
-  z-index: -2;
-  position: absolute;
-}
+/* .lessons-list {
 
-.lessons-list li{ 
+} */
+
+/* .lessons-list li{ 
   padding: 12px 24px;
   cursor: pointer;
   margin-bottom: 40px;
-}
+} */
 
 
 /* .bg { */
@@ -990,6 +980,14 @@ h4{
   cursor: none;
 }
 
-.navLinks {
+/* .navLinks {
   color: #234d90b5;
+} */
+/* 
+.tooltip-message {
+
 }
+
+.tooltip-right {
+
+} */

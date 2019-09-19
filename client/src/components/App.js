@@ -11,7 +11,6 @@ import Advanced from './lessons/advanced/Advanced';
 import Register from './auth/Register';
 import UserPage from './auth/UserPage';
 import Discuss from './discuss/Discuss'
-import SingleDiscuss from './discuss/SingleDiscuss';
 
 
 const App = () => (
@@ -25,7 +24,6 @@ const App = () => (
       <Route exact path="/advanced" component={Advanced} />
       <Route exact path="/profile" component={UserPage} />
       <Route exact path="/discuss" component={Discuss} />
-      <Route exact path="/discuss/:id" component={SingleDiscuss} />
     </Switch>
   </>
 );

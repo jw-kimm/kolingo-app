@@ -1,16 +1,11 @@
 import axios from 'axios';
-import { GET_DISCUSSION, POST_DISCUSSION, SINGLE_DISCUSS } from '../actions/types'
+import { GET_DISCUSSION, POST_DISCUSSION } from '../actions/types'
 
 /**
  * ACTION CREATORS
  */
 const getDiscussion = discuss => ({
   type: GET_DISCUSSION,
-  discuss
-})
-
-const singleDiscuss = discuss => ({
-  type: SINGLE_DISCUSS,
   discuss
 })
 
@@ -29,16 +24,6 @@ export const fetchDiscussion = () => async dispatch => {
     const { data } = await axios.get(`/api/discuss`)
     console.log('INTHUNK', data)
     dispatch(getDiscussion(data));
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-export const fetchSingleDiscuss = _id => async dispatch => {
-  try {
-    const { data } = await axios.get(`/api/discuss/${_id}`)
-    console.log('DIScuss', data)
-    dispatch(singleDiscuss(data));
   } catch (err) {
     console.log(err)
   }

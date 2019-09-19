@@ -1,22 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Header = styled.h1`
-  display: flex;
-  align-items: center;
-  text-align: center;
-  font-size: 20px;
-  background-color: #f5d5c88a;
-  color: #343a4054;
-  height: 100px;
-  justify-content: space-around;
-`
 const Form = styled.form`
   display: flex;
   background-color: #FFF;
   height: 180px;
   width: 700px;
-  margin: 15px auto;
+  margin: 42px auto;
   border-radius: 10px;
   border: 2px solid #e9ecef;
   flex-direction: column;
@@ -31,19 +21,18 @@ const Input = styled.input`
   overflow:scroll;
 `
 const Button = styled.button`
-  background-color: white;
-  border: 2px solid #b3d7ff;
-  color: grey;
-  width: 58px;
-  float: right;
-  font-size: 10px;
-  border-radius: 10px;
-  margin-top: 20px;
+  font-weight: bold;
+  width: 50px;
+  color: white;
+  background-color: #78c800;
+  border-radius: 9px;
   text-align: center;
-    :hover {
-    background-color: #4CAF50; /* Green */
-    color : white;
-  }
+  border-width: 2px 2px 4px;
+  text-transform: uppercase;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 10px;
+  margin-top: 12px;
 `
 const Label = styled.label`
   font-size: 18px;
@@ -72,8 +61,6 @@ const DiscussForm = (props) => {
 
   return (
     <>
-      <Header>Discussion</Header>
-
       <Form onSubmit={props.handleSubmit}>
         <fieldset>
           <Label htmlFor="title">
