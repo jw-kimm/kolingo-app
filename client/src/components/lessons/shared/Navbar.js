@@ -17,11 +17,13 @@ const NavBar = styled.div`
   color: #afafaf;
   font-weight: 700
   border-bottom: 3px solid #e5e5e5;
+  cursor: pointer
 `
 
 const Button = styled.button`
   padding: 8px 12px;
-  display: inline-block
+  display: inline-block;
+  cursor: pointer
 `
 const Options = styled.li`
   border-bottom: 1px solid #e5e5e5;
@@ -36,10 +38,11 @@ const DropDown = styled.div`
   float: right;
   border: 2px solid #e0d8d887;
   padding: 10px;
-
+  z-index: 100
 `
 const Menu = styled.div`
   display: block;
+  cursor: pointer
 `
 
 const Img = styled.img`
@@ -112,8 +115,8 @@ class Navbar extends Component {
     return (
       <>
         <NavBar>
-          <li>
-            <Img style={{ maxHeight: 32 }}
+          <li className="navLinks">
+            <img style={{ maxHeight: 32 }}
               alt=""
               src='/learncolor.png' />
             <a href="/lessons">
@@ -125,9 +128,9 @@ class Navbar extends Component {
                 style={{ maxHeight: 32 }}
                 alt=""
                 src='/dictionarycolor.png' /> DICTIONARY</a></li> */}
-          <li >
+          <li className="navLinks" >
             <a href="/discuss">
-              <Img
+              <img
                 alt=""
                 style={{ maxHeight: 32 }}
                 src='/discusscolor.png' />

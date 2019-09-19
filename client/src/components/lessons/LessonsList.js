@@ -7,54 +7,55 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components'
 
 const Img = styled.img`
+  width: 100px;
   filter: grayscale(1) opacity(40%);
+  cursor: pointer;
 `
 
 class LessonsList extends Component {
-
-  //when user earns certain ex, unlock the next level
-  //enabling the next lesson
+  firstUnlock = false
+  secondUnlock = false
+  thirdUnlock = false
 
   render() {
     const { user } = this.props.auth
 
-    let renderLessonsList
+    if (this.props.isAuthenticated) {
+      if (user.userExp >= 50) {
+        this.firstUnlock = true
+        this.secondUnlock = true
+        this.thirdUnlock = true
+      } else if (user.userExp >= 30) {
+        this.firstUnlock = true
+        this.secondUnlock = true
+      } else {
+        this.firstUnlock = true
+      }
+    } else {
+      this.firstUnlock = true
+    }
 
-    // if (isAuthenticated) {
-    //   if (user.userExp <= 50) {
-    //     renderLessonsList = //all three should be opened
-
-    //   } else if (user.userExp <= 30) {
-    //     renderLessonsList = //open second one
-    //   } else {
-    //     renderLessonsList = //only the first one
-    //   }
-    // }
-    // style = { user.userExp === 10 ? { filter: "none" } : null }
-    // debugger
     return (
       <div>
         <Navbar />
         <div className="lessons-list">
-
-          <li>
+          <li >
             <Link
-              to="/alphabet">
-              <Img src="sunshower.png" alt="" />
+              to="/alphabet" className={this.firstUnlock ? "activeLessonsLink" : "lessonsLink"} >
+              <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
             </Link>
           </li>
 
-          <li>
+          <li >
             <Link
-              to="/matching">
-              <Img src="cactus.png" alt="" />
+              to="/matching" className={this.firstUnlock && this.secondUnlock ? "activeLessonsLink" : "lessonsLink"} >
+              <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
             </Link>
           </li>
-          {/* style={{ width: 100, WebkitFilter: "opacity(40%) grayscale(1)" }} */}
           <li>
             <Link
-              to="/advanced">
-              <Img src="llama.png" alt="" />
+              to="/advanced" className={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? "activeLessonsLink" : "lessonsLink"} >
+              <Img src="llama.png" alt="" style={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? { filter: "none" } : null} />
             </Link>
           </li>
         </div>
@@ -65,14 +66,14 @@ class LessonsList extends Component {
 
 LessonsList.propTypes = {
   auth: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
+  // user: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => {
   return {
     auth: state.auth,
     isAuthenticated: state.auth.isAuthenticated,
-    user: state.user
+    // user: state.user
   }
 }
 

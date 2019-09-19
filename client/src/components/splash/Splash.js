@@ -7,7 +7,7 @@ const ContentSection = styled.section`
   height: 350px;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 24px;
 `
 
 const ContentBackground = styled.div`
@@ -47,6 +47,9 @@ const SectionTwoTop = styled.section`
   color: white;
   display: inline-flex;
   margin-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 const SectionTwoBottom = styled.section`
   display: flex;
@@ -75,10 +78,17 @@ const Button = styled.div`
   text-decoration: none;
   background-color: #78c800;  
   text-decoration: none;
-  padding: 12px 24px
+  padding: 12px 24px;
+  width: 120px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 12px;
 `
 
 const Splash = () => {
+  // const { isAuthenticated } = this.props.auth
+
   return (
     <>
       <MainNavbar />

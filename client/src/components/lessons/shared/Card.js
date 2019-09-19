@@ -5,7 +5,7 @@ const Card = ({ value, choice, className, onClick, style }) => {
     <div
       className={className}
       onClick={() => onClick(value)}
-      style={style}
+    // style={style}
     >
       {choice}
     </div>

@@ -22,29 +22,30 @@ const ModalContainer = styled.div`
 const ModalContent = styled.div`
   top: 50%;
   width: 500px; 
-  height: 300px;
+  height: 280px;
   background-color: white;
   border-radius: 4px;
   padding: 20px;
   position: fixed;
   transform: translate(-50%,-50%);
   left: 50%;
-  text-align: center
+  text-align: center;
 `
 
 const ModalInput = styled.div`
   background: #f0f0f0;
   border: 2px solid #e5e5e5;
   border-radius: 10px;
-  line-height: 24px;
-  padding: 10px;
+  padding: 12px;
+  line-height: 6px;
+  margin-bottom: 12px;
 `
 const Button = styled.button`
   border-color: transparent;
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
   border-width: 0 0 4px;
-  padding: 13px 16px;
+  padding: 16px 20px;
   background-color: #1899d6;
   color: #fff;
   cursor: pointer;
@@ -128,7 +129,10 @@ class LoginModal extends Component {
       <ModalContainer style={{ display: "block" }} toggle={this.toggle}>
         <ModalContent>
           <button className="popup-close" onClick={this.props.onClose}>✖</button>
-          <h3 style={{ padding: 10, borderBottom: "1px solid #dee2e6", textAlign: "left" }}>Login</h3>
+          <h3
+            style={{ padding: 10, borderBottom: "1px solid #dee2e6", textAlign: "left", margin: 0 }}>
+            Login
+          </h3>
           {this.state.msg ? (
             <Alert >{this.state.msg}</Alert>
           ) : null}

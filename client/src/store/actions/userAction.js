@@ -1,34 +1,32 @@
 // import axios from 'axios'
-// import { GET_USER } from './types';
+// import { UPDATE_USER, UPDATE_EXP } from './types';
+// import { tokenConfig } from './authAction';
 // import { returnErrors } from './errorAction';
 
+// const updateUser = user => ({ type: UPDATE_USER, user })
+// // const updateUserPoints = updatePoints => ({ type: UPDATE_EXP, updatePoints })
 
-// export const getUser = () => dispatch => {
-//   // dispatch(loadingUser());
-//   axios.get('/users')
-//     .then(res => dispatch({
-//       type: GET_USER,
-//       payload: res.data
-//     }))
+// export const updateUserInfo = (user) => (dispatch, getState) => {
+//   axios
+//     .put('/api/auth/user', user, tokenConfig(getState))
+//     .then(res =>
+//       dispatch({
+//         type: UPDATE_USER,
+//         payload: res.data
+//       })
+//     )
 //     .catch(err =>
-//       dispatch(returnErrors(err.response.data, err.response.status)))
+//       dispatch(returnErrors(err.response.data, err.response.status))
+//     );
 // }
 
-// const getUser = user => ({ type: GET_USER, user })
-
-// export const me = () => async dispatch => {
+// //update user exp
+// export const updateUserExp = (user) => async dispatch => {
 //   try {
-//     const res = await axios.get('/profile')
-//     dispatch(getUser(res.data))
+//     const newExp = await axios.put('/api/auth/user', user)
+//     dispatch(updateUserPoints(newExp.data))
 //   } catch (err) {
-//     console.error(err)
+//     console.err(err)
 //   }
 // }
-
-// export const loadingUser = () => {
-//   return {
-//     type: USER_LOADING
-//   }
-// }
-
 

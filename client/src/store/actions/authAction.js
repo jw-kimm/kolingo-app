@@ -79,7 +79,6 @@ export const register = ({ username, email, password }) => dispatch => {
         type: REGISTER_SUCCESS,
         payload: res.data
       })
-      // login({ email, password })
     }
     )
     .catch(err => {
