@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { fetchDiscussion, addDiscussion } from '../../store/actions/discussAction'
 import DiscussForm from './DiscussForm'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Navbar from '../lessons/shared/Navbar'
+
+const DiscussContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const DiscussionList = styled.div`
   display: grid;
@@ -77,10 +81,12 @@ class Discuss extends Component {
     return (
       <>
         <Navbar />
-        <DiscussForm {...this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-        <DiscussionList>
-          {discussArr}
-        </DiscussionList>
+        <DiscussContainer>
+          <DiscussForm {...this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+          <DiscussionList>
+            {discussArr}
+          </DiscussionList>
+        </DiscussContainer>
       </>
     )
   }

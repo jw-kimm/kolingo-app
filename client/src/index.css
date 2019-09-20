@@ -251,6 +251,8 @@ input:-webkit-autofill:active  {
   margin: 16px;
   padding: 10px 50px;
   font-size: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .option:hover{

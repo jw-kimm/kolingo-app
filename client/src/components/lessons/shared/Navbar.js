@@ -43,7 +43,12 @@ const DropDown = styled.div`
   float: right;
   border: 2px solid #e0d8d887;
   padding: 10px;
-  z-index: 100
+  z-index: 100;
+  background: white;
+  position: fixed;
+  clear: right;
+  right: 0px;
+  top: 93px;
 `
 const Menu = styled.div`
   display: block;
@@ -125,12 +130,6 @@ class Navbar extends Component {
             <a href="/lessons">
               LEARN</a>
           </NavLinks>
-          {/* <li>
-            <a href="/dictionary" >
-              <Img
-                style={{ maxHeight: 32 }}
-                alt=""
-                src='/dictionarycolor.png' /> DICTIONARY</a></li> */}
           <NavLinks>
             <a href="/discuss">
               <img
