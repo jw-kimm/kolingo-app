@@ -12,6 +12,9 @@ const Img = styled.img`
   cursor: pointer;
   width: 140px;
   padding: 75px;
+  :hover {
+    
+  }
 `
 
 const ListContainer = styled.div`
@@ -37,13 +40,66 @@ const SubList = styled.li`
   padding: 10px;
 `
 
+
+const TooltipBox = styled.div`
+  display: inline-table;
+  position: relative;
+  border: 1px dotted black;
+  margin: 259px;
+  width: 100px;
+  left: 25%;
+  padding: 20px;
+  background-color: rgba(184, 181, 181, 0.59);
+  transform: translateY(-50%);
+  border-radius: 24px;
+  :after{
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  }
+}
+`
+
+const TooltipMessage = styled.div`
+  border-radius: 3px;
+  color: white;
+  font-size: .75rem;
+  line-height: 1.4;
+  padding: .75em;
+  text-align: center;
+  font-size: 16px;
+  width: 100px;
+`
+
 class LessonsList extends Component {
+
+  state = {
+    displayTooltp: false,
+  }
+
   firstUnlock = false
   secondUnlock = false
   thirdUnlock = false
 
+  hideTooltip = () => {
+    this.setState({ displayTooltip: false })
+
+  }
+  showTooltip = () => {
+    this.setState({ displayTooltip: true })
+  }
+
+
   render() {
     const { user } = this.props.auth
+
+    let message
+
+    message = "Level Locked"
 
     if (this.props.isAuthenticated) {
       if (user.userExp >= 50) {
@@ -60,6 +116,7 @@ class LessonsList extends Component {
       this.firstUnlock = true
     }
 
+
     return (
       <>
         <Navbar />
@@ -70,13 +127,13 @@ class LessonsList extends Component {
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
             </Link>
           </SubList>
-
           <SubList >
             <Link
               to="/matching" className={this.firstUnlock && this.secondUnlock ? "activeLessonsLink" : "lessonsLink"} >
-              <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
+              <Img src="cactus.png" alt="" onMouseOut={this.hideTooltip} onMouseOver={this.showTooltip} message={message} style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
             </Link>
           </SubList>
+
           <SubList>
             <Link
               to="/advanced" className={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? "activeLessonsLink" : "lessonsLink"} >
@@ -84,6 +141,13 @@ class LessonsList extends Component {
             </Link>
           </SubList>
         </ListContainer>
+
+        {
+          this.state.displayTooltip ?
+            (<TooltipBox>
+              <TooltipMessage>{message}</TooltipMessage>
+            </TooltipBox>) : null
+        }
       </>
     )
   }

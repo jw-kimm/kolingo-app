@@ -128,7 +128,7 @@ class Alphabet extends Component {
             />
           </>
           :
-          <div> <GoalPage /></div>
+          <div> <GoalPage progress={this.progress} /></div>
         }
       </div>
     )
