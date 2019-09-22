@@ -171,6 +171,7 @@ input:-webkit-autofill:active  {
 .card:hover {
   background-color: #ddf4ff;
   border-color: #1cb0f6;
+  box-shadow: 1px 3px #41a6d6d6;
 }
 
 .activeCard {
@@ -187,6 +188,7 @@ input:-webkit-autofill:active  {
   font-size: 50px;
   background-color: #ddf4ff;
   border-color: #1cb0f6;
+  box-shadow: 1px 3px #41a6d6d6;
 }
 
 .choice {
@@ -206,6 +208,7 @@ input:-webkit-autofill:active  {
 .choice:hover {
   background-color: #ddf4ff;
   border-color: #1cb0f6;
+  box-shadow: 1px 3px #41a6d6d6;
 }
 
 .activeChoice {
@@ -222,6 +225,7 @@ input:-webkit-autofill:active  {
   font-size: 19px;
   background-color: #ddf4ff;
   border-color: #1cb0f6;
+  box-shadow: 1px 3px #41a6d6d6;
 }
 
 .inActiveCards{
@@ -253,11 +257,13 @@ input:-webkit-autofill:active  {
   font-size: 20px;
   align-items: center;
   justify-content: center;
+  
 }
 
 .option:hover{
   background-color: #ddf4ff;
   border-color: #1cb0f6;
+  box-shadow: 1px 3px #41a6d6d6;
 }
 
 .activeOption {
@@ -271,6 +277,9 @@ input:-webkit-autofill:active  {
   font-size: 20px;
   background-color: #ddf4ff;
   border-color: #1cb0f6;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 3px #41a6d6d6;
 }
 
 #closebtn {
