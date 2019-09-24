@@ -6,7 +6,6 @@ const BottomSection = styled.div`
   display: flex;
   background: #fff;
   border-top: 2px solid #e5e5e5;
-  height: 174px;  
   color: white;
   text-align: center;
   flex-direction: column;

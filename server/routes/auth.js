@@ -28,7 +28,7 @@ router.post("/", (req, res, next) => {
           jwt.sign(
             { id: user._id },
             process.env.JWT_SECRET,
-            { expiresIn: '1h' },
+            { expiresIn: "4h" },
             (err, token) => {
               if (err) throw err;
               res.json({
@@ -56,5 +56,40 @@ router.get('/user', auth, (req, res) => {
     .select('-password')
     .then(user => res.json(user));
 })
+
+
+// @route   POST api/auth/user
+// @desc    updating user
+// @access  Private
+router.post('/user', auth, (req, res) => {
+
+  const test = User.findById(req.user.id)
+
+  User.findById(req.user.id)
+    .then(user => {
+      if (req.body.email) {
+        user.email = req.body.email;
+        user.username = req.body.username;
+      } else if (req.body.userExp) {
+        debugger
+        user.userExp = Number(req.body.userExp)
+      }
+      try {
+        user.save()
+          .then(() => {
+            debugger
+            res.json('User Updated!')
+          })
+          .catch(err => res.status(400).json('Error' + err));
+      } catch (e) {
+        debugger
+      }
+    })
+    .catch(err => {
+      debugger
+      res.status(400).json('Error' + err)
+    });
+});
+
 
 module.exports = router;
