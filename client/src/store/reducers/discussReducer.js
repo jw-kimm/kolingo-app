@@ -1,7 +1,6 @@
 import { GET_DISCUSSION, POST_DISCUSSION } from '../actions/types'
 
 const discussReducer = (state = [], action) => {
-  Object.freeze(state)
   switch (action.type) {
     case GET_DISCUSSION:
       return action.discuss

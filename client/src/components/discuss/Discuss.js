@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { fetchDiscussion, addDiscussion } from '../../store/actions/discussAction'
 import DiscussForm from './DiscussForm'
 import styled from 'styled-components'
-
 import Navbar from '../lessons/shared/Navbar'
+import Moment from 'react-moment';
 
 const DiscussContainer = styled.div`
   display: flex;
@@ -37,15 +37,17 @@ const Message = styled.p`
   font-size: 15px;
   min-height: 80px;
 `
-const Date = styled.p`
+const Details = styled.p`
   margin-top: 12px;
-  font-size: 12px
+  font-size: 12px;
+  color: grey;
 `
 
 class Discuss extends Component {
   state = {
     title: '',
     content: '',
+    author: '',
   }
 
   componentDidMount() {
@@ -63,7 +65,8 @@ class Discuss extends Component {
     this.props.addDiscussion(this.state)
     this.setState({
       title: '',
-      content: ''
+      content: '',
+      author: '',
     })
   }
 
@@ -73,9 +76,10 @@ class Discuss extends Component {
     discussArr = this.props.discuss
       .map((discuss, i) => (
         <List key={i}>
-          <Header>{discuss.title}</Header>
+          <Header>{discuss.title} </Header>
           <Message>{discuss.content}</Message>
-          <Date>{discuss.created}</Date>
+          <Details>Posted by : {discuss.author} </Details>
+          <Details>Posted on <Moment format='YYYY/MM/DD'>{discuss.created}</Moment></Details>
         </List>
       )).reverse()
     return (
@@ -93,13 +97,13 @@ class Discuss extends Component {
 }
 
 
-const mapStateToProps = ({ discuss }) => {
+const mapStateToProps = (state) => {
   return {
-    discuss: discuss
+    discuss: state.discuss,
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchDiscussion: () => dispatch(fetchDiscussion()),
     addDiscussion: (discuss) => dispatch(addDiscussion(discuss))

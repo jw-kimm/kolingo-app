@@ -10,7 +10,9 @@ const Wrapper = styled.div`
   text-align: center
 `
 
-const SelectCards = ({ choices, onCardClick, selected }) => {
+
+const SelectCards = ({ choices, onCardClick, selected, correct }) => {
+  // debugger
   const result = choices.reduce((acc, item) => {
     const { korean, english } = item
 
@@ -18,7 +20,9 @@ const SelectCards = ({ choices, onCardClick, selected }) => {
     acc.push({ choice: english, value: { ...item, clicked: english } })
 
     return acc
-  }, [])
+  }, []
+  )
+
 
   return (
     <Wrapper>
@@ -27,8 +31,13 @@ const SelectCards = ({ choices, onCardClick, selected }) => {
           let className = 'choice'
           if (selected.includes(choice)) {
             className = 'activeChoice'
+          } else {
+            className = 'choice'
           }
 
+          if (correct.includes(choice)) {
+            className = 'inActiveCards'
+          }
           return (
             <Card
               choice={choice}

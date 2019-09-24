@@ -23,6 +23,7 @@ const NavBar = styled.div`
 
 const NavLinks = styled.li`
   color: #234d90b5;
+  cursor: pointer;
 `
 
 const Button = styled.button`
@@ -36,6 +37,7 @@ const Options = styled.li`
   margin-top: 10px;
   font-size: 18px;
   color: grey;
+  cursor: pointer;
 `
 
 const DropDown = styled.div`

@@ -339,3 +339,7 @@ h4{
   pointer-events: none;
   cursor: none;
 }
+
+.__react_component_tooltip {
+  pointer-events: auto !important;
+}

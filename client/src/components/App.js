@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import '../index.css'
+// import ProtectedRoute from './ProtectedRoute'
 
 import Splash from './splash/Splash'
 import LessonsList from './lessons/LessonsList'
@@ -12,6 +13,11 @@ import Register from './auth/Register';
 import UserPage from './auth/UserPage';
 import Discuss from './discuss/Discuss'
 
+import setAuthToken from '../utils/setAuthToken';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => (
   <>
@@ -22,8 +28,9 @@ const App = () => (
       <Route exact path="/alphabet" component={Alphabet} />
       <Route exact path="/matching" component={Matching} />
       <Route exact path="/advanced" component={Advanced} />
-      <Route exact path="/profile" component={UserPage} />
       <Route exact path="/discuss" component={Discuss} />
+
+      <Route exact path="/profile" component={UserPage} />
     </Switch>
   </>
 );

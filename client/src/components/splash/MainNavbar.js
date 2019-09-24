@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import LoginModal from '../auth/LoginModal'
 import RegisterModal from '../auth/RegisterModal'
-
-
 // import { Redirect } from 'react-router-dom'
 // import { Link } from 'react-router-dom';
-// import Logout from '../auth/Logout'
+import Logout from '../auth/Logout'
 // import { loadUser } from "../../store/actions/authAction";
 
 const NavBar = styled.div`
@@ -88,9 +86,7 @@ class MainNavbar extends Component {
           <strong> {user ? `Welcome ${user.username}` : " "}</strong>
         </Button>
         <Button>
-          <a href="/" >
-            Logout
-        </a>
+          <Logout />
         </Button>
       </>
     )

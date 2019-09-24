@@ -11,6 +11,11 @@ const DiscussSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  author: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   updated: {
     type: Date,
     default: Date.now

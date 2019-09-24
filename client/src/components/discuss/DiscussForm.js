@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Form = styled.form`
   display: flex;
   background-color: #FFF;
-  height: 180px;
+  height: auto;
   width: 700px;
   margin: 42px auto;
   border-radius: 10px;
@@ -13,12 +13,13 @@ const Form = styled.form`
   align-items: center;
 `
 const Input = styled.input`
-  height: 20px;
+  height: 24px;
   width: 300px;
   border: 1px solid rgba(0, 0, 0, 0.125);
   margin-top: 10px;
   float: left;
-  overflow:scroll;
+  overflow: scroll;
+  font-size: 14px;
 `
 const Button = styled.button`
   font-weight: bold;
@@ -54,7 +55,8 @@ const TextBox = styled.textarea`
   border: 1px solid rgba(0, 0, 0, 0.125);
   margin-top: 10px;
   float: left;
-  overflow:hidden;
+  overflow: hidden;
+  font-size: 14px;
 `
 
 const DiscussForm = (props) => {
@@ -74,8 +76,19 @@ const DiscussForm = (props) => {
             value={props.title}
             onChange={props.handleChange}
           />
+          <Label htmlFor="author">
+            <small>Name:</small>
+          </Label>
+          <Input
+            name="author"
+            id="name"
+            type="text"
+            placeholder="Name"
+            value={props.author}
+            onChange={props.handleChange}
+          />
           <Label htmlFor="content">
-            <small>Post a discussion:</small>
+            <small>Type Here ...</small>
           </Label>
           <TextBox
             name="content"
