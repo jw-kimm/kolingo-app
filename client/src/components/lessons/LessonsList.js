@@ -3,7 +3,6 @@ import Navbar from './shared/Navbar'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import styled from 'styled-components'
 
 const Img = styled.img`
@@ -32,12 +31,15 @@ const ListContainer = styled.div`
   justify-content: space-evenly;
 `
 
-const SubList = styled.li`
+const SubList = styled.div`
   cursor: pointer;
   margin-bottom: 40px;
   border: 2px solid rgb(229, 229, 229);
   border-radius: 20px;
   padding: 10px;
+  // :hover{
+  //   <TooltipBox>
+  // }
 `
 
 
@@ -45,9 +47,31 @@ const TooltipBox = styled.div`
   display: inline-table;
   position: relative;
   border: 1px dotted black;
-  margin: 259px;
+  margin: 250px;
   width: 100px;
   left: 25%;
+  padding: 20px;
+  background-color: rgba(184, 181, 181, 0.59);
+  transform: translateY(-50%);
+  border-radius: 24px;
+  :after{
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  }
+}
+`
+
+const TooltipBox2 = styled.div`
+  display: flex
+  border: 1px dotted black;
+  margin: 260px 188px 0 0;
+  width: 100px;
+  float: right;
   padding: 20px;
   background-color: rgba(184, 181, 181, 0.59);
   transform: translateY(-50%);
@@ -78,7 +102,8 @@ const TooltipMessage = styled.div`
 class LessonsList extends Component {
 
   state = {
-    displayTooltp: false,
+    level2Tooltip: false,
+    level3Tooltip: false,
   }
 
   firstUnlock = false
@@ -86,20 +111,25 @@ class LessonsList extends Component {
   thirdUnlock = false
 
   hideTooltip = () => {
-    this.setState({ displayTooltip: false })
-
+    setTimeout(() => {
+      this.setState({
+        level2Tooltip: false,
+        level3Tooltip: false,
+      })
+    }, 300)
   }
   showTooltip = () => {
-    this.setState({ displayTooltip: true })
+    this.setState({
+      level2Tooltip: true,
+      level3Tooltip: true,
+    })
   }
-
 
   render() {
     const { user } = this.props.auth
 
-    let message
+    let message = "Level locked"
 
-    message = "Level Locked"
 
     if (this.props.isAuthenticated) {
       if (user.userExp >= 50) {
@@ -121,20 +151,22 @@ class LessonsList extends Component {
       <>
         <Navbar />
         <ListContainer>
+
           <SubList >
             <Link
               to="/alphabet" className={this.firstUnlock ? "activeLessonsLink" : "lessonsLink"} >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
             </Link>
           </SubList>
-          <SubList >
+
+          <SubList onMouseEnter={() => this.showTooltip()} onMouseLeave={() => this.hideTooltip()} message={message}>
             <Link
               to="/matching" className={this.firstUnlock && this.secondUnlock ? "activeLessonsLink" : "lessonsLink"} >
-              <Img src="cactus.png" alt="" onMouseOut={this.hideTooltip} onMouseOver={this.showTooltip} message={message} style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
+              <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
             </Link>
           </SubList>
 
-          <SubList>
+          <SubList onMouseEnter={() => this.showTooltip()} onMouseLeave={() => this.hideTooltip()} message={message}>
             <Link
               to="/advanced" className={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? "activeLessonsLink" : "lessonsLink"} >
               <Img src="llama.png" alt="" style={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? { filter: "none" } : null} />
@@ -143,10 +175,15 @@ class LessonsList extends Component {
         </ListContainer>
 
         {
-          this.state.displayTooltip ?
+          this.state.level2Tooltip ?
             (<TooltipBox>
               <TooltipMessage>{message}</TooltipMessage>
-            </TooltipBox>) : null
+            </TooltipBox>) :
+            this.state.level3Tooltip ?
+              (<TooltipBox2>
+                <TooltipMessage>{message}</TooltipMessage>
+              </TooltipBox2>)
+              : null
         }
       </>
     )
@@ -155,14 +192,12 @@ class LessonsList extends Component {
 
 LessonsList.propTypes = {
   auth: PropTypes.object.isRequired,
-  // user: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => {
   return {
     auth: state.auth,
     isAuthenticated: state.auth.isAuthenticated,
-    // user: state.user
   }
 }
 

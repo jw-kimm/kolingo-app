@@ -94,6 +94,16 @@ class Advanced extends Component {
   skipQuestion = () => {
     this.setState({ currentQuestionIdx: this.state.currentQuestionIdx + 1 })
   }
+
+  submitScore = () => {
+    const { user } = this.props.auth
+    this.setState({ pageState: "Finished" })
+    if (this.props.isAuthenticated) {
+      const updatedScore = Number(user.userExp) + Number(this.progress)
+      this.props.updateUserExp({ userExp: Number(updatedScore) })
+    }
+  }
+
   render() {
 
     if (_.isEmpty(this.props.advanced)) return null
@@ -143,7 +153,7 @@ class Advanced extends Component {
             />
           </>
           :
-          <div> <GoalPage progress={this.progress} /></div>
+          <div> <GoalPage progress={this.progress} submitScore={this.submitScore} /></div>
         }
       </div>
     )
@@ -153,12 +163,14 @@ class Advanced extends Component {
 
 Advanced.propTypes = {
   fetchAdvanced: PropTypes.func.isRequired,
-  advanced: PropTypes.array.isRequired
+  advanced: PropTypes.array.isRequired,
+  auth: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = ({ advanced }) => {
+const mapStateToProps = ({ advanced, auth }) => {
   return {
     advanced: advanced,
+    auth: auth
   };
 };
 

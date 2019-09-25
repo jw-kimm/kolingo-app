@@ -28,7 +28,7 @@ router.post("/", (req, res, next) => {
           jwt.sign(
             { id: user._id },
             process.env.JWT_SECRET,
-            { expiresIn: "4h" },
+            { expiresIn: '24h' },
             (err, token) => {
               if (err) throw err;
               res.json({
@@ -63,30 +63,29 @@ router.get('/user', auth, (req, res) => {
 // @access  Private
 router.post('/user', auth, (req, res) => {
 
-  const test = User.findById(req.user.id)
+  // const test = User.findById(req.user.id)
 
   User.findById(req.user.id)
     .then(user => {
       if (req.body.email) {
         user.email = req.body.email;
         user.username = req.body.username;
+        user.userExp = Number(req.body.userExp)
       } else if (req.body.userExp) {
         debugger
         user.userExp = Number(req.body.userExp)
       }
       try {
         user.save()
-          .then(() => {
-            debugger
-            res.json('User Updated!')
-          })
-          .catch(err => res.status(400).json('Error' + err));
+        // debugger
+        res.status(201).json('User Updated!')
       } catch (e) {
-        debugger
+        // debugger
+        err => res.status(400).json('Error' + err)
       }
     })
     .catch(err => {
-      debugger
+      // debugger
       res.status(400).json('Error' + err)
     });
 });

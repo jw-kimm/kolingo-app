@@ -1,32 +1,39 @@
-// import axios from 'axios'
-// import { UPDATE_USER, UPDATE_EXP } from './types';
-// import { tokenConfig } from './authAction';
-// import { returnErrors } from './errorAction';
+import axios from 'axios'
+import { UPDATE_USER, UPDATE_EXP } from './types';
+import { returnErrors } from './errorAction';
 
 // const updateUser = user => ({ type: UPDATE_USER, user })
-// // const updateUserPoints = updatePoints => ({ type: UPDATE_EXP, updatePoints })
+const updateUserPoints = userExp => ({ type: UPDATE_EXP, userExp })
 
-// export const updateUserInfo = (user) => (dispatch, getState) => {
-//   axios
-//     .put('/api/auth/user', user, tokenConfig(getState))
-//     .then(res =>
-//       dispatch({
-//         type: UPDATE_USER,
-//         payload: res.data
-//       })
-//     )
-//     .catch(err =>
-//       dispatch(returnErrors(err.response.data, err.response.status))
-//     );
-// }
 
-// //update user exp
-// export const updateUserExp = (user) => async dispatch => {
-//   try {
-//     const newExp = await axios.put('/api/auth/user', user)
-//     dispatch(updateUserPoints(newExp.data))
-//   } catch (err) {
-//     console.err(err)
-//   }
-// }
+export const updateUserInfo = ({ email, username }) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    //Request Body
+    const body = JSON.stringify({ email, username });
 
+    const res = await axios.post('/api/auth/user', body, config);
+
+    dispatch({
+      type: UPDATE_USER,
+      payload: res.data
+    })
+  } catch (err) {
+    dispatch(returnErrors(err.response.data, err.response.status))
+    console.log('badRequest')
+  }
+}
+
+//update user exp
+export const updateUserExp = (userExp) => async dispatch => {
+  try {
+    const { data } = await axios.post('/api/auth/user', userExp)
+    dispatch(updateUserPoints(data))
+  } catch (err) {
+    console.log(err)
+  }
+}

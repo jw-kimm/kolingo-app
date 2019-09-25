@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash'
 
 import { fetchLessons } from '../../../store/actions/lessonActions';
+import { updateUserExp } from '../../../store/actions/userAction'
 
 import SelectCards from './SelectCards'
 import Result from '../shared/Result'
@@ -81,8 +82,16 @@ class Alphabet extends Component {
   }
 
   skipQuestion = () => {
-    //if the question.length return to the main page
     this.setState({ currentQuestionIdx: this.state.currentQuestionIdx + 1 })
+  }
+
+  submitScore = () => {
+    const { user } = this.props.auth
+    this.setState({ pageState: "Finished" })
+    if (this.props.isAuthenticated) {
+      const updatedScore = Number(user.userExp) + Number(this.progress)
+      this.props.updateUserExp({ userExp: Number(updatedScore) })
+    }
   }
 
   render() {
@@ -128,7 +137,7 @@ class Alphabet extends Component {
             />
           </>
           :
-          <div> <GoalPage progress={this.progress} /></div>
+          <div> <GoalPage progress={this.progress} submitScore={this.submitScore} /></div>
         }
       </div>
     )
@@ -137,18 +146,23 @@ class Alphabet extends Component {
 
 Alphabet.propTypes = {
   fetchLessons: PropTypes.func.isRequired,
-  lessons: PropTypes.array.isRequired
+  lessons: PropTypes.array.isRequired,
+  updateUserExp: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = ({ lesson }) => {
+const mapStateToProps = (state) => {
   return {
-    lessons: lesson,
+    lessons: state.lesson,
+    isAuthenticated: state.auth.isAuthenticated,
+    auth: state.auth
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchLessons: () => dispatch(fetchLessons()),
+    updateUserExp: (userExp) => dispatch(updateUserExp(userExp)),
   };
 };
 
