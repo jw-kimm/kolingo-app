@@ -64,46 +64,41 @@ const Button = styled.button`
   margin-top: 24px;
 `
 
+
 class UserPage extends Component {
-  state = {
-    username: "",
-    email: "",
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     username: "",
+  //     email: "",
+  //   };
+  // }
 
   // componentDidMount() {
-  //   this.props.loadUser()
-  //   const { user } = this.props.auth
   //   this.setState({
-  //     username: user.username,
-  //     email: user.email
+  //     username: this.props.auth.user.username,
+  //     email: this.props.auth.user.email,
   //   })
   // }
 
-  getCurrentUser = () => {
-    //bring current user data
-    this.setState({
-      username: this.state.username,
-      email: this.state.email
-    })
-  }
 
-  handleInputChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+  // handleInputChange = (e) => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value
+  //   });
+  // };
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { username, email } = this.state;
+  // onSubmit = (e) => {
+  //   e.preventDefault();
+  //   const { username, email } = this.state;
 
-    const user = {
-      username: username.username,
-      email: email.email,
-    }
+  //   const user = {
+  //     username: username.username,
+  //     email: email.email,
+  //   }
 
-    this.props.updateUserInfo(user)
-  }
+  //   this.props.updateUserInfo(user)
+  // }
 
   render() {
     const { user } = this.props.auth
@@ -124,8 +119,9 @@ class UserPage extends Component {
                       <FormInput
                         type="text"
                         name="username"
-                        value={this.state.username}
+                        value={user.username}
                         onChange={this.handleInputChange}
+                        readOnly
                       />
                     </div>
                     <div>
@@ -133,8 +129,9 @@ class UserPage extends Component {
                       <FormInput
                         type="text"
                         name="email"
-                        value={this.state.email}
+                        value={user.email}
                         onChange={this.handleInputChange}
+                        readOnly
                       />
                     </div>
 
@@ -145,12 +142,13 @@ class UserPage extends Component {
                         name="email"
                         value={user.userExp}
                         readOnly
+                        style={{ color: "darkgrey" }}
                       />
                     </div>
-                    <div style={{ textAlign: "center" }}>
+                    {/* <div style={{ textAlign: "center" }}>
                       <Button type="submit" value="Save Changes" >
                         Save Changes </Button>
-                    </div>
+                    </div> */}
 
                   </UserForm>
 
@@ -168,6 +166,7 @@ class UserPage extends Component {
 UserPage.propTypes = {
   auth: PropTypes.object.isRequired,
   updateUserInfo: PropTypes.func.isRequired,
+  loadUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -178,4 +177,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updateUserInfo })(UserPage);
+const mapDispatchToProps = dispatch => {
+  return {
+    updateUserInfo: () => dispatch(updateUserInfo()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

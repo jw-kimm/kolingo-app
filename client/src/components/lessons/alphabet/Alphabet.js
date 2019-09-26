@@ -36,7 +36,7 @@ class Alphabet extends Component {
     currentAnswer: null,
     currentQuestionIdx: 0,
   }
-
+  score = 0
   progress = 0
 
   componentDidMount() {
@@ -58,8 +58,10 @@ class Alphabet extends Component {
         pageState: 'Correct',
       })
       this.progress += 25
+      this.score += 25
     } else {
       this.setState({ pageState: 'Wrong' })
+      this.progress += 25
     }
   }
 
@@ -89,7 +91,7 @@ class Alphabet extends Component {
     const { user } = this.props.auth
     this.setState({ pageState: "Finished" })
     if (this.props.isAuthenticated) {
-      const updatedScore = Number(user.userExp) + Number(this.progress)
+      const updatedScore = Number(user.userExp) + Number(this.score)
       this.props.updateUserExp({ userExp: Number(updatedScore) })
     }
   }
@@ -137,7 +139,7 @@ class Alphabet extends Component {
             />
           </>
           :
-          <div> <GoalPage progress={this.progress} submitScore={this.submitScore} /></div>
+          <div> <GoalPage score={this.score} submitScore={this.submitScore} /></div>
         }
       </div>
     )

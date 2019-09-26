@@ -1,35 +1,26 @@
-// import axios from 'axios'
+import { UPDATE_USER, UPDATE_EXP } from '../actions/types'
 
-// import {UPDATE_USERNAME, UPDATE_EMAIL}
+/**
+* INITIAL STATE
+*/
 
+const defaultUser = {}
 
-// import { GET_USER, USER_LOADING } from '../actions/types'
+/**
+* REDUCER
+*/
 
-// /**
-// * INITIAL STATE
-// */
-
-// const defaultUser = {
-//   user: {},
-//   loading: false
-// }
-
-// /**
-// * REDUCER
-// */
-
-// export default function (state = defaultUser, action) {
-//   switch (action.type) {
-//     case GET_USER:
-//       return action.user
-//     // {
-//     //   ...state,
-//     //   users: action.payload,
-//     //   loading: false
-//     // }
-//     case USER_LOADING:
-//       return { ...state, loading: true }
-//     default:
-//       return state
-//   }
-// }
+export default function (state = defaultUser, action) {
+  Object.freeze(state)
+  switch (action.type) {
+    case UPDATE_USER:
+      return action.user
+    case UPDATE_EXP:
+      return {
+        ...state,
+        userExp: action.userExp
+      }
+    default:
+      return state
+  }
+}

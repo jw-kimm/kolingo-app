@@ -42,91 +42,13 @@ const SubList = styled.div`
   // }
 `
 
-
-const TooltipBox = styled.div`
-  display: inline-table;
-  position: relative;
-  border: 1px dotted black;
-  margin: 250px;
-  width: 100px;
-  left: 25%;
-  padding: 20px;
-  background-color: rgba(184, 181, 181, 0.59);
-  transform: translateY(-50%);
-  border-radius: 24px;
-  cursor: pointer;
-  :after{
-  position: absolute;
-  top: 100%; /* At the bottom of the tooltip */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black transparent transparent transparent;
-  }
-}
-`
-
-const TooltipBox2 = styled.div`
-  display: flex
-  border: 1px dotted black;
-  margin: 260px 188px 0 0;
-  width: 100px;
-  float: right;
-  padding: 20px;
-  cursor: pointer;
-  background-color: rgba(184, 181, 181, 0.59);
-  transform: translateY(-50%);
-  border-radius: 24px;
-  :after{
-  position: absolute;
-  top: 100%; /* At the bottom of the tooltip */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black transparent transparent transparent;
-  }
-}
-`
-
-const TooltipMessage = styled.div`
-  border-radius: 3px;
-  color: white;
-  font-size: .75rem;
-  line-height: 1.4;
-  padding: .75em;
-  text-align: center;
-  font-size: 16px;
-  width: 100px;
-`
-
 class LessonsList extends Component {
-
-  state = {
-    level2Tooltip: false,
-    level3Tooltip: false,
-  }
 
   firstUnlock = false
   secondUnlock = false
   thirdUnlock = false
+  className = "lessonsLink"
 
-  hideTooltip = () => {
-    setTimeout(() => {
-      this.setState({
-        level2Tooltip: false,
-        level3Tooltip: false,
-      })
-    }, 1000)
-  }
-
-  showTooltip = () => {
-    this.setState({
-      level2Tooltip: true,
-      level3Tooltip: true,
-    })
-  }
 
   render() {
     const { user } = this.props.auth
@@ -134,15 +56,18 @@ class LessonsList extends Component {
     let message = "Level locked"
 
     if (this.props.isAuthenticated) {
-      if (user.userExp >= 50) {
+      if (user.userExp >= 175) {
         this.firstUnlock = true
         this.secondUnlock = true
         this.thirdUnlock = true
-      } else if (user.userExp >= 30) {
+        this.className = "activeLessonsLink"
+      } else if (user.userExp >= 75) {
         this.firstUnlock = true
         this.secondUnlock = true
+        this.className = "activeLessonsLink"
       } else {
         this.firstUnlock = true
+        this.className = "activeLessonsLink"
       }
     } else {
       this.firstUnlock = true
@@ -156,40 +81,29 @@ class LessonsList extends Component {
 
           <SubList >
             <Link
-              to="/alphabet" className={this.firstUnlock ? "activeLessonsLink" : "lessonsLink"} >
+              to="/alphabet" className={this.className} >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
+              <p style={!this.firstUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</p>
+
             </Link>
           </SubList>
 
-          <SubList onMouseEnter={() => this.showTooltip()} onMouseLeave={() => this.hideTooltip()} message={message}>
+          <SubList >
             <Link
-              to="/matching" className={this.firstUnlock && this.secondUnlock ? "activeLessonsLink" : "lessonsLink"} >
+              to="/matching" className={this.className} style={!this.secondUnlock ? { pointerEvents: "none" } : null} >
               <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
+              <p style={!this.secondUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</p>
             </Link>
           </SubList>
 
-          <SubList onMouseEnter={() => this.showTooltip()} onMouseLeave={() => this.hideTooltip()} message={message}>
+          <SubList >
             <Link
-              to="/advanced" className={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? "activeLessonsLink" : "lessonsLink"} >
+              to="/advanced" className={this.className} style={!this.thirdUnlock ? { pointerEvents: "none" } : null}>
               <Img src="llama.png" alt="" style={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? { filter: "none" } : null} />
+              <p style={!this.thirdUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</p>
             </Link>
           </SubList>
         </ListContainer>
-
-        {
-          this.state.level2Tooltip ?
-            (<TooltipBox>
-              <TooltipMessage>{message}</TooltipMessage>
-            </TooltipBox>)
-            : null
-        }
-        {
-          this.state.level3Tooltip ?
-            (<TooltipBox2>
-              <TooltipMessage>{message}</TooltipMessage>
-            </TooltipBox2>)
-            : null
-        }
       </>
     )
   }

@@ -44,7 +44,7 @@ class Advanced extends Component {
   }
 
   progress = 0
-
+  score = 0
 
   componentDidMount() {
     this.props.fetchAdvanced();
@@ -67,8 +67,10 @@ class Advanced extends Component {
         pageState: 'Correct',
       })
       this.progress += 25
+      this.score += 25
     } else {
       this.setState({ pageState: 'Wrong' })
+      this.progress += 25
     }
   }
 
@@ -99,7 +101,7 @@ class Advanced extends Component {
     const { user } = this.props.auth
     this.setState({ pageState: "Finished" })
     if (this.props.isAuthenticated) {
-      const updatedScore = Number(user.userExp) + Number(this.progress)
+      const updatedScore = Number(user.userExp) + Number(this.score)
       this.props.updateUserExp({ userExp: Number(updatedScore) })
     }
   }

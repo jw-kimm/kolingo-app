@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import _ from 'lodash'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import SelectCards from './SelectCards'
 import Question from '../shared/Question'
@@ -35,6 +37,7 @@ class Matching extends React.Component {
     };
 
     this.progress = 0
+    this.score = 0
     this.shuffledCards = this.shuffleCards()
   }
 
@@ -75,6 +78,7 @@ class Matching extends React.Component {
           pageState: 'Progress'
         })
         this.progress += 20
+        this.score += 20
         if (this.progress === 100) {
           this.setState({
             pageState: 'check'
@@ -84,6 +88,7 @@ class Matching extends React.Component {
         this.setState({
           selected: [selected[0], clicked]
         });
+        this.progress += 20
         setTimeout(() => {
           this.setState({
             selected: [],
@@ -126,7 +131,7 @@ class Matching extends React.Component {
     const { user } = this.props.auth
     this.setState({ pageState: "Finished" })
     if (this.props.isAuthenticated) {
-      const updatedScore = Number(user.userExp) + Number(this.progress)
+      const updatedScore = Number(user.userExp) + Number(this.score)
       this.props.updateUserExp({ userExp: Number(updatedScore) })
     }
   }
@@ -171,4 +176,15 @@ class Matching extends React.Component {
 
 }
 
-export default Matching
+Matching.propTypes = {
+  auth: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = ({ auth }) => {
+  return {
+    auth: auth
+  };
+};
+
+
+export default connect(mapStateToProps, null)(Matching);

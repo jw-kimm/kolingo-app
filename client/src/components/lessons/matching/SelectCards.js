@@ -12,22 +12,11 @@ const Wrapper = styled.div`
 
 
 const SelectCards = ({ choices, onCardClick, selected, correct }) => {
-  // debugger
-  const result = choices.reduce((acc, item) => {
-    const { korean, english } = item
-
-    acc.push({ choice: korean, value: { ...item, clicked: korean } })
-    acc.push({ choice: english, value: { ...item, clicked: english } })
-
-    return acc
-  }, []
-  )
-
 
   return (
     <Wrapper>
       {
-        result.map(({ choice, value }) => {
+        choices.map(({ choice, value, i }) => {
           let className = 'choice'
           if (selected.includes(choice)) {
             className = 'activeChoice'
@@ -40,6 +29,7 @@ const SelectCards = ({ choices, onCardClick, selected, correct }) => {
           }
           return (
             <Card
+              key={i}
               choice={choice}
               value={value}
               onClick={onCardClick}

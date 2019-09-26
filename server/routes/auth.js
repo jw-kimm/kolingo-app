@@ -62,9 +62,6 @@ router.get('/user', auth, (req, res) => {
 // @desc    updating user
 // @access  Private
 router.post('/user', auth, (req, res) => {
-
-  // const test = User.findById(req.user.id)
-
   User.findById(req.user.id)
     .then(user => {
       if (req.body.email) {
@@ -72,20 +69,16 @@ router.post('/user', auth, (req, res) => {
         user.username = req.body.username;
         user.userExp = Number(req.body.userExp)
       } else if (req.body.userExp) {
-        debugger
         user.userExp = Number(req.body.userExp)
       }
       try {
         user.save()
-        // debugger
         res.status(201).json('User Updated!')
       } catch (e) {
-        // debugger
         err => res.status(400).json('Error' + err)
       }
     })
     .catch(err => {
-      // debugger
       res.status(400).json('Error' + err)
     });
 });
