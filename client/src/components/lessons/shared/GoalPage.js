@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom';
-
 import styled from 'styled-components'
+
 
 const Result = styled.div`
   display: flex;
@@ -29,23 +29,33 @@ const ResultP = styled.p`
 `
 
 const Img = styled.img`
-  width: 150px,
+  width: 150px;
   margin: 76px 0 30px 0
 `
-const GoalPage = ({ progress }) => {
+
+
+const GoalPage = ({ score, submitScore }) => {
+
+  let message
+
+  if (score >= 0) {
+    message = "You can do better next time! Try again!"
+  } else if (score >= 50) {
+    message = "GREAT! Ready to Move on?"
+  } else if (score === 100) {
+    message = "AWESOME! Lesson Completed! Ready to move on to the next level?"
+  }
 
   return (
     <Result>
-      {/* {isAuthenticated ? ():()} */}
       <Img src="star.png" alt="" />
-      <ResultHeader> Lesson Completed! {progress}XP 🎉</ResultHeader>
-      <ResultP> You met your daily goal!! </ResultP>
+      <ResultHeader> {score}XP EARNED 🎉</ResultHeader>
+      <ResultP>{message}</ResultP>
       <Link to="/lessons" id="nextLesson" className="pull-right"
-        style={{ backgroundColor: '#78c800', color: "white", textDecorationLine: 'none', borderRadius: "1.25rem" }}>
-        Continue </Link>
-      {/* <Link to="/lessons" id="nextLesson" className="pull-right"
-        style={{ backgroundColor: '#78c800', color: "white", textDecorationLine: 'none', borderRadius: "1.25rem" }}>
-        Redo</Link> */}
+        style={{ backgroundColor: '#78c800', color: "white", textDecorationLine: 'none', borderRadius: "1.25rem" }}
+        onClick={() => submitScore(score)}>
+        Continue
+      </Link>
     </Result>
   )
 }
