@@ -77,7 +77,6 @@ class MainNavbar extends Component {
       </>
     )
     const authLink = (
-      //avatar to contain this info 
       <>
         <Button>
           <strong> {user ? `Welcome ${user.username}` : " "}</strong>

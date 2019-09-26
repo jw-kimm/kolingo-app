@@ -57,9 +57,6 @@ const Menu = styled.div`
   cursor: pointer
 `
 
-
-// const timeoutLength = 300;
-
 class Navbar extends Component {
   state = {
     showMenu: false,

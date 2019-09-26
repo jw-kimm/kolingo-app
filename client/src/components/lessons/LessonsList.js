@@ -37,9 +37,12 @@ const SubList = styled.div`
   border: 2px solid rgb(229, 229, 229);
   border-radius: 20px;
   padding: 10px;
-  // :hover{
-  //   <TooltipBox>
-  // }
+`
+
+const SubHeader = styled.p`
+  color: #8c8888;
+  font-weight: bold;
+  font-size: 20px;
 `
 
 class LessonsList extends Component {
@@ -83,7 +86,7 @@ class LessonsList extends Component {
             <Link
               to="/alphabet" className={this.className} >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
-              <p style={!this.firstUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</p>
+              <SubHeader style={!this.firstUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</SubHeader>
 
             </Link>
           </SubList>
@@ -92,7 +95,7 @@ class LessonsList extends Component {
             <Link
               to="/matching" className={this.className} style={!this.secondUnlock ? { pointerEvents: "none" } : null} >
               <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
-              <p style={!this.secondUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</p>
+              <SubHeader style={!this.secondUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</SubHeader>
             </Link>
           </SubList>
 
@@ -100,7 +103,7 @@ class LessonsList extends Component {
             <Link
               to="/advanced" className={this.className} style={!this.thirdUnlock ? { pointerEvents: "none" } : null}>
               <Img src="llama.png" alt="" style={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? { filter: "none" } : null} />
-              <p style={!this.thirdUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</p>
+              <SubHeader style={!this.thirdUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</SubHeader>
             </Link>
           </SubList>
         </ListContainer>

@@ -73,7 +73,6 @@ class RegisterModal extends Component {
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
-      // Check for register error
       if (error.id === 'REGISTER_FAIL') {
         this.setState({ msg: error.msg.msg });
       } else {
@@ -91,14 +90,11 @@ class RegisterModal extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, email, password } = this.state;
-    // Create user object
     const newUser = {
       username,
       email,
       password
     };
-    console.log(newUser);
-    // Attempt to register
     this.props.register(newUser);
   };
 

@@ -153,8 +153,6 @@ class Matching extends React.Component {
               <Question prompt={prompt} />
               <SelectCards
                 choices={this.shuffledCards}
-                // value={value}
-                // choices={this.shuffleCards(choices)}
                 onCardClick={this.onCardClick}
                 selected={this.state.selected}
                 correct={this.state.correct}

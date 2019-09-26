@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components'
 import Navbar from '../lessons/shared/Navbar'
-import { updateUserInfo } from '../../store/actions/userAction';
 
 const PageContent = styled.div`
   display: flex;
@@ -66,39 +65,6 @@ const Button = styled.button`
 
 
 class UserPage extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     username: "",
-  //     email: "",
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     username: this.props.auth.user.username,
-  //     email: this.props.auth.user.email,
-  //   })
-  // }
-
-
-  // handleInputChange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   });
-  // };
-
-  // onSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { username, email } = this.state;
-
-  //   const user = {
-  //     username: username.username,
-  //     email: email.email,
-  //   }
-
-  //   this.props.updateUserInfo(user)
-  // }
 
   render() {
     const { user } = this.props.auth
@@ -145,11 +111,6 @@ class UserPage extends Component {
                         style={{ color: "darkgrey" }}
                       />
                     </div>
-                    {/* <div style={{ textAlign: "center" }}>
-                      <Button type="submit" value="Save Changes" >
-                        Save Changes </Button>
-                    </div> */}
-
                   </UserForm>
 
                 </div>
@@ -165,8 +126,6 @@ class UserPage extends Component {
 
 UserPage.propTypes = {
   auth: PropTypes.object.isRequired,
-  updateUserInfo: PropTypes.func.isRequired,
-  loadUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -177,10 +136,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    updateUserInfo: () => dispatch(updateUserInfo()),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+
+export default connect(mapStateToProps, null)(UserPage);

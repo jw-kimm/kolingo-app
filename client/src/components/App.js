@@ -30,7 +30,7 @@ const App = () => (
       <Route exact path="/advanced" component={Advanced} />
       <Route exact path="/discuss" component={Discuss} />
 
-      <Route exact path="/profile" component={UserPage} />
+      <Route exactpath="/profile" component={UserPage} />
     </Switch>
   </>
 );
