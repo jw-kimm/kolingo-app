@@ -40,7 +40,7 @@ const GoalPage = ({ score, submitScore }) => {
 
   if (score >= 0) {
     message = "You can do better next time! Try again!"
-  } else if (score >= 50) {
+  } else if (score >= 60) {
     message = "GREAT! Ready to Move on?"
   } else if (score === 100) {
     message = "AWESOME! Lesson Completed! Ready to move on to the next level?"

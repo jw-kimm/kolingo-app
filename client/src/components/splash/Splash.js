@@ -36,7 +36,7 @@ const Border = styled.div`
 `
 
 const ContentBottom = styled.div`
-  height: 300px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   padding: 24px;
@@ -47,29 +47,12 @@ const ContentBottom = styled.div`
 const SectionTwoTop = styled.section`
   color: white;
   display: inline-flex;
-  margin-top: 10px;
+  margin-top: 48px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `
-const SectionTwoBottom = styled.section`
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: auto;
-  color: #fff;
-  font-size: 13px;
-  text-align: left;
-`
-const SectionTwoDiv = styled.section`
-  padding: 48px 24px 48px 0;
-  width: 170px;
-  height: 130px;
-  text-align: left;
-  margin-bottom: 10px;
-  line-height: 1.5rem;
-`
+
 
 const Button = styled.div`
   border: none;
@@ -143,21 +126,6 @@ class Splash extends Component {
               <Link to="/register" style={{ fontSize: 15, marginBottom: 454, width: 100 }} >GET STARTED</Link>
             </Button>
           </SectionTwoTop>
-          <SectionTwoBottom>
-            <SectionTwoDiv >
-              <h4> About </h4>
-              <li> <a href="/About">  About </a></li>
-            </SectionTwoDiv>
-            <SectionTwoDiv >
-              <h4> Product</h4>
-              <li> <a href="/lessons"> Kolingo </a> </li>
-              <li> <a href="/Dictionary"> Dictionary </a> </li>
-            </SectionTwoDiv>
-            <SectionTwoDiv >
-              <h4>Help &amp; Support</h4>
-              <li><a href="/About"> Kolingo FAQs </a></li>
-            </SectionTwoDiv>
-          </SectionTwoBottom>
         </ContentBottom>
       </>
     );

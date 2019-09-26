@@ -54,6 +54,7 @@ class LessonsList extends Component {
 
 
   render() {
+    debugger
     const { user } = this.props.auth
 
     let message = "Level locked"
@@ -64,7 +65,7 @@ class LessonsList extends Component {
         this.secondUnlock = true
         this.thirdUnlock = true
         this.className = "activeLessonsLink"
-      } else if (user.userExp >= 75) {
+      } else if (user.userExp >= 80) {
         this.firstUnlock = true
         this.secondUnlock = true
         this.className = "activeLessonsLink"
@@ -81,13 +82,11 @@ class LessonsList extends Component {
       <>
         <Navbar />
         <ListContainer>
-
           <SubList >
             <Link
               to="/alphabet" className={this.className} >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
-              <SubHeader style={!this.firstUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</SubHeader>
-
+              <SubHeader style={this.firstUnlock ? { visibility: "hidden" } : { visibility: "visible" }}> {message}</SubHeader>
             </Link>
           </SubList>
 

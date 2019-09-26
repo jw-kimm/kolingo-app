@@ -119,6 +119,7 @@ class LoginModal extends Component {
 
     if (isAuthenticated) {
       this.props.onClose()
+      window.location.reload();
       return < Redirect to="/lessons" />
     }
 

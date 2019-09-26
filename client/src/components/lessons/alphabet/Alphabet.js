@@ -57,11 +57,11 @@ class Alphabet extends Component {
       this.setState({
         pageState: 'Correct',
       })
-      this.progress += 25
-      this.score += 25
+      this.progress += 20
+      this.score += 20
     } else {
       this.setState({ pageState: 'Wrong' })
-      this.progress += 25
+      this.progress += 20
     }
   }
 
