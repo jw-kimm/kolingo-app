@@ -247,7 +247,7 @@ input:-webkit-autofill:active  {
 
 .option {
   display: flex;
-  width: 80px;
+  width: 105px;
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -268,7 +268,7 @@ input:-webkit-autofill:active  {
 
 .activeOption {
   display: flex;
-  width: 80px;
+  width: 105px;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 1.25rem;
@@ -340,6 +340,3 @@ h4{
   cursor: none;
 }
 
-.__react_component_tooltip {
-  pointer-events: auto !important;
-}

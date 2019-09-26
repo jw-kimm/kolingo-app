@@ -29,7 +29,7 @@ const SubHeader = styled.div`
 `
 
 const PromptBlock = styled.div`
-  margin-top: 60px;
+  margin-top: 36px;
   display: inline-block;
   align-items: center;
   height: 300px;
@@ -49,8 +49,6 @@ class Advanced extends Component {
   componentDidMount() {
     this.props.fetchAdvanced();
   }
-
-
 
   onCardClick = ({ choice, answer }) => {
     this.combination = { choice, answer }
@@ -152,10 +150,11 @@ class Advanced extends Component {
               handleOnClick={this.handleOnClick}
               currentAnswer={this.state.currentAnswer}
               skipQuestion={this.skipQuestion}
+              answer={answer}
             />
           </>
           :
-          <div> <GoalPage progress={this.progress} submitScore={this.submitScore} /></div>
+          <div> <GoalPage score={this.score} submitScore={this.submitScore} /></div>
         }
       </div>
     )

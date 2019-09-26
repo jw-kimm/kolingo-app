@@ -64,14 +64,11 @@ class LessonsList extends Component {
         this.firstUnlock = true
         this.secondUnlock = true
         this.thirdUnlock = true
-        this.className = "activeLessonsLink"
       } else if (user.userExp >= 80) {
         this.firstUnlock = true
         this.secondUnlock = true
-        this.className = "activeLessonsLink"
       } else {
         this.firstUnlock = true
-        this.className = "activeLessonsLink"
       }
     } else {
       this.firstUnlock = true
@@ -84,15 +81,15 @@ class LessonsList extends Component {
         <ListContainer>
           <SubList >
             <Link
-              to="/alphabet" className={this.className} >
+              to="/alphabet"  >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
-              <SubHeader style={this.firstUnlock ? { visibility: "hidden" } : { visibility: "visible" }}> {message}</SubHeader>
+              <SubHeader style={this.firstUnlock ? { visibility: "hidden" } : { visibility: "visible", pointerEvents: "none" }}> {message}</SubHeader>
             </Link>
           </SubList>
 
           <SubList >
             <Link
-              to="/matching" className={this.className} style={!this.secondUnlock ? { pointerEvents: "none" } : null} >
+              to="/matching" style={!this.secondUnlock ? { pointerEvents: "none" } : null} >
               <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
               <SubHeader style={!this.secondUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</SubHeader>
             </Link>
@@ -100,7 +97,7 @@ class LessonsList extends Component {
 
           <SubList >
             <Link
-              to="/advanced" className={this.className} style={!this.thirdUnlock ? { pointerEvents: "none" } : null}>
+              to="/advanced" style={!this.thirdUnlock ? { pointerEvents: "none" } : null}>
               <Img src="llama.png" alt="" style={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? { filter: "none" } : null} />
               <SubHeader style={!this.thirdUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</SubHeader>
             </Link>

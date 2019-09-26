@@ -136,6 +136,7 @@ class Alphabet extends Component {
               handleOnClick={this.handleOnClick}
               currentAnswer={this.state.currentAnswer}
               skipQuestion={this.skipQuestion}
+              answer={answer}
             />
           </>
           :

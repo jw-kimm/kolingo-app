@@ -29,8 +29,7 @@ const App = () => (
       <Route exact path="/matching" component={MatchingContainer} />
       <Route exact path="/advanced" component={Advanced} />
       <Route exact path="/discuss" component={Discuss} />
-
-      <Route exactpath="/profile" component={UserPage} />
+      <Route exact path="/profile" component={UserPage} />
     </Switch>
   </>
 );

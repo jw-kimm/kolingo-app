@@ -77,8 +77,8 @@ class Matching extends React.Component {
           correct: correct.concat([selected[0], clicked]),
           pageState: 'Progress'
         })
-        this.progress += 25
-        this.score += 25
+        this.progress += 20
+        this.score += 20
         if (this.progress === 100) {
           this.setState({
             pageState: 'check'
@@ -88,7 +88,7 @@ class Matching extends React.Component {
         this.setState({
           selected: [selected[0], clicked]
         });
-        this.progress += 25
+        this.progress += 20
         setTimeout(() => {
           this.setState({
             selected: [],
@@ -166,7 +166,7 @@ class Matching extends React.Component {
             />
           </>
           :
-          <div> <GoalPage progress={this.progress} submitScore={this.submitScore} /></div>
+          <div> <GoalPage score={this.score} submitScore={this.submitScore} /></div>
         }
       </div>
     )

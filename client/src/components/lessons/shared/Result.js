@@ -46,13 +46,22 @@ const MessageHeader = styled.div`
   justify-content: space-around;
   height: 200px;
 `
-
+const ShowAnswer = styled.div`
+  text-align: center;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 200px;
+  color: rgba(234, 43, 43, 0.78);
+`
 
 const Result = ({
   pageState, // string of either Incorrect, Correct, Progress
   handleOnClick,// callback
   currentAnswer,
   skipQuestion,
+  answer
 }) => {
 
   let color
@@ -91,7 +100,9 @@ const Result = ({
             Skip
           </Button>
         }
-
+        <ShowAnswer style={pageState === "Wrong" ? { visibility: "visible" } : { visibility: "hidden" }}>
+          Correct answer is: {answer}
+        </ShowAnswer>
         <Button
           type="button"
           onClick={() => handleOnClick()}
@@ -107,6 +118,7 @@ const Result = ({
                 }}
         > {buttonContent}
         </Button>
+
       </MessageHeader>
     </BottomSection >
   )
