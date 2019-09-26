@@ -54,6 +54,7 @@ const TooltipBox = styled.div`
   background-color: rgba(184, 181, 181, 0.59);
   transform: translateY(-50%);
   border-radius: 24px;
+  cursor: pointer;
   :after{
   position: absolute;
   top: 100%; /* At the bottom of the tooltip */
@@ -73,6 +74,7 @@ const TooltipBox2 = styled.div`
   width: 100px;
   float: right;
   padding: 20px;
+  cursor: pointer;
   background-color: rgba(184, 181, 181, 0.59);
   transform: translateY(-50%);
   border-radius: 24px;
@@ -116,8 +118,9 @@ class LessonsList extends Component {
         level2Tooltip: false,
         level3Tooltip: false,
       })
-    }, 300)
+    }, 1000)
   }
+
   showTooltip = () => {
     this.setState({
       level2Tooltip: true,
@@ -129,7 +132,6 @@ class LessonsList extends Component {
     const { user } = this.props.auth
 
     let message = "Level locked"
-
 
     if (this.props.isAuthenticated) {
       if (user.userExp >= 50) {
@@ -178,12 +180,15 @@ class LessonsList extends Component {
           this.state.level2Tooltip ?
             (<TooltipBox>
               <TooltipMessage>{message}</TooltipMessage>
-            </TooltipBox>) :
-            this.state.level3Tooltip ?
-              (<TooltipBox2>
-                <TooltipMessage>{message}</TooltipMessage>
-              </TooltipBox2>)
-              : null
+            </TooltipBox>)
+            : null
+        }
+        {
+          this.state.level3Tooltip ?
+            (<TooltipBox2>
+              <TooltipMessage>{message}</TooltipMessage>
+            </TooltipBox2>)
+            : null
         }
       </>
     )
