@@ -41,7 +41,6 @@ export const login = ({ email, password }) => dispatch => {
   }
   //Request Body
   const body = JSON.stringify({ email, password });
-  console.log(body, "body")
   axios
     .post('/api/auth', body, config)
     .then(res =>

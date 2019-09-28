@@ -10,7 +10,6 @@ const getAdvanced = advanced => ({
 export const fetchAdvanced = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/advanced')
-    console.log('INTHUNK', data)
     dispatch(getAdvanced(data));
   } catch (err) {
     console.log(err)

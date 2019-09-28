@@ -24,6 +24,7 @@ const NavBar = styled.div`
 const NavLinks = styled.li`
   color: #234d90b5;
   cursor: pointer;
+  font-size: 18px;
 `
 
 const Button = styled.button`
@@ -123,10 +124,10 @@ class Navbar extends Component {
             </h1>
           </Link>
           <NavLinks>
-            <img style={{ height: 35 }}
-              alt=""
-              src='/learncolor.png' />
             <a href="/lessons">
+              <img style={{ height: 35 }}
+                alt=""
+                src='/learncolor.png' />
               LEARN</a>
           </NavLinks>
           <NavLinks>

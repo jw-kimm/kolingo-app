@@ -115,9 +115,13 @@ class LoginModal extends Component {
   }
 
   render() {
+    debugger
     const { isAuthenticated } = this.props;
 
     if (isAuthenticated) {
+      if (window.location.pathname === '/') {
+        return < Redirect to="/lessons" />
+      }
       this.props.onClose()
       window.location.reload();
       return < Redirect to="/lessons" />

@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 
 
 const Result = styled.div`
@@ -54,14 +55,16 @@ const ButtonDiv = styled.div`
 `
 
 const GoalPage = ({ score, submitScore }) => {
-
+  debugger
   let message
 
   if (score <= 50) {
     message = "You can do better next time! Try again!"
-  } else if (score <= 70) {
+  } else if (score <= 60) {
     message = "GREAT! Ready to Move on?"
-  } else if (score === 100) {
+  } else if (score === 100 && window.location.pathname === "/advanced") {
+    message = "AWESOME! All Lessons Completed!"
+  } else {
     message = "AWESOME! Lesson Completed! Ready to move on to the next level?"
   }
 

@@ -64,22 +64,22 @@ class MainNavbar extends Component {
 
     const guestLink = (
       <>
-        <Button>
-          <a href="/" onClick={this.showLoginModal} style={{ fontSize: 15 }}>
+        <a href="/" onClick={this.showLoginModal} style={{ fontSize: 15 }}>
+          <Button>
             Login
-            </a>
         </Button>
-        <Button >
-          <a href="/" onClick={this.showRegisterModal} style={{ fontSize: 15 }}>
+        </a>
+        <a href="/" onClick={this.showRegisterModal} style={{ fontSize: 15 }}>
+          <Button >
             Register
-            </a>
         </Button>
+        </a>
       </>
     )
     const authLink = (
       <>
         <Button>
-          <strong> {user ? `Welcome ${user.username}` : " "}</strong>
+          <a href="/profile"><strong> {user ? `Welcome ${user.username}` : " "}</strong> </a>
         </Button>
         <Button>
           <Logout />

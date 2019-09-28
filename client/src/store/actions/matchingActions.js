@@ -10,7 +10,6 @@ const getMaching = matching => ({
 export const fetchMatching = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/matching')
-    console.log('INTHUNK', data)
     dispatch(getMaching(data));
   } catch (err) {
     console.log(err)

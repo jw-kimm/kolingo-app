@@ -12,12 +12,11 @@ const PageContent = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 800px;
+  width: 90%;
 `
 const ContainerHeader = styled.div`
-  text-align: left;
+  text-align: center;
   font-size: 30px;
-  width: 200px;
   margin-top: 60px;
   color: #a5a5a5;
 `
@@ -25,44 +24,49 @@ const ContainerHeader = styled.div`
 const UserForm = styled.form`
   background-color: #FFF;
   height: 300px;
-  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 `
 
 const Label = styled.label`
   font-size: 20px;
   color: #848080d6;
-  width: 200px;
+  width: 125px;
   text-align: right;
   clear: both;
   float: left;
   margin: 4px 10px 12px 16px;
+  pointer-events: none;
 `
 
 const FormInput = styled.input`
   height: 20px;
   width: 350px;
-  border: 1px solid #000;
+  border: none;
   float: left;
   background: #f0f0f0;
-  border: 2px solid #e5e5e5;
   border-radius: 10px;
   padding: 5px;
   margin-bottom: 12px;
+  color: transparent;
+  text-shadow: 0 0 0 grey;
+  cursor: no-drop;
 `
 
-const Button = styled.button`
-  font-weight: bold;
-  width: 120px;
-  color: white;
-  background-color: #4e89d2e0;
-  border-radius: 12px;
-  text-align: center;
-  text-transform: UPPERCASE;
-  font-size: 12px;
-  height: 36px;
-  margin-top: 24px;
+const Img = styled.img`
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
 `
-
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  `
 
 class UserPage extends Component {
 
@@ -78,8 +82,9 @@ class UserPage extends Component {
                 <ContainerHeader >
                   Profile
               </ContainerHeader>
-                <div>
-                  <UserForm onSubmit={this.onSubmit}>
+                <MainContainer>
+                  <Img src="ryan.png" alt="" />
+                  <UserForm>
                     <div>
                       <Label htmlFor="username" >Username: </Label>
                       <FormInput
@@ -113,7 +118,7 @@ class UserPage extends Component {
                     </div>
                   </UserForm>
 
-                </div>
+                </MainContainer>
               </Container>
               : <h4>Please Log In</h4>
           }

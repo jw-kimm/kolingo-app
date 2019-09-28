@@ -11,13 +11,10 @@ const Img = styled.img`
   cursor: pointer;
   width: 140px;
   padding: 75px;
-  :hover {
-    
-  }
 `
 
 const ListContainer = styled.div`
-  padding-top: 30px;
+  padding-top: 40px;  
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -40,10 +37,16 @@ const SubList = styled.div`
 `
 
 const SubHeader = styled.p`
-  color: #8c8888;
+  color: #234d90d6;
+  font-weight: bold;
+  font-size: 15px;
+`
+const Header = styled.p`
+  color: #737272
   font-weight: bold;
   font-size: 20px;
 `
+
 
 class LessonsList extends Component {
 
@@ -54,17 +57,16 @@ class LessonsList extends Component {
 
 
   render() {
-    debugger
     const { user } = this.props.auth
 
     let message = "Level locked"
 
     if (this.props.isAuthenticated) {
-      if (user.userExp >= 175) {
+      if (user.userExp >= 100) {
         this.firstUnlock = true
         this.secondUnlock = true
         this.thirdUnlock = true
-      } else if (user.userExp >= 80) {
+      } else if (user.userExp >= 60) {
         this.firstUnlock = true
         this.secondUnlock = true
       } else {
@@ -80,6 +82,7 @@ class LessonsList extends Component {
         <Navbar />
         <ListContainer>
           <SubList >
+            <Header> Level 1 </Header>
             <Link
               to="/alphabet"  >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
@@ -88,18 +91,24 @@ class LessonsList extends Component {
           </SubList>
 
           <SubList >
+            <Header> Level 2 </Header>
             <Link
               to="/matching" style={!this.secondUnlock ? { pointerEvents: "none" } : null} >
               <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
-              <SubHeader style={!this.secondUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</SubHeader>
+              <SubHeader style={!this.secondUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}>
+                80XP Required to unlock this level
+              </SubHeader>
             </Link>
           </SubList>
 
           <SubList >
+            <Header> Level 3 </Header>
             <Link
               to="/advanced" style={!this.thirdUnlock ? { pointerEvents: "none" } : null}>
               <Img src="llama.png" alt="" style={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? { filter: "none" } : null} />
-              <SubHeader style={!this.thirdUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}> {message}</SubHeader>
+              <SubHeader style={!this.thirdUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}>
+                100XP Required to unlock this level
+              </SubHeader>
             </Link>
           </SubList>
         </ListContainer>

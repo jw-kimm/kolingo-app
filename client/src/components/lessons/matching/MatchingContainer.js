@@ -8,6 +8,7 @@ import Matching from './Matching'
 
 
 class MatchingContainer extends Component {
+
   componentDidMount() {
     this.props.fetchMatching()
   }
@@ -15,12 +16,12 @@ class MatchingContainer extends Component {
   render() {
     if (_.isEmpty(this.props.matching)) return null
     const { matching } = this.props
-    const { prompt, problem } = matching[0][0]
+    const { prompt, problem } = matching[0]
 
     return (
       <Matching
         matching={matching}
-        problems={problem}
+        problem={problem}
         prompt={prompt}
       />
     );
@@ -30,13 +31,11 @@ class MatchingContainer extends Component {
 MatchingContainer.propTypes = {
   fetchMatching: PropTypes.func.isRequired,
   matching: PropTypes.array.isRequired,
-  auth: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = ({ matching, auth }) => {
   return {
     matching: matching,
-    auth: auth
   };
 };
 

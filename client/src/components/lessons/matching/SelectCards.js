@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 
 
 const SelectCards = ({ choices, onCardClick, selected, correct }) => {
-
   return (
     <Wrapper>
       {

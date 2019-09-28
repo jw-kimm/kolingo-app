@@ -81,12 +81,15 @@ class Splash extends Component {
           <ContentSection>
             <SectionOneLeft>
               <h1 style={{ fontSize: 35, margin: "0 0px 40px 40px" }}>LET'S LEARN KOREAN! </h1>
-              <Button>
-                {this.props.isAuthenticated ? (
-                  <Link to="/lessons" style={{ fontSize: 15, marginBottom: 45 }} > GET STARTED</Link>
-                ) : (
-                    <Link to="/register" style={{ fontSize: 15, marginBottom: 45 }} >GET STARTED</Link>
-                  )}</Button>
+              {this.props.isAuthenticated ? (
+                <Link to="/lessons" style={{ fontSize: 15, marginBottom: 45 }} >
+                  <Button> GET STARTED </Button>
+                </Link>
+              ) : (
+                  <Link to="/register" style={{ fontSize: 15, marginBottom: 45 }} >
+                    <Button> GET STARTED </Button>
+                  </Link>
+                )}
             </SectionOneLeft>
             <SectionOneRight>
               <img src="koreanFlag.png" alt="" style={{ height: 350 }} />
@@ -122,9 +125,16 @@ class Splash extends Component {
         <ContentBottom>
           <SectionTwoTop>
             <h2 style={{ fontSize: 25, marginRight: 30, padding: 5 }} >Learn Korean with Kolingo </h2>
-            <Button>
-              <Link to="/register" style={{ fontSize: 15, marginBottom: 454, width: 100 }} >GET STARTED</Link>
-            </Button>
+
+            {this.props.isAuthenticated ? (
+              <Link to="/lessons" style={{ fontSize: 15, marginBottom: 45 }} >
+                <Button> GET STARTED </Button>
+              </Link>
+            ) : (
+                <Link to="/register" style={{ fontSize: 15, marginBottom: 45 }} >
+                  <Button> GET STARTED </Button>
+                </Link>
+              )}
           </SectionTwoTop>
         </ContentBottom>
       </>

@@ -34,6 +34,7 @@ const Button = styled.button`
   font-size: 12px;
   line-height: 10px;
   margin-top: 12px;
+  cursor: pointer;
 `
 const Label = styled.label`
   font-size: 18px;

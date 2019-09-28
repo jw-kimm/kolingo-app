@@ -29,9 +29,8 @@ class Matching extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loaded: false,
-      pageState: 'Progress',
       currentQuestionIdx: 0,
+      pageState: 'Progress',
       selected: [],
       correct: [],
     };
@@ -42,8 +41,9 @@ class Matching extends React.Component {
   }
 
   shuffleCards() {
-    const { problems } = this.props
-    const shuffled = problems.reduce((acc, item) => {
+    const { problem } = this.props
+
+    const shuffled = problem.reduce((acc, item) => {
       const { korean, english } = item
 
       acc.push({ choice: korean, value: { ...item, clicked: korean } })
@@ -118,13 +118,8 @@ class Matching extends React.Component {
 
   continueButtonClick = () => {
     this.setState({
-      currentQuestionIdx: this.state.currentQuestionIdx + 1,
-      currentAnswer: null,
+      currentQuestionIdx: 1
     })
-  }
-
-  skipQuestion = () => {
-    this.setState({ currentQuestionIdx: this.state.currentQuestionIdx + 1 })
   }
 
   submitScore = () => {
@@ -135,7 +130,6 @@ class Matching extends React.Component {
       this.props.updateUserExp({ userExp: Number(updatedScore) })
     }
   }
-
 
   render() {
     const { matching, prompt } = this.props
@@ -161,7 +155,6 @@ class Matching extends React.Component {
             <Result
               pageState={this.state.pageState}
               handleOnClick={this.handleOnClick}
-              currentAnswer={this.state.currentAnswer}
               skipQuestion={this.skipQuestion}
             />
           </>

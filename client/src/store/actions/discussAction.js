@@ -22,7 +22,6 @@ const postDiscussion = discuss => ({
 export const fetchDiscussion = () => async dispatch => {
   try {
     const { data } = await axios.get(`/api/discuss`)
-    console.log('INTHUNK', data)
     dispatch(getDiscussion(data));
   } catch (err) {
     console.log(err)

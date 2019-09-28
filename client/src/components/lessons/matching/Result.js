@@ -51,7 +51,6 @@ const MessageHeader = styled.div`
 const Result = ({
   pageState, // string of either Incorrect, Correct, Progress
   handleOnClick,// callback
-  skipQuestion,
 }) => {
 
   let color
@@ -83,12 +82,6 @@ const Result = ({
               src={pageState === "Correct" ? "/check.png" : "/wrong.png"} />
             {pageState}
           </Message>
-        }
-        {hideButton &&
-          <Button type="button"
-            onClick={() => skipQuestion()}>
-            Skip
-          </Button>
         }
 
         <Button
