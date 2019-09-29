@@ -52,6 +52,7 @@ const ButtonDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly; 
+  cursor: pointer;
 `
 
 const GoalPage = ({ score, submitScore }) => {

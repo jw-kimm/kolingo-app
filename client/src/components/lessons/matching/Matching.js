@@ -88,7 +88,6 @@ class Matching extends React.Component {
         this.setState({
           selected: [selected[0], clicked]
         });
-        this.progress += 20
         setTimeout(() => {
           this.setState({
             selected: [],

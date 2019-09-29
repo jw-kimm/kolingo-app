@@ -1,4 +1,4 @@
-# Kolingo-App
+# Kolingo
 [Kolingo](http://kolingo-app.herokuapp.com/) was inspired by Duolingo, a language-learning platform that provides users to learn different languages. Similarly to Duolingo, Kolingo features different levels of lessons for users to learn korean.
 
 ![front page](client/public/Front_pg.png)
@@ -44,6 +44,6 @@ $ npm start
 
 ## Future Plans
 * Implement ability for users to upload profile pictures
-* Build a dictionary page for users to search up the words
+* Build a dictionary page for users to search the words
 * Ability to interact with friends
 
