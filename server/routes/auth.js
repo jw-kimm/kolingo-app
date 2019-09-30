@@ -47,41 +47,6 @@ router.post("/", (req, res, next) => {
   }
 });
 
-// router.post("/", (req, res) => {
-//   const { email, password } = req.body
-
-//   if (e) {
-
-//     User.findOne({ email })
-//       .then(user => {
-
-//         // Validate password
-//         bcrypt.compare(password, user.password)
-//           .then(isMatch => {
-//             if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
-
-//             jwt.sign(
-//               { id: user._id },
-//               process.env.JWT_SECRET,
-//               {},
-//               (err, token) => {
-//                 if (err) throw err;
-//                 res.json({
-//                   token,
-//                   user: {
-//                     id: user._id,
-//                     username: user.username,
-//                     email: user.email
-//                   }
-//                 });
-//               }
-//             )
-//           })
-//       })
-//   }
-// });
-
-
 
 //@desc get user data
 //@route GET /auth/user

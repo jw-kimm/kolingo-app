@@ -4,30 +4,21 @@
 ![front page](client/public/Front_pg.png)
 
 ## Technologies Used
-* Kolingo was created with Express, Node on the backend using a Mongodb database and React/Redux on the frontend.
+* Kolingo was created with Express & Node on the backend using a Mongodb database and React/Redux on the frontend.
 
 ## Key Features
 
+### `Displays correct answers`
+![frontpage](client/public/alphabetpg.png)
+When user chooses the wrong answer, it will display the correct answer to the user.
 
+### `Match the pairs`
+![frontpage](client/public/matchingpg.png)
+User is able to click correct pairs. 
 
-
-<!-- <h1 align="center">
-  <br>
-  <img src="https://github.com/akashnimare/foco/blob/master/app/img/foco.png" alt="Foco" width="160">
-</h1>
-
-<h4 align="center">A desktop menubar app based on <a href="http://electron.atom.io" target="_blank">Electron</a>.</h4>
-
-
-# Demo
-👉 Watch it <a href="https://www.youtube.com/watch?v=6SG2Mjpv8YE">here</a>.
-<br>
-
-[![Watch demo](https://cloud.githubusercontent.com/assets/2263909/18597112/0622a3b0-7c6a-11e6-897d-13f0aa36b6e4.png)](https://www.youtube.com/watch?v=6SG2Mjpv8YE)
-
-<img src="https://j.gifs.com/BBqE8Y.gif"> -->
-
-
+### `Goal Page`
+![frontpage](client/public/Goalpg.png)
+If user is logged in, they are able to earn points to move on to the next lesson. 
 
 ### To get started
 
