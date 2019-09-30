@@ -4,11 +4,6 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/users');
 
-//get ALL users /users
-router.get('/', async (req, res, next) => {
-  const users = await User.find({})
-  res.status(200).json(users);
-});
 
 // @desc register a user
 // @route POST /register

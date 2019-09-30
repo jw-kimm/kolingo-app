@@ -1,15 +1,13 @@
 import React from "react"
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
-
 
 const Result = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 320px;
+  height: 60vh;
   text-align: center;
 `
 
@@ -56,7 +54,6 @@ const ButtonDiv = styled.div`
 `
 
 const GoalPage = ({ score, submitScore }) => {
-  debugger
   let message
 
   if (score <= 50) {

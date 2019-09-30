@@ -44,7 +44,7 @@ const MessageHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 200px;
+  height: 29.8vh;
 `
 const ShowAnswer = styled.div`
   text-align: center;
@@ -52,7 +52,7 @@ const ShowAnswer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 200px;
+  height: 29.8vh;
   color: rgba(234, 43, 43, 0.78);
 `
 

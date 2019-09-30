@@ -12,7 +12,8 @@ import Result from './Result'
 
 const ProblemSection = styled.div`
   display: flex;
-  height: 530px;
+  min-height: 70vh;
+  height: auto;
   font-size: 40px;
   flex-direction: column;
   align-items: center;

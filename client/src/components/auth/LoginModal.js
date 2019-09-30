@@ -51,6 +51,8 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 16px;
   margin-top: 20px;
+  margin-right: 12px;
+  font-size: 12px;
 `
 
 const Label = styled.label`
@@ -114,6 +116,15 @@ class LoginModal extends Component {
     this.props.login(user);
   }
 
+  logInDemoUser = (e) => {
+    e.preventDefault();
+    const user = {
+      email: "demo@email.com",
+      password: "demouser"
+    }
+    this.props.login(user)
+  }
+
   render() {
     debugger
     const { isAuthenticated } = this.props;
@@ -164,7 +175,10 @@ class LoginModal extends Component {
             </ModalInput>
 
             <Button type="submit" style={{ outline: "none" }}>
-              Log in
+              LOG IN
+          </Button>
+            <Button type="submit" style={{ outline: "none" }} onClick={() => this.logInDemoUser}>
+              LOG IN AS DEMO USER
           </Button>
           </form>
 

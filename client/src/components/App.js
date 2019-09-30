@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import '../index.css'
-// import ProtectedRoute from './ProtectedRoute'
 
 import Splash from './splash/Splash'
 import LessonsList from './lessons/LessonsList'

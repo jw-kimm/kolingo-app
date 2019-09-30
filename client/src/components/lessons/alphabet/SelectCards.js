@@ -8,16 +8,17 @@ const Wrapper = styled.div`
   flex-direction: row;
   padding: 31px 0 31px 0;
   max-height: 310px;
-  text-align
+  height: auto;
+  overflow: hidden;
 `
 
 const SelectCards = ({ choices, onClick, answer, selectedCard }) => {
   return (
     <Wrapper>
       {choices
-        .map(choice =>
+        .map((choice, i) =>
           <Card
-            key={choice.value}
+            key={i}
             choice={choice}
             onClick={onClick}
             value={{ choice, answer }}

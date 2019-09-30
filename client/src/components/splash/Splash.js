@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux';
-import MainNavbar from './MainNavbar';
+import { connect } from 'react-redux'
+import MainNavbar from './MainNavbar'
 import styled from 'styled-components'
 
 const ContentSection = styled.section`

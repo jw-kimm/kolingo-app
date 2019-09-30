@@ -7,7 +7,8 @@ const Wrapper = styled.div`
   display: inline-flex;
   padding: 31px 90px;
   max-height: 310px;
-  text-align: center
+  text-align: center;
+  overflow: hidden
 `
 
 

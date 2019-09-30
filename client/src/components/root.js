@@ -6,6 +6,7 @@ import App from './App.js';
 import store from '../store/store'
 import { loadUser } from '../store/actions/authAction';
 
+
 class Root extends Component {
   componentDidMount() {
     store.dispatch(loadUser());

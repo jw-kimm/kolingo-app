@@ -12,12 +12,12 @@ import {
 } from './types';
 import setAuthToken from '../../utils/setAuthToken';
 
+
 // Check token & load user
 export const loadUser = () => async dispatch => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
-
   try {
     const res = await axios.get('/api/auth/user');
     dispatch({
@@ -26,17 +26,18 @@ export const loadUser = () => async dispatch => {
     })
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR,
     });
   }
 };
+
 
 //Login User
 export const login = ({ email, password }) => dispatch => {
   const config = {
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }
   }
   //Request Body
@@ -96,23 +97,4 @@ export const logout = () => {
     });
   };
 };
-
-
-// //Setup config/headers and token
-// export const tokenConfig = getState => {
-//   //Get token from local storage
-//   const token = getState().auth.token;
-
-//   //Headers
-//   const config = {
-//     headers: {
-//       "Content-type": "application/json"
-//     }
-//   }
-//   //If token, add to headers
-//   if (token) {
-//     config.headers['x-auth-token'] = token;
-//   }
-//   return config;
-// }
 

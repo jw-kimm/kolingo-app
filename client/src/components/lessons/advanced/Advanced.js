@@ -15,14 +15,15 @@ import styled from 'styled-components';
 
 const ProblemSection = styled.div`
   display: flex;
-  height: 530px;
+  min-height: 70vh;
+  height: auto;
   font-size: 40px;
   flex-direction: column;
   align-items: center;
 `
 const SubHeader = styled.div`
   display: flex;
-  padding: 13px 0px 13px 0;
+  padding: 24px 0px 13px 0;
   width: 100%;
   align-items: center;
   justify-content: center;

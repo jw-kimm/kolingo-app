@@ -14,7 +14,7 @@ const Img = styled.img`
 `
 
 const ListContainer = styled.div`
-  padding-top: 40px;  
+  padding-top: 86px;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -23,7 +23,6 @@ const ListContainer = styled.div`
   width: 100%;
   height: 500px;
   margin: auto;
-  z-index: -2;
   position: absolute;
   justify-content: space-evenly;
 `
@@ -59,9 +58,7 @@ class LessonsList extends Component {
   render() {
     const { user } = this.props.auth
 
-    let message = "Level locked"
-
-    if (this.props.isAuthenticated) {
+    if (this.props.isAuthenticated === true) {
       if (user.userExp >= 100) {
         this.firstUnlock = true
         this.secondUnlock = true
@@ -86,7 +83,7 @@ class LessonsList extends Component {
             <Link
               to="/alphabet"  >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
-              <SubHeader style={this.firstUnlock ? { visibility: "hidden" } : { visibility: "visible", pointerEvents: "none" }}> {message}</SubHeader>
+              <SubHeader />
             </Link>
           </SubList>
 

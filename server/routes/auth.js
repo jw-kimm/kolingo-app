@@ -10,53 +10,91 @@ const User = require('../models/users');
 //@access Public
 
 router.post("/", (req, res, next) => {
+  debugger
   const { email, password } = req.body
 
   if (!email || !password) {
     return res.status(400).json({ msg: 'Please enter all fields' });
+  } else if (email === "demo@email.com" && password === "demouser") {
+
+    User.findOne({ email })
+      .then(user => {
+        if (!user) return res.status(400).json({ msg: 'User Does not exist' });
+
+        // Validate password
+        bcrypt.compare(password, user.password)
+          .then(isMatch => {
+            if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+
+            jwt.sign(
+              { id: user._id },
+              process.env.JWT_SECRET,
+              {},
+              (err, token) => {
+                if (err) throw err;
+                res.json({
+                  token,
+                  user: {
+                    id: user._id,
+                    username: user.username,
+                    email: user.email
+                  }
+                });
+              }
+            )
+          })
+      })
   }
-
-  User.findOne({ email })
-    .then(user => {
-      if (!user) return res.status(400).json({ msg: 'User Does not exist' });
-
-      // Validate password
-      bcrypt.compare(password, user.password)
-        .then(isMatch => {
-          if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
-
-          jwt.sign(
-            { id: user._id },
-            process.env.JWT_SECRET,
-            {},
-            (err, token) => {
-              if (err) throw err;
-              res.json({
-                token,
-                user: {
-                  id: user._id,
-                  username: user.username,
-                  email: user.email
-                }
-              });
-            }
-          )
-        })
-    })
 });
+
+// router.post("/", (req, res) => {
+//   const { email, password } = req.body
+
+//   if (e) {
+
+//     User.findOne({ email })
+//       .then(user => {
+
+//         // Validate password
+//         bcrypt.compare(password, user.password)
+//           .then(isMatch => {
+//             if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+
+//             jwt.sign(
+//               { id: user._id },
+//               process.env.JWT_SECRET,
+//               {},
+//               (err, token) => {
+//                 if (err) throw err;
+//                 res.json({
+//                   token,
+//                   user: {
+//                     id: user._id,
+//                     username: user.username,
+//                     email: user.email
+//                   }
+//                 });
+//               }
+//             )
+//           })
+//       })
+//   }
+// });
 
 
 
 //@desc get user data
 //@route GET /auth/user
 //@access Private
-
-router.get('/user', auth, (req, res) => {
-  User.findById(req.user.id)
-    .select('-password')
-    .then(user => res.json(user));
-})
-
+router.get('/user', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 // @route   POST api/auth/user
 // @desc    updating user

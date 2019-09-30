@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   height: auto;
   width: 500px;
   text-align: center;
+  overflow: hidden;
 `
 
 const SelectOptions = ({ choices, onClick, answer, selectedCard }) => {

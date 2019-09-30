@@ -7,12 +7,12 @@ const OuterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   margin: 0;
 `
 
 const InnerContainer = styled.div`
-  max-width: 50%;
+  max-width: 75%;
   padding: 0 10px;
   width: 100%;
   display: flex;
@@ -27,6 +27,7 @@ const Header = styled.h2`
   text-align: center;
   line-height: 40px;
   font-size: 32px;
+  width: 630px;
 `
 const Navitem = styled.li`
   font-size: 24px;
@@ -69,6 +70,7 @@ class Register extends Component {
         <InnerContainer>
           <Header>
             Want us to help you keep your daily goal?
+            <p style={{ color: "grey", fontSize: 16 }}> If you don't log in, your score will not be saved.</p>
           </Header>
           <Navitem>
             <a href="/" onClick={this.handleClick}>
