@@ -8,7 +8,7 @@
 
 ## Key Features
 
-### `Displays correct answers`
+### `Displays correct answer`
 ![frontpage](client/public/alphabetpg.png)
 When user chooses the wrong answer, it will display the correct answer to the user.
 

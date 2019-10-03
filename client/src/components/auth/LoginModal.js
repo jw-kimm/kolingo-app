@@ -114,15 +114,20 @@ class LoginModal extends Component {
       password: this.state.password,
     }
     this.props.login(user);
+    this.setState({
+      modal: false
+    })
   }
 
-  logInDemoUser = (e) => {
-    e.preventDefault();
+  logInDemoUser = () => {
     const user = {
       email: "demo@email.com",
       password: "demouser"
     }
-    this.props.login(user)
+    this.setState({
+      modal: false
+    })
+    this.props.login(user);
   }
 
   render() {
@@ -131,6 +136,7 @@ class LoginModal extends Component {
 
     if (isAuthenticated) {
       if (window.location.pathname === '/') {
+        // window.location.reload(true)
         return < Redirect to="/lessons" />
       }
       this.props.onClose()
@@ -177,7 +183,7 @@ class LoginModal extends Component {
             <Button type="submit" style={{ outline: "none" }}>
               LOG IN
           </Button>
-            <Button type="submit" style={{ outline: "none" }} onClick={() => this.logInDemoUser}>
+            <Button type="submit" style={{ outline: "none" }} onClick={() => this.logInDemoUser()}>
               LOG IN AS DEMO USER
           </Button>
           </form>

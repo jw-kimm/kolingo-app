@@ -15,37 +15,36 @@ router.post("/", (req, res, next) => {
 
   if (!email || !password) {
     return res.status(400).json({ msg: 'Please enter all fields' });
-  } else if (email === "demo@email.com" && password === "demouser") {
-
-    User.findOne({ email })
-      .then(user => {
-        if (!user) return res.status(400).json({ msg: 'User Does not exist' });
-
-        // Validate password
-        bcrypt.compare(password, user.password)
-          .then(isMatch => {
-            if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
-
-            jwt.sign(
-              { id: user._id },
-              process.env.JWT_SECRET,
-              {},
-              (err, token) => {
-                if (err) throw err;
-                res.json({
-                  token,
-                  user: {
-                    id: user._id,
-                    username: user.username,
-                    email: user.email
-                  }
-                });
-              }
-            )
-          })
-      })
   }
+
+  User.findOne({ email })
+    .then(user => {
+      if (!user) return res.status(400).json({ msg: 'User Does not exist' });
+
+      // Validate password
+      bcrypt.compare(password, user.password)
+        .then(isMatch => {
+          if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+          jwt.sign(
+            { id: user._id },
+            process.env.JWT_SECRET,
+            {},
+            (err, token) => {
+              if (err) throw err;
+              res.json({
+                token,
+                user: {
+                  id: user._id,
+                  username: user.username,
+                  email: user.email
+                }
+              });
+            }
+          )
+        })
+    })
 });
+
 
 
 //@desc get user data

@@ -78,9 +78,11 @@ class MainNavbar extends Component {
     )
     const authLink = (
       <>
-        <Button>
-          <a href="/profile"><strong> {user ? `Welcome ${user.username}` : " "}</strong> </a>
-        </Button>
+        <a href="/profile">
+          <Button>
+            <strong> {user ? `Welcome ${user.username}` : " "}</strong>
+          </Button>
+        </a>
         <Button>
           <Logout />
         </Button>
