@@ -28,6 +28,10 @@ const Button = styled.div`
   font-family: 'Varela Round', sans-serif;
   border-width: 0 0 4px;
   margin-right: 22px;
+  :hover {
+    box-shadow: 0 0 10px rgb(184, 181, 181);
+    -webkit-box-shadow: 0 0 10px rgb(184, 181, 181);
+  }
 `
 
 class MainNavbar extends Component {

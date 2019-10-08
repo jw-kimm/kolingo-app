@@ -25,6 +25,9 @@ const NavLinks = styled.li`
   color: #234d90b5;
   cursor: pointer;
   font-size: 18px;
+  :hover{
+    transform: scale(1.1);
+  }
 `
 
 const Button = styled.button`
@@ -39,6 +42,9 @@ const Options = styled.li`
   font-size: 18px;
   color: grey;
   cursor: pointer;
+  :hover{
+    font-weight: bold;
+  }
 `
 
 const DropDown = styled.div`
@@ -56,6 +62,10 @@ const DropDown = styled.div`
 const Menu = styled.div`
   display: block;
   cursor: pointer
+`
+
+const Img = styled.img`
+  height: 35px
 `
 
 class Navbar extends Component {
@@ -125,25 +135,24 @@ class Navbar extends Component {
           </Link>
           <NavLinks>
             <a href="/lessons">
-              <img style={{ height: 35 }}
+              <Img
                 alt=""
                 src='/learncolor.png' />
               LEARN</a>
           </NavLinks>
           <NavLinks>
             <a href="/discuss">
-              <img
+              <Img
                 alt=""
-                style={{ height: 35 }}
                 src='/discusscolor.png' />
               DISCUSS</a>
           </NavLinks>
-          <li>
+          <NavLinks>
             <Button
               onClick={this.showMenu} style={{ outline: "none" }}>
-              <img style={{ height: 35 }} src="/avatar.png" alt="" />
+              <Img src="/avatar.png" alt="" />
             </Button>
-          </li>
+          </NavLinks>
         </NavBar>
         <Menu>
           {

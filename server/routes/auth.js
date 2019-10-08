@@ -10,7 +10,6 @@ const User = require('../models/users');
 //@access Public
 
 router.post("/", (req, res, next) => {
-  debugger
   const { email, password } = req.body
 
   if (!email || !password) {
@@ -36,7 +35,8 @@ router.post("/", (req, res, next) => {
                 user: {
                   id: user._id,
                   username: user.username,
-                  email: user.email
+                  email: user.email,
+                  userExp: user.userExp
                 }
               });
             }

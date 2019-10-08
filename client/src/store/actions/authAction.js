@@ -34,7 +34,6 @@ export const loadUser = () => async dispatch => {
 
 //Login User
 export const login = ({ email, password }) => dispatch => {
-  debugger
   const config = {
     headers: {
       'Access-Control-Allow-Origin': '*',

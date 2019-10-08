@@ -44,6 +44,7 @@ const Button = styled.button`
   font-size: 22px;
   border-radius: 1.25rem;
   margin-left: 24px;
+  cursor: pointer;
 `
 
 const ButtonDiv = styled.div`
@@ -69,7 +70,7 @@ const GoalPage = ({ score, submitScore }) => {
   return (
     <Result>
       <Img src="star.png" alt="" />
-      <ResultHeader> {score}XP EARNED 🎉</ResultHeader>
+      <ResultHeader> {score}XP EARNED </ResultHeader>
       <ResultP>{message}</ResultP>
       <ButtonDiv>
         <Link to="/lessons" id="nextLesson"

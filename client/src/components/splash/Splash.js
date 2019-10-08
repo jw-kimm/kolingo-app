@@ -53,7 +53,6 @@ const SectionTwoTop = styled.section`
   justify-content: center;
 `
 
-
 const Button = styled.div`
   border: none;
   cursor: pointer;
@@ -68,6 +67,10 @@ const Button = styled.div`
   align-items: center;
   text-align: center;
   margin-top: 12px;
+  :hover {
+    -webkit-box-shadow: 0 0 10px rgb(184, 181, 181);
+    box-shadow: 0 0 10px rgb(184, 181, 181);
+  }
 `
 
 class Splash extends Component {

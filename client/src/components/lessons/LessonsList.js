@@ -33,6 +33,11 @@ const SubList = styled.div`
   border: 2px solid rgb(229, 229, 229);
   border-radius: 20px;
   padding: 10px;
+  :hover{
+    -webkit-box-shadow: 0 0 10px rgb(184, 181, 181);
+    box-shadow: 0 0 10px rgb(184, 181, 181);
+    transform: scale(1.1);
+  }
 `
 
 const SubHeader = styled.p`
@@ -54,11 +59,11 @@ class LessonsList extends Component {
   thirdUnlock = false
   className = "lessonsLink"
 
-
   render() {
     const { user } = this.props.auth
+    const { isAuthenticated } = this.props;
 
-    if (this.props.isAuthenticated === true) {
+    if (isAuthenticated === true) {
       if (user.userExp >= 100) {
         this.firstUnlock = true
         this.secondUnlock = true

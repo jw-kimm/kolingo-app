@@ -114,9 +114,6 @@ class LoginModal extends Component {
       password: this.state.password,
     }
     this.props.login(user);
-    this.setState({
-      modal: false
-    })
   }
 
   logInDemoUser = () => {
@@ -124,19 +121,14 @@ class LoginModal extends Component {
       email: "demo@email.com",
       password: "demouser"
     }
-    this.setState({
-      modal: false
-    })
     this.props.login(user);
   }
 
   render() {
-    debugger
     const { isAuthenticated } = this.props;
 
     if (isAuthenticated) {
       if (window.location.pathname === '/') {
-        // window.location.reload(true)
         return < Redirect to="/lessons" />
       }
       this.props.onClose()

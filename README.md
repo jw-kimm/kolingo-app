@@ -32,6 +32,11 @@ Start the app:
 ```sh
 $ npm start
 ```
+Start the server:
+
+```sh
+$ npm run dev
+```
 
 ## Future Plans
 * Implement ability for users to upload profile pictures
