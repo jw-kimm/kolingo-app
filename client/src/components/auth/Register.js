@@ -42,6 +42,10 @@ const Navitem = styled.li`
   border-style: solid;
   padding: 12px 16px;
   color: #afafaf;
+  :hover{
+    border-color:#177E89;
+    color: #084C61
+  }
 `
 
 class Register extends Component {
@@ -73,7 +77,7 @@ class Register extends Component {
             <p style={{ color: "grey", fontSize: 16 }}> If you don't log in, your score will not be saved.</p>
           </Header>
           <Navitem>
-            <a href="/" onClick={this.handleClick}>
+            <a href="/" onClick={this.handleClick} >
               REGISTER
               </a>
           </Navitem>
