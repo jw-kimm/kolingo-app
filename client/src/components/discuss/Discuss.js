@@ -36,6 +36,7 @@ const Message = styled.p`
   margin-top: 12px;
   font-size: 15px;
   min-height: 80px;
+  overflow-wrap: break-word;
 `
 const Details = styled.p`
   margin-top: 12px;
