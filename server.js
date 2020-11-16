@@ -46,7 +46,7 @@ app.use((err, req, res, next) => {
   console.log(err)
 })
 
-// //serve static assets if in production
+//serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
   app.use(express.static('client/build'));
