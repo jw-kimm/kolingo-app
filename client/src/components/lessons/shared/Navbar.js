@@ -61,11 +61,12 @@ const DropDown = styled.div`
 `
 const Menu = styled.div`
   display: block;
-  cursor: pointer
+  cursor: pointer;
 `
 
 const Img = styled.img`
-  height: 35px
+  height: 35px;
+  border-radius: 50%;
 `
 
 class Navbar extends Component {
