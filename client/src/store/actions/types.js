@@ -3,7 +3,7 @@
  */
 
 
-export const UPDATE_USER = 'UPDATE_USER '
+export const UPDATE_USER = 'UPDATE_USER'
 export const UPDATE_EXP = 'UPDATE_EXP'
 
 export const USER_LOADING = 'USER_LOADING'
@@ -24,3 +24,5 @@ export const LESSONS_LOADING = 'LESSONS_LOADING'
 
 export const GET_DISCUSSION = 'GET_DISCUSSION'
 export const POST_DISCUSSION = 'POST_DISCUSSION'
+
+export const GET_ALPHABETS = 'GET_ALPHABETS'

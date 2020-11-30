@@ -31,7 +31,7 @@ const SubHeader = styled.div`
   justify-content: center;
 `
 
-class Alphabet extends Component {
+class BasicLevel extends Component {
   state = {
     pageState: 'Progress',
     currentAnswer: null,
@@ -130,6 +130,7 @@ class Alphabet extends Component {
                 answer={answer}
                 onClick={this.onCardClick}
                 selectedCard={this.state.currentAnswer}
+                key={choices.id}
               />
             </ProblemSection>
             <Result
@@ -148,7 +149,7 @@ class Alphabet extends Component {
   }
 }
 
-Alphabet.propTypes = {
+BasicLevel.propTypes = {
   fetchLessons: PropTypes.func.isRequired,
   lessons: PropTypes.array.isRequired,
   updateUserExp: PropTypes.func.isRequired,
@@ -170,4 +171,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Alphabet);
+export default connect(mapStateToProps, mapDispatchToProps)(BasicLevel);

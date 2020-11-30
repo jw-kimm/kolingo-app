@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { model, Schema } = require('mongoose');
 
-const AdvancedSchema = new mongoose.Schema({
+const AdvancedSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -23,7 +23,4 @@ const AdvancedSchema = new mongoose.Schema({
   }
 });
 
-const Advanced = mongoose.model('Advanced', AdvancedSchema, "advanced");
-
-
-module.exports = Advanced;
+module.exports = model('Advanced', AdvancedSchema, "advanced");

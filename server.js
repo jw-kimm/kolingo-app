@@ -30,7 +30,7 @@ app.use('/api/lessons', require('./server/routes/lessons'))
 app.use('/api/matching', require('./server/routes/matching'))
 app.use('/api/discuss', require('./server/routes/discuss'))
 app.use('/api/advanced', require('./server/routes/advanced'))
-
+app.use('/api/alphabets', require('./server/routes/alphabets'))
 
 //error handler function
 app.use((err, req, res, next) => {

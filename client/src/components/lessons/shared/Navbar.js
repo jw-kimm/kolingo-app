@@ -69,6 +69,8 @@ const Img = styled.img`
   border-radius: 50%;
 `
 
+//add shadow on kolingo on hover
+
 class Navbar extends Component {
   state = {
     showMenu: false,
@@ -135,11 +137,18 @@ class Navbar extends Component {
             </h1>
           </Link>
           <NavLinks>
-            <a href="/lessons">
+            <a href="/alphabets">
               <Img
                 alt=""
                 src='/learncolor.png' />
               LEARN</a>
+          </NavLinks>
+          <NavLinks>
+            <a href="/lessons">
+              <Img
+                alt=""
+                src='/learncolor.png' />
+              LESSONS</a>
           </NavLinks>
           <NavLinks>
             <a href="/discuss">

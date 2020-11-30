@@ -84,18 +84,18 @@ class LessonsList extends Component {
         <Navbar />
         <ListContainer>
           <SubList >
-            <Header> Level 1 </Header>
+            <Header> Basic </Header>
             <Link
-              to="/alphabet"  >
+              to="/basic"  >
               <Img src="sunshower.png" alt="" style={this.firstUnlock ? { filter: "none" } : null} />
               <SubHeader />
             </Link>
           </SubList>
 
           <SubList >
-            <Header> Level 2 </Header>
+            <Header> Intermediate </Header>
             <Link
-              to="/matching" style={!this.secondUnlock ? { pointerEvents: "none" } : null} >
+              to="/intermediate" style={!this.secondUnlock ? { pointerEvents: "none" } : null} >
               <Img src="cactus.png" alt="" style={this.firstUnlock && this.secondUnlock ? { filter: "none" } : null} />
               <SubHeader style={!this.secondUnlock ? { visibility: "visible", pointerEvents: "none" } : { visibility: "hidden" }}>
                 80XP Required to unlock this level
@@ -104,7 +104,7 @@ class LessonsList extends Component {
           </SubList>
 
           <SubList >
-            <Header> Level 3 </Header>
+            <Header> Advanced </Header>
             <Link
               to="/advanced" style={!this.thirdUnlock ? { pointerEvents: "none" } : null}>
               <Img src="llama.png" alt="" style={this.firstUnlock && this.secondUnlock && this.thirdUnlock ? { filter: "none" } : null} />

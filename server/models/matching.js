@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { model, Schema } = require('mongoose')
 
-const MatchingSchema = new mongoose.Schema({
+const MatchingSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -18,9 +18,6 @@ const MatchingSchema = new mongoose.Schema({
   },
 });
 
-const Matching = mongoose.model('Matching', MatchingSchema, "matching");
-
-
-module.exports = Matching;
+module.exports = model('Matching', MatchingSchema, "matching");
 
 
