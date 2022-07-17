@@ -7,66 +7,7 @@ import { Redirect } from 'react-router-dom'
 
 import styled from 'styled-components'
 
-const ModalContainer = styled.div`
-  display: none;
-  position: fixed; 
-  z-index: 1; 
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
-`
-const ModalContent = styled.div`
-  top: 50%;
-  width: 500px; 
-  height: auto
-  background-color: white;
-  border-radius: 4px;
-  padding: 20px;
-  position: fixed;
-  transform: translate(-50%,-50%);
-  left: 50%;
-  text-align: center;
-`
 
-const ModalInput = styled.div`
-  background: #f0f0f0;
-  border: 2px solid #e5e5e5;
-  border-radius: 10px;
-  padding: 12px;
-  line-height: 6px;
-  margin-bottom: 12px;
-`
-const Button = styled.button`
-  border-color: transparent;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  border-width: 0 0 4px;
-  padding: 16px 20px;
-  background-color: #1899d6;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 16px;
-  margin-top: 20px;
-  margin-right: 12px;
-  font-size: 12px;
-`
-
-const Label = styled.label`
-  width: 100%;
-  text-align: left;
-  margin-left: 10px
-`
-
-const Alert = styled.p`
-  background-color: #f30404a8;
-  color: white;
-  font-size: 20px;
-  padding: 6px 131px;
-`
 
 
 class LoginModal extends Component {
@@ -137,7 +78,6 @@ class LoginModal extends Component {
     }
 
     return (
-
       <ModalContainer style={{ display: "block" }} toggle={this.toggle}>
         <ModalContent>
           <button className="popup-close" onClick={this.props.onClose}>✖</button>
@@ -152,7 +92,7 @@ class LoginModal extends Component {
             <ModalInput>
               <Label htmlFor="email">
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   placeholder="Enter email"
                   value={this.state.email}
@@ -199,3 +139,65 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { login, clearErrors })(LoginModal);
+
+
+const ModalContainer = styled.div`
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+`
+const ModalContent = styled.div`
+  top: 50%;
+  width: 500px; 
+  height: auto
+  background-color: white;
+  border-radius: 4px;
+  padding: 20px;
+  position: fixed;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  text-align: center;
+`
+
+const ModalInput = styled.div`
+  background: #f0f0f0;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 12px;
+  line-height: 6px;
+  margin-bottom: 12px;
+`
+const Button = styled.button`
+  border-color: transparent;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-width: 0 0 4px;
+  padding: 16px 20px;
+  background-color: #1899d6;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-top: 20px;
+  margin-right: 12px;
+  font-size: 12px;
+`
+
+const Label = styled.label`
+  width: 100%;
+  text-align: left;
+  margin-left: 10px
+`
+
+const Alert = styled.p`
+  background-color: #f30404a8;
+  color: white;
+  font-size: 20px;
+  padding: 6px 131px;
+`

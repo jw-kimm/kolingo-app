@@ -61,7 +61,6 @@ const TextBox = styled.textarea`
 `
 
 const DiscussForm = (props) => {
-
   return (
     <>
       <Form onSubmit={props.handleSubmit}>
@@ -81,7 +80,7 @@ const DiscussForm = (props) => {
             <small>Name:</small>
           </Label>
           <Input
-            name="author"
+            name={props.username}
             id="name"
             type="text"
             placeholder="Name"
@@ -106,5 +105,7 @@ const DiscussForm = (props) => {
     </>
   )
 }
+
+
 
 export default DiscussForm;

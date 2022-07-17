@@ -1,7 +1,108 @@
-import React, { Component } from 'react';
-import RegisterModal from './RegisterModal'
-
+import React, { Component, useState } from 'react';
 import styled from 'styled-components'
+
+import RegisterModal from './RegisterModal'
+import LoginModal from './LoginModal';
+
+
+
+class Register extends Component {
+
+  state = {
+    isOpen: false
+  }
+
+  handleClick = (e) => {
+    e.preventDefault();
+    this.setState(prevState => {
+      return {
+        isOpen: !prevState.isOpen
+      }
+    })
+  }
+
+  closePopup = () => {
+    this.setState({
+      isOpen: false
+    });
+  }
+
+  render() {
+    return (
+      <OuterContainer>
+        <InnerContainer>
+          <Header>
+            Want us to help you keep your daily goal?
+            <p style={{ color: "grey", fontSize: 16 }}> If you don't log in, your score will not be saved.</p>
+          </Header>
+          <Navitem>
+            <a href="/" onClick={this.handleClick} >
+              REGISTER
+              </a>
+          </Navitem>
+          <Navitem>
+            <a href="/" onClick={this.handleClick} style={{
+              marginTop: "24px", textAlign: "center", width: "100%", background: "none", color: "", borderWidth: "2px 2px 4px", borderColor: "transparent",
+              padding: "12px 16px", cursor: "pointer"
+            }} >
+              LOGIN
+            </a>
+          </Navitem>
+        </InnerContainer>
+        <div>
+          {this.state.isOpen ?
+            <RegisterModal
+              onClose={this.closePopup}
+            /> : null}
+        </div>
+      </OuterContainer>
+    );
+  }
+}
+
+
+
+// function Register() {
+
+//   const [isOpen, setOpen] = useState(false)
+//   const handleClick = (e) => setOpen(!isOpen)
+//   const closePopup = () => isOpen(false)
+//   debugger
+//   return (
+//     <>
+//       <OuterContainer>
+//         <InnerContainer>
+//           <Header>
+//             Want us to help you keep your daily goal?
+//             <p style={{ color: "grey", fontSize: 16 }}> If you don't log in, your score will not be saved.</p>
+//           </Header>
+//           <Navitem>
+//             <a href="/" onClick={handleClick} >
+//               REGISTER
+//               </a>
+//           </Navitem>
+//           <Navitem>
+//             <a href="/" onClick={handleClick} style={{
+//               marginTop: "24px", textAlign: "center", width: "100%", background: "none", color: "", borderWidth: "2px 2px 4px", borderColor: "transparent",
+//               padding: "12px 16px", cursor: "pointer"
+//             }} >
+//               LOGIN </a>
+//           </Navitem>
+//         </InnerContainer>
+//         <div>
+//           {isOpen ?
+//             <RegisterModal
+//               onClose={closePopup}
+//             /> : null}
+//         </div>
+//       </OuterContainer>
+
+//     </>
+//   )
+// }
+
+
+export default Register;
 
 const OuterContainer = styled.div`
   display: flex;
@@ -47,57 +148,3 @@ const Navitem = styled.li`
     color: #084C61
   }
 `
-
-class Register extends Component {
-  state = {
-    isOpen: false
-  }
-
-  handleClick = (e) => {
-    e.preventDefault();
-    this.setState(prevState => {
-      return {
-        isOpen: !prevState.isOpen
-      }
-    })
-  }
-
-  closePopup = () => {
-    this.setState({
-      isOpen: false
-    });
-  }
-
-  render() {
-    return (
-      <OuterContainer>
-        <InnerContainer>
-          <Header>
-            Want us to help you keep your daily goal?
-            <p style={{ color: "grey", fontSize: 16 }}> If you don't log in, your score will not be saved.</p>
-          </Header>
-          <Navitem>
-            <a href="/" onClick={this.handleClick} >
-              REGISTER
-              </a>
-          </Navitem>
-          <Navitem>
-            <a href="/lessons" style={{
-              marginTop: "24px", textAlign: "center", width: "100%", background: "none", color: "", borderWidth: "2px 2px 4px", borderColor: "transparent",
-              padding: "12px 16px", cursor: "pointer"
-            }}>
-              NOT NOW </a>
-          </Navitem>
-        </InnerContainer>
-        <div>
-          {this.state.isOpen ?
-            <RegisterModal
-              onClose={this.closePopup}
-            /> : null}
-        </div>
-      </OuterContainer>
-    );
-  }
-}
-
-export default Register;

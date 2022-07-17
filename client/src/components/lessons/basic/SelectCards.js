@@ -30,3 +30,5 @@ const SelectCards = ({ choices, onClick, answer, selectedCard }) => {
 }
 
 export default SelectCards
+
+

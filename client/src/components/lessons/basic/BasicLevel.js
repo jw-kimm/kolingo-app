@@ -15,22 +15,6 @@ import Question from '../shared/Question'
 import styled from 'styled-components'
 
 
-const ProblemSection = styled.div`
-  display: flex;
-  min-height: 70vh;
-  height: auto;
-  font-size: 40px;
-  flex-direction: column;
-  align-items: center;
-`
-const SubHeader = styled.div`
-  display: flex;
-  padding: 24px 0px 13px 0;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`
-
 class BasicLevel extends Component {
   state = {
     pageState: 'Progress',
@@ -172,3 +156,20 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasicLevel);
+
+
+const ProblemSection = styled.div`
+  display: flex;
+  min-height: 70vh;
+  height: auto;
+  font-size: 40px;
+  flex-direction: column;
+  align-items: center;
+`
+const SubHeader = styled.div`
+  display: flex;
+  padding: 24px 0px 13px 0;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`

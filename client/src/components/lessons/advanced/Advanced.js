@@ -13,28 +13,6 @@ import GoalPage from '../shared/GoalPage';
 
 import styled from 'styled-components';
 
-const ProblemSection = styled.div`
-  display: flex;
-  min-height: 70vh;
-  height: auto;
-  font-size: 40px;
-  flex-direction: column;
-  align-items: center;
-`
-const SubHeader = styled.div`
-  display: flex;
-  padding: 24px 0px 13px 0;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`
-
-const PromptBlock = styled.div`
-  margin-top: 36px;
-  display: inline-block;
-  align-items: center;
-  height: 300px;
-`
 
 
 class Advanced extends Component {
@@ -183,3 +161,26 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Advanced);
+
+const ProblemSection = styled.div`
+  display: flex;
+  min-height: 70vh;
+  height: auto;
+  font-size: 40px;
+  flex-direction: column;
+  align-items: center;
+`
+const SubHeader = styled.div`
+  display: flex;
+  padding: 24px 0px 13px 0;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`
+
+const PromptBlock = styled.div`
+  margin-top: 36px;
+  display: inline-block;
+  align-items: center;
+  height: 300px;
+`

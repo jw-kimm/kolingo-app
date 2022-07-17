@@ -10,21 +10,6 @@ import GoalPage from '../shared/GoalPage'
 import ProgressBar from '../shared/ProgressBar'
 import Result from './Result'
 
-const ProblemSection = styled.div`
-  display: flex;
-  min-height: 70vh;
-  height: auto;
-  font-size: 40px;
-  flex-direction: column;
-  align-items: center;
-`
-const SubHeader = styled.div`
-  display: flex;
-  padding-top: 24px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`
 
 class Matching extends React.Component {
   constructor(props) {
@@ -179,3 +164,19 @@ const mapStateToProps = ({ auth }) => {
 
 
 export default connect(mapStateToProps, null)(Matching);
+
+const ProblemSection = styled.div`
+  display: flex;
+  min-height: 70vh;
+  height: auto;
+  font-size: 40px;
+  flex-direction: column;
+  align-items: center;
+`
+const SubHeader = styled.div`
+  display: flex;
+  padding-top: 24px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`

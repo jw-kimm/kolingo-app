@@ -4,69 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components'
 import Navbar from '../lessons/shared/Navbar'
 
-const PageContent = styled.div`
-  display: flex;
-  justify-content: center;
-`
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-`
-const ContainerHeader = styled.div`
-  text-align: center;
-  font-size: 30px;
-  margin-top: 60px;
-  color: #a5a5a5;
-`
-
-const UserForm = styled.form`
-  background-color: #FFF;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
-`
-
-const Label = styled.label`
-  font-size: 20px;
-  color: #848080d6;
-  width: 125px;
-  text-align: right;
-  clear: both;
-  float: left;
-  margin: 4px 10px 12px 16px;
-  pointer-events: none;
-`
-
-const FormInput = styled.input`
-  height: 20px;
-  width: 350px;
-  border: none;
-  float: left;
-  background: #f0f0f0;
-  border-radius: 10px;
-  padding: 5px;
-  margin-bottom: 12px;
-  color: transparent;
-  text-shadow: 0 0 0 grey;
-  cursor: no-drop;
-`
-
-const Img = styled.img`
-  height: 250px;
-  width: 250px;
-  border-radius: 50%;
-`
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  `
 
 class UserPage extends Component {
 
@@ -141,6 +79,68 @@ const mapStateToProps = state => {
   }
 }
 
-
-
 export default connect(mapStateToProps, null)(UserPage);
+
+const PageContent = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+`
+const ContainerHeader = styled.div`
+  text-align: center;
+  font-size: 30px;
+  margin-top: 60px;
+  color: #a5a5a5;
+`
+
+const UserForm = styled.form`
+  background-color: #FFF;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+`
+
+const Label = styled.label`
+  font-size: 20px;
+  color: #848080d6;
+  width: 125px;
+  text-align: right;
+  clear: both;
+  float: left;
+  margin: 4px 10px 12px 16px;
+  pointer-events: none;
+`
+
+const FormInput = styled.input`
+  height: 20px;
+  width: 350px;
+  border: none;
+  float: left;
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 12px;
+  color: transparent;
+  text-shadow: 0 0 0 grey;
+  cursor: no-drop;
+`
+
+const Img = styled.img`
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+`
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  `

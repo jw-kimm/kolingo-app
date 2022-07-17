@@ -4,74 +4,6 @@ import { connect } from 'react-redux'
 import MainNavbar from './MainNavbar'
 import styled from 'styled-components'
 
-const ContentSection = styled.section`
-  height: 350px;
-  display: flex;
-  justify-content: space-between;
-  padding: 24px;
-`
-
-const ContentBackground = styled.div`
-  background-image: url("https://d35aaqx5ub95lt.cloudfront.net/images/star-pattern.svg");
-  background-color: #235390;
-`
-
-const SectionOneLeft = styled.div`
-  width: 50%;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
-
-const SectionOneRight = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-const Border = styled.div`
-  border-top: 2px solid #e5e5e5;
-  width: 100%; 
-`
-
-const ContentBottom = styled.div`
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  padding: 24px;
-  align-items: center;
-  background-color: #235390;
-`
-
-const SectionTwoTop = styled.section`
-  color: white;
-  display: inline-flex;
-  margin-top: 48px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
-
-const Button = styled.div`
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-family: 'Varela Round', sans-serif;
-  text-decoration: none;
-  background-color: #78c800;  
-  text-decoration: none;
-  padding: 12px 24px;
-  width: 120px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 12px;
-  :hover {
-    -webkit-box-shadow: 0 0 10px rgb(184, 181, 181);
-    box-shadow: 0 0 10px rgb(184, 181, 181);
-  }
-`
 
 class Splash extends Component {
 
@@ -152,3 +84,72 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(Splash);
+
+const ContentSection = styled.section`
+  height: 350px;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+`
+
+const ContentBackground = styled.div`
+  background-image: url("https://d35aaqx5ub95lt.cloudfront.net/images/star-pattern.svg");
+  background-color: #235390;
+`
+
+const SectionOneLeft = styled.div`
+  width: 50%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const SectionOneRight = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Border = styled.div`
+  border-top: 2px solid #e5e5e5;
+  width: 100%; 
+`
+
+const ContentBottom = styled.div`
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  align-items: center;
+  background-color: #235390;
+`
+
+const SectionTwoTop = styled.section`
+  color: white;
+  display: inline-flex;
+  margin-top: 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const Button = styled.div`
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  background-color: #78c800;  
+  text-decoration: none;
+  padding: 12px 24px;
+  width: 120px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 12px;
+  :hover {
+    -webkit-box-shadow: 0 0 10px rgb(184, 181, 181);
+    box-shadow: 0 0 10px rgb(184, 181, 181);
+  }
+`

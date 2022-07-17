@@ -6,33 +6,7 @@ import LoginModal from '../auth/LoginModal'
 import RegisterModal from '../auth/RegisterModal'
 import Logout from '../auth/Logout'
 
-const NavBar = styled.div`
-  background-color: #235390;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
-  font-family: Varela Round;
-  color: white;
-  `
 
-const Button = styled.div`
-  background-color: white;
-  color: #235390;
-  font-size: 15px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border-radius: 25px;
-  font-family: 'Varela Round', sans-serif;
-  border-width: 0 0 4px;
-  margin-right: 22px;
-  :hover {
-    box-shadow: 0 0 10px rgb(184, 181, 181);
-    -webkit-box-shadow: 0 0 10px rgb(184, 181, 181);
-  }
-`
 
 class MainNavbar extends Component {
   state = {
@@ -134,3 +108,30 @@ const mapStateToProps = ({ auth }) => {
 
 export default connect(mapStateToProps, null)(MainNavbar);
 
+const NavBar = styled.div`
+  background-color: #235390;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  font-family: Varela Round;
+  color: white;
+  `
+
+const Button = styled.div`
+  background-color: white;
+  color: #235390;
+  font-size: 15px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: 'Varela Round', sans-serif;
+  border-width: 0 0 4px;
+  margin-right: 22px;
+  :hover {
+    box-shadow: 0 0 10px rgb(184, 181, 181);
+    -webkit-box-shadow: 0 0 10px rgb(184, 181, 181);
+  }
+`
